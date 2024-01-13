@@ -14,7 +14,7 @@ public class HomeScreen {
 
     private final Scene scene;
     private final SidebarComponent sidebar;
-//    private final BackgroundComponent background;
+    private final BackgroundComponent background;
 
 //    homescreen content
     public HomeScreen() {
@@ -26,11 +26,14 @@ public class HomeScreen {
 //        add the sidebar from components
         sidebar = new SidebarComponent();
 
+        FlowPane content = new FlowPane(Orientation.HORIZONTAL);
+        content.setPrefSize(1260, 750);
+
 //        add the background from components
-//        background = new BackgroundComponent();
+        background = new BackgroundComponent();
 
-
-        root.getChildren().addAll(sidebar);
+        content.getChildren().addAll(background);
+        root.getChildren().addAll(sidebar, content);
     }
 
     public Scene getScene() {
