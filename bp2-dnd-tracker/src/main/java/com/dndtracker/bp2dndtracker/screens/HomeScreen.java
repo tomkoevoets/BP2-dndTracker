@@ -33,19 +33,17 @@ public class HomeScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/homescreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
-//        add the sidebar from components
+        // add the sidebar from components
         sidebar = new SidebarComponent();
 
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
         content.setAlignment(Pos.CENTER);
 
-//        add the background from components
+        // add the background from components
         background = new BackgroundComponent();
 
-//        titleBar = new TitleBar();
-
-//        txt area
+        // txt area
         FlowPane welcomeWord = new FlowPane(Orientation.VERTICAL);
         welcomeWord.setPrefSize(300, 400);
         welcomeWord.setMaxSize(300, 400);
@@ -66,10 +64,10 @@ public class HomeScreen {
         welcomeTxt.setMaxWidth(280);
         welcomeTxt.setId("welcome-text1");
 
-
+        // set a margin of 10 pixels for the left, top,
         FlowPane.setMargin(welcomeTxt, new Insets(10, 0, 0, 20));
 
-
+        // children
         welcomeWord.getChildren().addAll(welcome, welcomeTxt);
         content.getChildren().addAll(background, welcomeWord);
         root.getChildren().addAll(sidebar, content);
