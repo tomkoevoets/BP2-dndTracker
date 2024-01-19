@@ -9,12 +9,17 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.OverrunStyle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
+
+import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 public class SessionScreen  {
 
@@ -28,79 +33,117 @@ public class SessionScreen  {
         HBox root = new HBox();
         scene = new Scene(root, 1400, 750);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("stylesheets/homescreen.css").toString());
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
+        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
 //        add the sidebar from components
         sidebar = new SidebarComponent();
 
+//          stackpane to stack the content on top of the background
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
-        content.setAlignment(Pos.CENTER);
+        content.setAlignment(Pos.TOP_CENTER);
 
 //        add the background from components
         background = new BackgroundComponent();
 
         content.getChildren().add(background);
 
+//        Vbox for the content on top of the stackpane
+        VBox contentOnStack = new VBox();
+        contentOnStack.setPrefSize(1260, 750);
+        contentOnStack.setAlignment(Pos.CENTER);
+
+
+//          Flowpane to generate the sessionItem
+        FlowPane sessionItemPane = new FlowPane(Orientation.HORIZONTAL);
+        sessionItemPane.setMinSize(1200, 700);
+        sessionItemPane.setMaxSize(1200, 700);
+        sessionItemPane.setPadding(new Insets(30, 30, 0, 30));
+        sessionItemPane.setHgap(50);
+        sessionItemPane.setVgap(50);
+
+
+//        Flowpane for the buttons
+        FlowPane btnPane = new FlowPane(Orientation.HORIZONTAL);
+        btnPane.setAlignment(Pos.TOP_CENTER);
+        btnPane.setHgap(50);
+        btnPane.setMinSize(1260, 50);
+
+
+//        button to add session
+        Button btnAddSession = new Button("+");
+        btnAddSession.setAlignment(Pos.CENTER);
+        btnAddSession.setTextAlignment(TextAlignment.CENTER);
+        btnAddSession.setId("btn-add-session");
+
+//        TODO create button event to add session
+        btnAddSession.setOnAction(e -> {
+//            SessionInfoScreen sessionInfoScreen = new SessionInfoScreen();
+        });
+
+//        button to delete session
+
+//          retrieve the session from the database and add it to the sessionItemPane in the form of an image and the session name
         for (Session session : db.getAllSessions()) {
-            content.getChildren().add(generateSessionItem(session));
+            sessionItemPane.getChildren().add(generateSessionItem(session));
         }
 
+        content.getChildren().addAll(contentOnStack);
+        contentOnStack.getChildren().addAll(sessionItemPane, btnPane);
+        btnPane.getChildren().add(btnAddSession);
         root.getChildren().addAll(sidebar, content);
     }
 
-    public HBox generateSessionItem(Session session) {
-        //TODO make session items appear structured
-        //TODO create black background with gold border?
-        HBox sessionItem = new HBox();
+    //TODO make this a component
+//    create method to generate the sessionItem onscreen with an image and the session name
+    public VBox generateSessionItem(Session session) {//
+
+//        vbox for the sessionItem content
+        VBox sessionItem = new VBox();
         sessionItem.setAlignment(Pos.CENTER);
         sessionItem.setMinSize(130, 232);
-//        sessionItem.setMaxSize(130, 232);
-//        sessionItem.setSpacing(50);
-        sessionItem.setId("film-item");
-        sessionItem.setStyle("-fx-background-color: green");
+        sessionItem.setSpacing(5);
+        sessionItem.setId("session-item");
+        sessionItem.setOnMouseClicked(e -> {
+            SessionInfoScreen sessionInfoScreen = new SessionInfoScreen(session);
+        });
 
+//        flowpane to generate the sessionItem picture within the sessionItem
         FlowPane sessionPicture = new FlowPane(Orientation.VERTICAL);
         sessionPicture.setPrefSize(120, 175);
         sessionPicture.setMinSize(120, 175);
         sessionPicture.setMaxSize(120, 175);
         sessionPicture.setId("session-picture");
         sessionPicture.setAlignment(Pos.CENTER);
-        sessionPicture.setStyle("-fx-background-color: blue");
-//        sessionPicture.setStyle("-fx-border-radius: 10px; -fx-background-radius: 10px;");
 
-        // rectangle to clip the picture to the size of the session item and give it a radius
-        //TODO get clipreact to be centered over the image
+//         rectangle to clip the picture to the size of the session item and give it a radius
         Rectangle clipRect = new Rectangle(120, 175);
         clipRect.setArcWidth(10);
         clipRect.setArcHeight(10);
         sessionPicture.setClip(clipRect);
 
-        ImageView sessionPictureImage = new ImageView();
-//        sessionPictureImage.setPreserveRatio(true);
+//        import the session (default) picture
+        ImageView sessionPictureImage = new ImageView();//
         sessionPictureImage.setSmooth(true);
         sessionPictureImage.setFitWidth(120);
         sessionPictureImage.setFitHeight(175);
         sessionPictureImage.setImage(new Image(Application.class.getResource("images/session-item-alt-pic.jpg").toString()));
         sessionPictureImage.setId("session-picture-image");
 
-        sessionPictureImage.setStyle(
-                        "-fx-background-size: cover;" +
-                        "-fx-background-repeat: no-repeat;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0.0, 0.0);" +
-                        "-fx-background-radius: 10px;"
-        );
-
-        //TODO create white text for the session title
-        Label sessionTitle = new Label(session.getName());
+//        Label to display the session name from the database
+        Label sessionTitle = new Label(session.getName());//
         sessionTitle.setWrapText(true);
-//        sessionTitle.setAlignment(Pos.TOP_LEFT);
+        sessionTitle.setMaxWidth(sessionItem.getMinWidth());
+        sessionTitle.setMaxHeight(50);
+        sessionTitle.setMinHeight(50);
         sessionTitle.setId("session-title");
 
         sessionPicture.getChildren().add(sessionPictureImage);
         sessionItem.getChildren().addAll(sessionPicture, sessionTitle);
 
+        //TODO make clickon function
 
         return sessionItem;
     }
