@@ -58,6 +58,22 @@
     -fx-font-weight: bold;
 }
 
+#delete-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
+#delete-btn:hover{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(255, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
 /*info section*/
 #session-info-content-pane{
     -fx-background-color: rgba(255, 228, 180, 0.56);
@@ -93,6 +109,22 @@
     -fx-font-weight: bold;
 }
 
+/*update section*/
+#update-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+
+}
+
+#update-btn:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1.2;
+    -fx-cursor: hand;
+}
 
 /*///////////////////////////////////////////////////////////sessionAddScreen/////////////////////////////////////////*/
 

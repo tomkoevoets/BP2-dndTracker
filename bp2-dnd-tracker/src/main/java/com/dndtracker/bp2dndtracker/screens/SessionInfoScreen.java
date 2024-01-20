@@ -6,18 +6,21 @@ import com.dndtracker.bp2dndtracker.classes.Database;
 import com.dndtracker.bp2dndtracker.classes.Session;
 import com.dndtracker.bp2dndtracker.components.BackgroundComponent;
 import com.dndtracker.bp2dndtracker.components.SidebarComponent;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.util.Optional;
+
+import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 
 public class SessionInfoScreen {
@@ -64,10 +67,11 @@ public class SessionInfoScreen {
         root.setBackground(background);
 
 /////// content
+
 /////// content title
-        HBox titleBox = new HBox();
+        FlowPane titleBox = new FlowPane();
         titleBox.setAlignment(Pos.CENTER);
-        titleBox.setSpacing(10);
+        titleBox.setHgap(10);
 
         ImageView titleIcon = new ImageView();
         titleIcon.setFitHeight(16);
@@ -78,15 +82,56 @@ public class SessionInfoScreen {
         Text title = new Text(session.getName());
         title.setId("sessionScreen-title");
 
-        FlowPane titlePane = new FlowPane();
-        titlePane.setPrefSize(screenWidth, screenHeight - 550);
+        VBox titlePane = new VBox();
+        titlePane.setPrefSize(screenWidth, screenHeight - 575);
+        titlePane.setPadding(new Insets(10,0,0,0));
         titlePane.setAlignment(Pos.CENTER);
-        titlePane.setPadding(new Insets(20,0,0,0));
 
+        FlowPane deletePane = new FlowPane();
+        deletePane.setPrefSize(screenWidth, screenHeight - 575);
+        deletePane.setAlignment(Pos.CENTER_RIGHT);
+        deletePane.setPadding(new Insets(0,10,0,0));
+
+        FlowPane deleteBtn = new FlowPane();
+        deleteBtn.setPrefSize(30, 30);
+        deleteBtn.setCursor(Cursor.HAND);
+        deleteBtn.setAlignment(Pos.CENTER);
+        deleteBtn.setId("delete-btn");
+
+        ImageView deleteIcon = new ImageView();
+        deleteIcon.setFitHeight(20);
+        deleteIcon.setPreserveRatio(true);
+        deleteIcon.setSmooth(true);
+        deleteIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/delete-btn.png"))));
+        deleteIcon.setId("delete-icon");
+
+        // Delete session button clicked
+        deleteBtn.setOnMouseClicked(e -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Session");
+            alert.setHeaderText("Are you sure you want to delete this session?");
+            alert.setContentText("This action cannot be undone!");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                // Delete session
+                cl.deleteSession(session.getId());
+                // Close stage
+                stage.close();
+                // Create new instance of SessionScreen and pass in the deleted session
+                SessionScreen sessionscreen = new SessionScreen();
+                mainStage.setScene(sessionscreen.getScene());
+            }
+            else if (result.get() == ButtonType.CANCEL) {
+                return;
+            }
+            //TODO reload sessionscreen
+        });
+
+        deletePane.getChildren().add(deleteBtn);
         titleBox.getChildren().addAll(title, titleIcon);
-        titlePane.getChildren().add(titleBox);
+        titlePane.getChildren().addAll(deletePane, titleBox);
 
-        //TODO make method instead of 2 seperate panes
+        //TODO make method instead of 2 seperate panes?
 /////// content info
         HBox bottomScreen = new HBox();
         bottomScreen.setPrefSize(screenWidth, screenHeight-100);
@@ -158,20 +203,9 @@ public class SessionInfoScreen {
 
 
 // delete section
-        HBox deleteBox = new HBox();
-        deleteBox.setAlignment(Pos.CENTER);
-        deleteBox.setPadding(new Insets(10,30,0,0));
-
-        Pane deleteBtn = new Pane();
-        deleteBtn.setPrefSize(20, deleteBox.getPrefHeight());
-        deleteBtn.setCursor(Cursor.HAND);//TODO fix placement of the buttons
-
-        ImageView deleteIcon = new ImageView();
-        deleteIcon.setFitHeight(deleteBtn.getPrefWidth());
-        deleteIcon.setPreserveRatio(true);
-        deleteIcon.setSmooth(true);
-        deleteIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/delete-btn.png"))));
-        deleteIcon.setId("delete-icon");
+        HBox updateBox = new HBox();//////update?
+        updateBox.setAlignment(Pos.CENTER);
+        updateBox.setPadding(new Insets(0,0,0,0));
 
         Button updateBtn = new Button("Update");
         updateBtn.setOnAction(e -> {
@@ -179,19 +213,12 @@ public class SessionInfoScreen {
                 });
         updateBtn.setId("update-btn");
 
-        // event listener for delete icon functionality
-        deleteBtn.setOnMouseClicked(e -> {
-            cl.deleteSession(session.getId());
-            stage.close();//TODO add warning
-            //TODO reload sessionscreen
-        });
-
         deleteBtn.getChildren().add(deleteIcon);
-        deleteBox.getChildren().addAll(updateBtn, deleteBtn);
+        updateBox.getChildren().addAll(updateBtn);
 
 /////// add children
         bottomScreen.getChildren().addAll(infoPane, summaryPane);
-        root.getChildren().addAll(titlePane, bottomScreen, deleteBox);
+        root.getChildren().addAll(titlePane, bottomScreen, updateBox);
 
     }
 }

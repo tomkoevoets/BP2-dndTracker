@@ -1,6 +1,8 @@
 package com.dndtracker.bp2dndtracker.classes;
 
 import java.util.ArrayList;
+import javafx.event.Event;
+import javafx.event.EventType;
 
 public class Controller {
 
@@ -22,25 +24,26 @@ public class Controller {
 
 
 ///////////////////////////////////////////////Session//////////////////////////////////////////////////////////////////
-    //TODO Create GetAllCharacter method
+    //TODO Create GetAllsessions method
     public ArrayList<Session> getSessions() {
         return db.getAllSessions();
     }
 
-    //TODO Create CreateCharacter method
+    //TODO Create Createsession method
     public void createSession(String name, String info) {
         db.createSession(name, info);
     }
 
-    //TODO Create DeleteCharacter method
+    //TODO Create Deletesession method
     public void deleteSession(int id) {
         db.deleteSession(id);
     }
 
-    //TODO Create UpdateCharacter method
+    //TODO Create Updatesession method
     public void updateSession(Session session) {
         db.updateSession(session);
     }
+
 
 ///////////////////////////////////////////////Character////////////////////////////////////////////////////////////////
     //TODO Create GetAllCharacter method
