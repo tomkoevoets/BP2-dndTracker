@@ -208,7 +208,9 @@ public class SessionInfoScreen {
 
         Button updateBtn = new Button("Update");
         updateBtn.setOnAction(e -> {
-//            TODO go to add session page
+            SessionUpdateScreen sessionscreen = new SessionUpdateScreen(session);
+            mainStage.setScene(sessionscreen.getScene());
+            stage.close();
                 });
         updateBtn.setId("update-btn");
 

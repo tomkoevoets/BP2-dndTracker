@@ -88,7 +88,7 @@ public class Database {
     public void updateSession(Session session){
         try {
             Statement stm = this.connection.createStatement();
-            stm.execute("UPDATE session SET name = '" + session.getName() + "', info = '" + session.getInfo() + "' WHERE id = " + session.getId());
+            stm.execute("UPDATE session SET name = '" + session.getName() + "', info = '" + session.getInfo() + "', summary = '" + session.getSummary() + "' WHERE id = " + session.getId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
