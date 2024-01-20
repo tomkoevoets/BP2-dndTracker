@@ -61,10 +61,13 @@ public class Database {
 
 
 //TODO Create CreateSession method
-    public void createSession(String name, String info){
+    public void createSession(String name, String info, String summary) {
         try {
             Statement stm = this.connection.createStatement();
-            stm.execute("INSERT INTO session (name, info) VALUES (" + name + "', '" + info + ")");
+            // Check if summary is null and handle accordingly
+            String summaryValue = (summary == null) ? "NULL" : "'" + summary + "'";
+//            stm.execute("INSERT INTO session (name, info) VALUES (" + name + "', '" + info + ", '" + summaryValue + ")");
+            stm.execute("INSERT INTO session (name, info, summary) VALUES ('" + name + "', '" + info + "', " + summaryValue + ")");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

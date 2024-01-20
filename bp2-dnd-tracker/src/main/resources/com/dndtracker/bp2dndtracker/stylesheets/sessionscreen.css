@@ -6,15 +6,12 @@
 /*Button*/
 #btn-add-session{
     -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
     -fx-border-width: 1;
     -fx-border-color: rgba(0, 0, 0, 0.8);
     -fx-border-radius: 50;
     -fx-background-radius: 50;
     -fx-text-fill: black;
-    -fx-font-family: "Agency FB";
-    /*-fx-font-family:  'Josefin Slab';*/
-    -fx-font-size: 22;
-    -fx-font-weight: bold;
 }
 
 #btn-add-session:hover {
@@ -117,7 +114,6 @@
     -fx-border-radius: 50;
     -fx-background-radius: 50;
     -fx-text-fill: black;
-
 }
 
 #update-btn:hover {
@@ -128,3 +124,49 @@
 
 /*///////////////////////////////////////////////////////////sessionAddScreen/////////////////////////////////////////*/
 
+/*content section*/
+#main-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+/*title section*/
+#session-title-field{
+    -fx-font-size: 14;
+    -fx-background-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*info section*/
+#session-info-field{
+    -fx-font-size: 14;
+    -fx-border-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*summary section*/
+#session-summary-field{
+    -fx-font-size: 14;
+    -fx-border-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*submit button*/
+#submit-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#submit-btn:hover{
+    -fx-border-width: 1;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}

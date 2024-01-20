@@ -22,7 +22,6 @@ import javafx.scene.text.TextAlignment;
 import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 public class SessionScreen  {
-
     private final Scene scene;
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
@@ -55,7 +54,6 @@ public class SessionScreen  {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-
 //          Flowpane to generate the sessionItem
         FlowPane sessionItemPane = new FlowPane(Orientation.HORIZONTAL);
         sessionItemPane.setMinSize(1200, 700);
@@ -64,26 +62,24 @@ public class SessionScreen  {
         sessionItemPane.setHgap(50);
         sessionItemPane.setVgap(50);
 
-
 //        Flowpane for the buttons
         FlowPane btnPane = new FlowPane(Orientation.HORIZONTAL);
         btnPane.setAlignment(Pos.TOP_CENTER);
         btnPane.setHgap(50);
         btnPane.setMinSize(1260, 50);
 
-
 //        button to add session
-        Button btnAddSession = new Button("+");
+        Button btnAddSession = new Button("add session");
         btnAddSession.setAlignment(Pos.CENTER);
         btnAddSession.setTextAlignment(TextAlignment.CENTER);
         btnAddSession.setId("btn-add-session");
 
 //        TODO create button event to add session
         btnAddSession.setOnAction(e -> {
-//            SessionInfoScreen sessionInfoScreen = new SessionInfoScreen();
+            SessionAddScreen sessionAddScreen = new SessionAddScreen();
+            mainStage.setScene(sessionAddScreen.getScene());
+//            mainStage.setScene(sessionAddScreen.getScene());
         });
-
-//        button to delete session
 
 //          retrieve the session from the database and add it to the sessionItemPane in the form of an image and the session name
         for (Session session : db.getAllSessions()) {
@@ -111,7 +107,8 @@ public class SessionScreen  {
         });
 
 //        flowpane to generate the sessionItem picture within the sessionItem
-        FlowPane sessionPicture = new FlowPane(Orientation.VERTICAL);
+//        FlowPane sessionPicture = new FlowPane(Orientation.VERTICAL);
+        VBox sessionPicture = new VBox();
         sessionPicture.setPrefSize(120, 175);
         sessionPicture.setMinSize(120, 175);
         sessionPicture.setMaxSize(120, 175);
@@ -125,7 +122,7 @@ public class SessionScreen  {
         sessionPicture.setClip(clipRect);
 
 //        import the session (default) picture
-        ImageView sessionPictureImage = new ImageView();//
+        ImageView sessionPictureImage = new ImageView();
         sessionPictureImage.setSmooth(true);
         sessionPictureImage.setFitWidth(120);
         sessionPictureImage.setFitHeight(175);
@@ -133,11 +130,13 @@ public class SessionScreen  {
         sessionPictureImage.setId("session-picture-image");
 
 //        Label to display the session name from the database
-        Label sessionTitle = new Label(session.getName());//
+        Label sessionTitle = new Label(session.getName());
         sessionTitle.setWrapText(true);
-        sessionTitle.setMaxWidth(sessionItem.getMinWidth());
+        sessionTitle.setMaxWidth(sessionPictureImage.getFitWidth());
         sessionTitle.setMaxHeight(50);
         sessionTitle.setMinHeight(50);
+        sessionTitle.setContentDisplay(ContentDisplay.CENTER);
+        sessionTitle.setTextAlignment(TextAlignment.CENTER);//TODO centre the titles
         sessionTitle.setId("session-title");
 
         sessionPicture.getChildren().add(sessionPictureImage);

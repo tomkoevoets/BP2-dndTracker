@@ -124,7 +124,6 @@ public class SessionInfoScreen {
             else if (result.get() == ButtonType.CANCEL) {
                 return;
             }
-            //TODO reload sessionscreen
         });
 
         deletePane.getChildren().add(deleteBtn);
@@ -145,7 +144,7 @@ public class SessionInfoScreen {
         infoContentPane.setAlignment(Pos.CENTER);
         infoContentPane.setId("session-info-content-pane");
 
-        Text info = new Text(session.getInfo());
+        Text info = new Text(session.getInfo().replace("`", "'"));
         info.setWrappingWidth(infoContentPane.getPrefWidth()-50);
         info.setId("session-info");
 
@@ -178,7 +177,7 @@ public class SessionInfoScreen {
         summaryContentPane.setAlignment(Pos.CENTER);
         summaryContentPane.setId("session-summary-content-pane");
 
-        Text summary = new Text(session.getSummary());
+        Text summary = new Text(session.getSummary().replace("`", "'"));
         summary.setWrappingWidth(infoContentPane.getPrefWidth()-50);
         summary.setId("session-summary");
 

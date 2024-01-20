@@ -30,8 +30,8 @@ public class Controller {
     }
 
     //TODO Create Createsession method
-    public void createSession(String name, String info) {
-        db.createSession(name, info);
+    public void createSession(String name, String info, String summary) {
+        db.createSession(name, info, summary);
     }
 
     //TODO Create Deletesession method
