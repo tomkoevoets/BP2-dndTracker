@@ -33,3 +33,7 @@ public class Application extends javafx.application.Application {
         launch();
     }
 }
+
+///////////////////////todo list////////////////////
+
+// TODO add folder structure to images

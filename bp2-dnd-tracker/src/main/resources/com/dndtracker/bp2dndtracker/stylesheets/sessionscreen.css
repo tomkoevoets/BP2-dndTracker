@@ -3,11 +3,18 @@
     -fx-font-family:  'Josefin Slab', serif;
 }
 
+#session-scroll-pane{
+    -fx-background-color: transparent;
+}
+#session-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
 /*Button*/
 #btn-add-session{
     -fx-background-color: rgb(231, 207, 165);
     -fx-font-size: 16;
-    -fx-border-width: 1;
+    -fx-border-width: 0.8;
     -fx-border-color: rgba(0, 0, 0, 0.8);
     -fx-border-radius: 50;
     -fx-background-radius: 50;
@@ -16,7 +23,7 @@
 
 #btn-add-session:hover {
     -fx-background-color: rgb(255, 228, 180);
-    -fx-border-width: 1.2;
+    -fx-border-width: 1;
     -fx-cursor: hand;
 }
 
@@ -49,7 +56,6 @@
 /*///////////////////////////////////////////////////////////sessionInfoScreen////////////////////////////////////////*/
 /*title section*/
 #sessionScreen-title{
-    /*-fx-fill: white;*/
     -fx-font-family:  'Josefin Slab';
     -fx-font-size: 22;
     -fx-font-weight: bold;
@@ -91,7 +97,6 @@
     -fx-border-width: 0.5;
 }
 
-
 /*summary section*/
 #session-summary-content-pane{
     -fx-background-color: rgba(255, 228, 180, 0.56);
@@ -109,7 +114,8 @@
 /*update section*/
 #update-btn{
     -fx-background-color: rgb(231, 207, 165);
-    -fx-border-width: 1;
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
     -fx-border-color: rgba(0, 0, 0, 0.8);
     -fx-border-radius: 50;
     -fx-background-radius: 50;
@@ -118,7 +124,7 @@
 
 #update-btn:hover {
     -fx-background-color: rgb(255, 228, 180);
-    -fx-border-width: 1.2;
+    -fx-border-width: 1;
     -fx-cursor: hand;
 }
 
@@ -166,7 +172,7 @@
 }
 
 #submit-btn:hover{
+    -fx-background-color: rgb(255, 228, 180);
     -fx-border-width: 1;
-    -fx-border-radius: 50;
-    -fx-background-radius: 50;
+    -fx-cursor: hand;
 }

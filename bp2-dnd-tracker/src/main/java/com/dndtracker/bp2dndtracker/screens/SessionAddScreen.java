@@ -23,56 +23,65 @@ import javafx.scene.layout.VBox;
 
 import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
+// Define the SessionAddScreen class
 public class SessionAddScreen {
 
+    // Declare instance variables
     private final Scene scene;
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
 
+    // Constructor for SessionAddScreen
     public SessionAddScreen() {
+        // Create instances of Database and Controller
         Database db = new Database();
         Controller cl = new Controller();
 
+        // Create the root HBox for the scene
         HBox root = new HBox();
         scene = new Scene(root, 1400, 750);
+
+        // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-/////// pre-content-section
+// Pre-content section
 
-        // add the sidebar from components
+        // Add the sidebar from components
         sidebar = new SidebarComponent();
 
-        // stackpane to stack the content on top of the background
+        // StackPane to stack the content on top of the background
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
 
-        // add the background from components
+        // Add the background from components
         background = new BackgroundComponent();
-
         content.getChildren().add(background);
 
-        // Vbox for the content on top of the stackpane
+        // VBox for the content on top of the StackPane
         VBox contentOnStack = new VBox();
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
-//        contentOnStack.setSpacing(100);
 
-/////// content-section
+// Content section
 
+        // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
         mainPane.setPrefSize(800, 600);
         mainPane.setMinSize(800, 600);
         mainPane.setMaxSize(800, 600);
         mainPane.setId("main-pane");
 
-  //// title-section
+// Title section
+
+        // Create a FlowPane for the title
         FlowPane titlePane = new FlowPane();
         titlePane.setPrefSize(800, 100);
         titlePane.setAlignment(Pos.CENTER);
 
+        // Create a TextField for the session title
         TextField titleField = new TextField();
         titleField.setPrefSize(150, 40);
         titleField.setPromptText("Add Session title");
@@ -82,7 +91,9 @@ public class SessionAddScreen {
 
         titlePane.getChildren().add(titleField);
 
-  //// info-section
+// Info section
+
+        // Create a FlowPane for information summary
         FlowPane infSumPane = new FlowPane(Orientation.HORIZONTAL);
         infSumPane.setPrefSize(800, 400);
 //        infSumPane.setAlignment(Pos.CENTER);
@@ -91,6 +102,7 @@ public class SessionAddScreen {
         infoContentPane.setPrefSize(infSumPane.getPrefWidth()/2, infSumPane.getPrefHeight());
         infoContentPane.setAlignment(Pos.CENTER);
 
+        // Create a TextArea for session info
         TextArea infoField = new TextArea();
         infoField.setPrefSize(infSumPane.getPrefWidth()/2-50, infSumPane.getPrefHeight()-50);
         infoField.setPromptText("Add Session info");
@@ -100,11 +112,14 @@ public class SessionAddScreen {
         infoContentPane.getChildren().add(infoField);
         infSumPane.getChildren().add(infoContentPane);
 
-  //// summary-section
+// Summary section
+
+        // Create a FlowPane for summary content
         FlowPane summaryContentPane = new FlowPane();
         summaryContentPane.setPrefSize(infSumPane.getPrefWidth()/2, infSumPane.getPrefHeight());
         summaryContentPane.setAlignment(Pos.CENTER);
 
+        // Create a TextArea for session summary
         TextArea summaryField = new TextArea();
         summaryField.setPrefSize(infSumPane.getPrefWidth()/2-50, infSumPane.getPrefHeight()-50);
         summaryField.setPromptText("Add Session summary");
@@ -114,42 +129,49 @@ public class SessionAddScreen {
         summaryContentPane.getChildren().add(summaryField);
         infSumPane.getChildren().add(summaryContentPane);
 
-  //// submit-btn-section
+// Submit button section
+
+        // Create a FlowPane for the submit button
         FlowPane submitPane = new FlowPane();
         submitPane.setPrefSize(800, 50);
         submitPane.setAlignment(Pos.CENTER);
 
+        // Create a Button for submission
         Button submitBtn = new Button("submit");
         submitBtn.setCursor(Cursor.HAND);
         submitBtn.setId("submit-btn");
 
         submitPane.getChildren().add(submitBtn);
-        submitBtn.setOnAction(click -> {
-            //TODO add submit do db function
-            if (titleField.getText().isEmpty() || infoField.getText().isEmpty()) {
 
-                //  alert wanneer velden leeg zijn
+        // Set an event handler for the submit button
+        submitBtn.setOnAction(click -> {
+            //TODO add submit to db function
+            if (titleField.getText().isEmpty() || infoField.getText().isEmpty()) {
+                // Alert when required fields are empty
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
-                alert.setHeaderText("one or more required fields are empty");
+                alert.setHeaderText("One or more required fields are empty");
                 alert.showAndWait();
 
-                //   change border colors when empty
+                // Change border colors when fields are empty
                 if (titleField.getText().isEmpty()) {
                     titleField.setStyle("-fx-border-color: red");
                     titleField.promptTextProperty().setValue("Session title cannot be empty");
+                    // set focus when empty
                     titleField.requestFocus();
-                }else {
+                } else {
                     titleField.setStyle("-fx-border-color: black");
                 }
 
                 if (infoField.getText().isEmpty()) {
                     infoField.setStyle("-fx-border-color: red");
                     infoField.promptTextProperty().setValue("Session info cannot be empty");
+                    // set focus when empty
                     infoField.requestFocus();
-                }else {
+                } else {
                     infoField.setStyle("-fx-border-color: black");
-                }return;
+                }
+                return;
             }
 
             String titleSting = titleField.getText();
@@ -159,13 +181,16 @@ public class SessionAddScreen {
             // Handle empty summary field
             String summaryValue = (summaryString.isEmpty()) ? "NULL" : "'" + summaryString + "'";
 
+            // Call controller to create a new session in the database
             cl.createSession(titleSting, infoString, summaryString);
 
+            // Switch back to SessionScreen
             SessionScreen sessionscreen = new SessionScreen();
             mainStage.setScene(sessionscreen.getScene());
         });
 
-/////// children-section
+// children-section
+        // add children
         mainPane.getChildren().addAll(titlePane, infSumPane, submitPane);
         content.getChildren().add(contentOnStack);
         contentOnStack.getChildren().addAll(mainPane);

@@ -9,10 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.OverrunStyle;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -21,93 +18,109 @@ import javafx.scene.text.TextAlignment;
 
 import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
+// Define the SessionScreen class
 public class SessionScreen  {
+    // Declare instance variables
     private final Scene scene;
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
 
+    // Constructor for SessionScreen
     public SessionScreen() {
+        // Create a new Database instance
         Database db = new Database();
 
+        // Create the root HBox for the scene
         HBox root = new HBox();
         scene = new Scene(root, 1400, 750);
+        // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-//        add the sidebar from components
+        // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
-//          stackpane to stack the content on top of the background
+        // Create SidebarComponent and add it to the root HBox
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
         content.setAlignment(Pos.TOP_CENTER);
 
-//        add the background from components
+        // Create BackgroundComponent and add it to the content StackPane
         background = new BackgroundComponent();
 
         content.getChildren().add(background);
 
-//        Vbox for the content on top of the stackpane
+        // Create a VBox for stacking content on top of the StackPane
         VBox contentOnStack = new VBox();
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-//          Flowpane to generate the sessionItem
+        // Create a FlowPane for generating sessionItem
         FlowPane sessionItemPane = new FlowPane(Orientation.HORIZONTAL);
         sessionItemPane.setMinSize(1200, 700);
-        sessionItemPane.setMaxSize(1200, 700);
-        sessionItemPane.setPadding(new Insets(30, 30, 0, 30));
+        sessionItemPane.setPadding(new Insets(30, 0, 0, 60));
+        sessionItemPane.setAlignment(Pos.CENTER);
         sessionItemPane.setHgap(50);
         sessionItemPane.setVgap(50);
 
-//        Flowpane for the buttons
+        // Create for the abilaty to scroll
+        ScrollPane scrollPane = new ScrollPane();
+        // Set the FlowPane as the content of the ScrollPane
+        scrollPane.setContent(sessionItemPane);
+        // Hide the scrollbar
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.requestLayout();
+        scrollPane.setId("session-scroll-pane");
+
+        // Create a FlowPane for buttons
         FlowPane btnPane = new FlowPane(Orientation.HORIZONTAL);
-        btnPane.setAlignment(Pos.TOP_CENTER);
+        btnPane.setAlignment(Pos.CENTER);
         btnPane.setHgap(50);
         btnPane.setMinSize(1260, 50);
 
-//        button to add session
+        // Create a button to add session
         Button btnAddSession = new Button("add session");
         btnAddSession.setAlignment(Pos.CENTER);
         btnAddSession.setTextAlignment(TextAlignment.CENTER);
         btnAddSession.setId("btn-add-session");
 
-//        TODO create button event to add session
+        // Set an event handler for the add session button
         btnAddSession.setOnAction(e -> {
             SessionAddScreen sessionAddScreen = new SessionAddScreen();
             mainStage.setScene(sessionAddScreen.getScene());
-//            mainStage.setScene(sessionAddScreen.getScene());
         });
 
-//          retrieve the session from the database and add it to the sessionItemPane in the form of an image and the session name
+        // Retrieve sessions from the database and add them to sessionItemPane
         for (Session session : db.getAllSessions()) {
             sessionItemPane.getChildren().add(generateSessionItem(session));
         }
 
+        // Add components to the contentOnStack VBox
         content.getChildren().addAll(contentOnStack);
-        contentOnStack.getChildren().addAll(sessionItemPane, btnPane);
+        contentOnStack.getChildren().addAll(scrollPane, btnPane);
         btnPane.getChildren().add(btnAddSession);
+        // Add components to the root HBox
         root.getChildren().addAll(sidebar, content);
     }
 
-    //TODO make this a component
-//    create method to generate the sessionItem onscreen with an image and the session name
+    //  create method to generate the sessionItem onscreen with an image and the session name
     public VBox generateSessionItem(Session session) {//
 
-//        vbox for the sessionItem content
+        // Create a VBox for sessionItem content
         VBox sessionItem = new VBox();
         sessionItem.setAlignment(Pos.CENTER);
         sessionItem.setMinSize(130, 232);
         sessionItem.setSpacing(5);
         sessionItem.setId("session-item");
+        // Event handler for sessionItem click
         sessionItem.setOnMouseClicked(e -> {
             SessionInfoScreen sessionInfoScreen = new SessionInfoScreen(session);
         });
 
-//        flowpane to generate the sessionItem picture within the sessionItem
-//        FlowPane sessionPicture = new FlowPane(Orientation.VERTICAL);
+        // Create a VBox for sessionPicture
         VBox sessionPicture = new VBox();
         sessionPicture.setPrefSize(120, 175);
         sessionPicture.setMinSize(120, 175);
@@ -115,13 +128,13 @@ public class SessionScreen  {
         sessionPicture.setId("session-picture");
         sessionPicture.setAlignment(Pos.CENTER);
 
-//         rectangle to clip the picture to the size of the session item and give it a radius
+        // rectangle to clip the picture to the size of the session item and give it a radius
         Rectangle clipRect = new Rectangle(120, 175);
         clipRect.setArcWidth(10);
         clipRect.setArcHeight(10);
         sessionPicture.setClip(clipRect);
 
-//        import the session (default) picture
+        // Create an ImageView for the session picture
         ImageView sessionPictureImage = new ImageView();
         sessionPictureImage.setSmooth(true);
         sessionPictureImage.setFitWidth(120);
@@ -129,7 +142,7 @@ public class SessionScreen  {
         sessionPictureImage.setImage(new Image(Application.class.getResource("images/session-item-alt-pic.jpg").toString()));
         sessionPictureImage.setId("session-picture-image");
 
-//        Label to display the session name from the database
+        // Create a Label for the session title
         Label sessionTitle = new Label(session.getName());
         sessionTitle.setWrapText(true);
         sessionTitle.setMaxWidth(sessionPictureImage.getFitWidth());
@@ -139,14 +152,13 @@ public class SessionScreen  {
         sessionTitle.setTextAlignment(TextAlignment.CENTER);//TODO centre the titles
         sessionTitle.setId("session-title");
 
+        // Add components to sessionItem
         sessionPicture.getChildren().add(sessionPictureImage);
         sessionItem.getChildren().addAll(sessionPicture, sessionTitle);
 
-        //TODO make clickon function
-
         return sessionItem;
     }
-
+    // Getter method for the scene
     public Scene getScene() {
         return scene;
     }

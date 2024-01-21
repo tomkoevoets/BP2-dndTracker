@@ -24,21 +24,27 @@ import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 
 public class SessionInfoScreen {
+    // Declare instance variables
     private final Scene scene;
     private double screenWidth;
     private double screenHeight;
 
+    // Constructor for SessionInfoScreen with a Session parameter
     public SessionInfoScreen(Session session) {
+        // Create instances of Database and Controller and stage
         Database db = new Database();
         Controller cl = new Controller();
         Stage stage = new Stage();
 
+        // Create the root VBox for the scene
         VBox root = new VBox();
         scene = new Scene(root, 800, 600);
+        // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
+        // instegate the width and height of the root as a variable
         screenWidth = root.getWidth();
         screenHeight = root.getHeight();
 
@@ -47,7 +53,8 @@ public class SessionInfoScreen {
         stage.setTitle(session.getName());
         stage.show();
 
-/////// background
+// background section
+
         // Load the image
         Image backgroundImage = new Image(Application.class.getResource("images/session-info-background.jpg").toString());
 
@@ -66,19 +73,21 @@ public class SessionInfoScreen {
         // Set the background to the root Pane
         root.setBackground(background);
 
-/////// content
+// content section
 
-/////// content title
+        // content title
         FlowPane titleBox = new FlowPane();
         titleBox.setAlignment(Pos.CENTER);
         titleBox.setHgap(10);
 
+        // import icon for title
         ImageView titleIcon = new ImageView();
         titleIcon.setFitHeight(16);
         titleIcon.setPreserveRatio(true);
         titleIcon.setSmooth(true);
-        titleIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/crossed-swords-black.png"))));
+        titleIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/icon/crossed-swords-black.png"))));
 
+        // display the session title on screen
         Text title = new Text(session.getName());
         title.setId("sessionScreen-title");
 
@@ -87,17 +96,20 @@ public class SessionInfoScreen {
         titlePane.setPadding(new Insets(10,0,0,0));
         titlePane.setAlignment(Pos.CENTER);
 
+        // pane for delete content
         FlowPane deletePane = new FlowPane();
         deletePane.setPrefSize(screenWidth, screenHeight - 575);
         deletePane.setAlignment(Pos.CENTER_RIGHT);
         deletePane.setPadding(new Insets(0,10,0,0));
 
+        // button background to make bressing the delete icon easy
         FlowPane deleteBtn = new FlowPane();
         deleteBtn.setPrefSize(30, 30);
         deleteBtn.setCursor(Cursor.HAND);
         deleteBtn.setAlignment(Pos.CENTER);
         deleteBtn.setId("delete-btn");
 
+        // import delete icon
         ImageView deleteIcon = new ImageView();
         deleteIcon.setFitHeight(20);
         deleteIcon.setPreserveRatio(true);
@@ -107,11 +119,14 @@ public class SessionInfoScreen {
 
         // Delete session button clicked
         deleteBtn.setOnMouseClicked(e -> {
+            // create alert when clicked
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete Session");
             alert.setHeaderText("Are you sure you want to delete this session?");
             alert.setContentText("This action cannot be undone!");
+            // instagate result variable
             Optional<ButtonType> result = alert.showAndWait();
+            // check if the result is OK
             if (result.get() == ButtonType.OK) {
                 // Delete session
                 cl.deleteSession(session.getId());
@@ -121,17 +136,20 @@ public class SessionInfoScreen {
                 SessionScreen sessionscreen = new SessionScreen();
                 mainStage.setScene(sessionscreen.getScene());
             }
+            // check if the result is CANCEL
             else if (result.get() == ButtonType.CANCEL) {
+                // do nothing
                 return;
             }
         });
 
+        // add delete icon to delete button
         deletePane.getChildren().add(deleteBtn);
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
         //TODO make method instead of 2 seperate panes?
-/////// content info
+// content info section
         HBox bottomScreen = new HBox();
         bottomScreen.setPrefSize(screenWidth, screenHeight-100);
 
@@ -162,12 +180,13 @@ public class SessionInfoScreen {
         infoTXT.setPadding(new Insets(5,5,5,5));
         infoTXT.setId("scrollPane");
 
+        // children
         infoTitlePane.getChildren().add(infoTitle);
         infoTXT.setContent(info);
         infoContentPane.getChildren().addAll(infoTitlePane, infoTXT);
         infoPane.getChildren().add(infoContentPane);
 
-/////// content summary
+// content summary section
         FlowPane summaryPane = new FlowPane();
         summaryPane.setPrefSize(screenWidth/2, screenHeight - 100);
         summaryPane.setAlignment(Pos.CENTER);
@@ -195,6 +214,7 @@ public class SessionInfoScreen {
         summaryTXT.setPadding(new Insets(5,5,5,5));
         summaryTXT.setId("scrollPane");
 
+        // children
         summaryTitlePane.getChildren().add(summaryTitle);
         summaryTXT.setContent(summary);
         summaryContentPane.getChildren().addAll(summaryTitlePane, summaryTXT);
@@ -202,12 +222,14 @@ public class SessionInfoScreen {
 
 
 // delete section
+
         HBox updateBox = new HBox();//////update?
         updateBox.setAlignment(Pos.CENTER);
         updateBox.setPadding(new Insets(0,0,0,0));
 
         Button updateBtn = new Button("Update");
         updateBtn.setOnAction(e -> {
+            // navigate to updatescreen when button is pressed
             SessionUpdateScreen sessionscreen = new SessionUpdateScreen(session);
             mainStage.setScene(sessionscreen.getScene());
             stage.close();
@@ -217,9 +239,11 @@ public class SessionInfoScreen {
         deleteBtn.getChildren().add(deleteIcon);
         updateBox.getChildren().addAll(updateBtn);
 
-/////// add children
+        // add children
         bottomScreen.getChildren().addAll(infoPane, summaryPane);
         root.getChildren().addAll(titlePane, bottomScreen, updateBox);
-
+    }
+    public Scene getScene() {
+        return scene;
     }
 }
