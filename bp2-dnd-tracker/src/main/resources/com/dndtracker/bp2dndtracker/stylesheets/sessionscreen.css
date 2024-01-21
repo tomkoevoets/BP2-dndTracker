@@ -3,6 +3,7 @@
     -fx-font-family:  'Josefin Slab', serif;
 }
 
+/*//////////////////////////////////////////////////session screen///////////////////////////////////////////////////*/
 #session-scroll-pane{
     -fx-background-color: transparent;
 }

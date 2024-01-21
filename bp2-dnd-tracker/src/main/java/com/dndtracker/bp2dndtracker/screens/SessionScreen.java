@@ -42,7 +42,7 @@ public class SessionScreen  {
         // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
-        // Create SidebarComponent and add it to the root HBox
+        // Create stackpane for stacking things on the background
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
         content.setAlignment(Pos.TOP_CENTER);
@@ -117,7 +117,7 @@ public class SessionScreen  {
         sessionItem.setId("session-item");
         // Event handler for sessionItem click
         sessionItem.setOnMouseClicked(e -> {
-            SessionInfoScreen sessionInfoScreen = new SessionInfoScreen(session);
+            SessionInfoScreen sessionInfoScreen = new SessionInfoScreen(session);//
         });
 
         // Create a VBox for sessionPicture
@@ -135,15 +135,15 @@ public class SessionScreen  {
         sessionPicture.setClip(clipRect);
 
         // Create an ImageView for the session picture
-        ImageView sessionPictureImage = new ImageView();
+        ImageView sessionPictureImage = new ImageView();//
         sessionPictureImage.setSmooth(true);
         sessionPictureImage.setFitWidth(120);
         sessionPictureImage.setFitHeight(175);
-        sessionPictureImage.setImage(new Image(Application.class.getResource("images/session-item-alt-pic.jpg").toString()));
+        sessionPictureImage.setImage(new Image(Application.class.getResource("images/session-item-alt-pic.jpg").toString()));//
         sessionPictureImage.setId("session-picture-image");
 
         // Create a Label for the session title
-        Label sessionTitle = new Label(session.getName());
+        Label sessionTitle = new Label(session.getName());//
         sessionTitle.setWrapText(true);
         sessionTitle.setMaxWidth(sessionPictureImage.getFitWidth());
         sessionTitle.setMaxHeight(50);

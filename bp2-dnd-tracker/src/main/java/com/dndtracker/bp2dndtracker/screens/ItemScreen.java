@@ -1,41 +1,110 @@
 package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
+import com.dndtracker.bp2dndtracker.classes.Database;
+import com.dndtracker.bp2dndtracker.classes.Session;
 import com.dndtracker.bp2dndtracker.components.BackgroundComponent;
+import com.dndtracker.bp2dndtracker.components.GenerateItemComponent;
 import com.dndtracker.bp2dndtracker.components.SidebarComponent;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
+
+import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 public class ItemScreen {
 
     private final Scene scene;
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
+    private  GenerateItemComponent itemComponent;
 
     public ItemScreen() {
+        // Create a new Database instance
+        Database db = new Database();
+
+        // Create a new HBox for the root
         HBox root = new HBox();
         scene = new Scene(root, 1400, 750);
+        // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("stylesheets/homescreen.css").toString());
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/itemscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
-//        add the sidebar from components
+        // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
+        // Create stackpane for stacking things on the background
         StackPane content = new StackPane();
         content.setPrefSize(1260, 750);
         content.setAlignment(Pos.CENTER);
 
-//        add the background from components
+        // Create BackgroundComponent
         background = new BackgroundComponent();
-
-
+        // add it to the content StackPane
         content.getChildren().addAll(background);
+
+        // Create a VBox for stacking content on top of the StackPane
+        VBox contentOnStack = new VBox();
+        contentOnStack.setPrefSize(1260, 750);
+        contentOnStack.setAlignment(Pos.CENTER);
+
+        // Create a FlowPane for generating sessionItem
+        FlowPane ItemPane = new FlowPane(Orientation.HORIZONTAL);
+        ItemPane.setMinSize(1200, 700);
+        ItemPane.setPadding(new Insets(30, 0, 0, 60));
+        ItemPane.setAlignment(Pos.CENTER);
+        ItemPane.setHgap(50);
+        ItemPane.setVgap(50);
+
+        // Create for the abilaty to scroll
+        ScrollPane scrollPane = new ScrollPane();
+        // Set the FlowPane as the content of the ScrollPane
+        scrollPane.setContent(ItemPane);
+        // Hide the scrollbar
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.requestLayout();
+        scrollPane.setId("scroll-pane");
+
+        // Create a FlowPane for buttons
+        FlowPane btnPane = new FlowPane(Orientation.HORIZONTAL);
+        btnPane.setAlignment(Pos.CENTER);
+        btnPane.setHgap(50);
+        btnPane.setMinSize(1260, 50);
+
+        // Create a button to add session
+        Button btnAdd = new Button("add item");
+        btnAdd.setAlignment(Pos.CENTER);
+        btnAdd.setTextAlignment(TextAlignment.CENTER);
+        btnAdd.setId("btn-add");
+
+        // Set an event handler for the add session button
+        btnAdd.setOnAction(e -> {
+            ItemAddScreen addScreen = new ItemAddScreen();
+            mainStage.setScene(addScreen.getScene());
+        });
+
+        // Retrieve sessions from the database and add them to sessionItemPane
+        for (Session session : db.getAllSessions()) {/////
+            ItemPane.getChildren().add(new GenerateItemComponent(session).getNode());/////
+        }
+
+        // Add components to the contentOnStack VBox
+        content.getChildren().addAll(contentOnStack);
+        contentOnStack.getChildren().addAll(scrollPane, btnPane);
+        btnPane.getChildren().add(btnAdd);
+        // Add components to the root HBox
         root.getChildren().addAll(sidebar, content);
     }
-
     public Scene getScene() {
         return scene;
     }
