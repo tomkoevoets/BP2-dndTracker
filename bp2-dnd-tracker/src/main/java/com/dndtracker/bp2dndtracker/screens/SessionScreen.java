@@ -61,7 +61,7 @@ public class SessionScreen  {
         FlowPane sessionItemPane = new FlowPane(Orientation.HORIZONTAL);
         sessionItemPane.setMinSize(1200, 700);
         sessionItemPane.setPadding(new Insets(30, 0, 0, 60));
-        sessionItemPane.setAlignment(Pos.CENTER);
+        sessionItemPane.setAlignment(Pos.TOP_LEFT);
         sessionItemPane.setHgap(50);
         sessionItemPane.setVgap(50);
 
@@ -72,6 +72,7 @@ public class SessionScreen  {
         // Hide the scrollbar
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setMinSize(1200, 700);
         scrollPane.requestLayout();
         scrollPane.setId("session-scroll-pane");
 

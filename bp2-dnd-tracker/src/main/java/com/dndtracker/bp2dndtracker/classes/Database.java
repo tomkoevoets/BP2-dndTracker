@@ -209,7 +209,7 @@ public class Database {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
-                String image = rs.getString("image");
+                String image = rs.getString("picture");
                 String type = rs.getString("type");
                 String rarity = rs.getString("rarity");
                 int cost = rs.getInt("cost");

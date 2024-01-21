@@ -2,6 +2,7 @@ package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
 import com.dndtracker.bp2dndtracker.classes.Database;
+import com.dndtracker.bp2dndtracker.classes.Item;
 import com.dndtracker.bp2dndtracker.classes.Session;
 import com.dndtracker.bp2dndtracker.components.BackgroundComponent;
 import com.dndtracker.bp2dndtracker.components.GenerateItemComponent;
@@ -61,7 +62,7 @@ public class ItemScreen {
         FlowPane ItemPane = new FlowPane(Orientation.HORIZONTAL);
         ItemPane.setMinSize(1200, 700);
         ItemPane.setPadding(new Insets(30, 0, 0, 60));
-        ItemPane.setAlignment(Pos.CENTER);
+        ItemPane.setAlignment(Pos.TOP_LEFT);
         ItemPane.setHgap(50);
         ItemPane.setVgap(50);
 
@@ -72,6 +73,7 @@ public class ItemScreen {
         // Hide the scrollbar
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setMinSize(1200, 700);
         scrollPane.requestLayout();
         scrollPane.setId("scroll-pane");
 
@@ -94,8 +96,10 @@ public class ItemScreen {
         });
 
         // Retrieve sessions from the database and add them to sessionItemPane
-        for (Session session : db.getAllSessions()) {/////
-            ItemPane.getChildren().add(new GenerateItemComponent(session).getNode());/////
+        for (Item item : db.getAllItems()) {/////
+            ItemPane.getChildren().add(new GenerateItemComponent(e -> {
+                ItemInfoScreen itemInfoScreen = new ItemInfoScreen();
+            },item.getImage(), item.getName()).getNode());/////
         }
 
         // Add components to the contentOnStack VBox

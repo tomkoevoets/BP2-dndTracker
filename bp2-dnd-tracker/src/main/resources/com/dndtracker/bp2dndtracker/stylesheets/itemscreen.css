@@ -31,7 +31,7 @@
 
 /*generate item*/
 
-#session-item:hover{
+#item-box:hover{
     -fx-cursor: hand;
     -fx-background-color: rgba(255, 228, 180, 0.43);
     -fx-background-radius: 5;
@@ -40,13 +40,13 @@
     -fx-border-width: 0.5;
 }
 
-#session-picture-image{
+#picture-image{
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0.0, 0.0);
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
 
-#session-title{
+#title{
     -fx-background-color: rgba(0, 0, 0, 0.06);
     -fx-background-radius: 3px;
     -fx-text-fill: white;
