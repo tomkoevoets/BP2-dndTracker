@@ -18,7 +18,7 @@ public class ItemAddScreen {
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
 
-    // Constructor for SessionAddScreen
+    // Constructor for ItemAddScreen
     public ItemAddScreen() {
         // Create instances of Database and Controller
         Database db = new Database();

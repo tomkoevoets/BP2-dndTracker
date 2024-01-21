@@ -21,6 +21,8 @@ public class GenerateItemComponent  {
 
     public GenerateItemComponent(EventHandler<Event> event, String picture, String title) {//
 
+        //TODO add stockphoto option
+
         // Create a VBox for sessionItem content
         VBox sessionItem = new VBox();
         sessionItem.setAlignment(Pos.CENTER);

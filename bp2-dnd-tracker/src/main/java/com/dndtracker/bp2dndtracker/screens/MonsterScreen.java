@@ -20,7 +20,6 @@ import javafx.scene.text.TextAlignment;
 import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 public class MonsterScreen {
-
     private final Scene scene;
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
