@@ -100,16 +100,16 @@ public class Database {
         ArrayList<CharacterSuperclass> characters = new ArrayList<>();
             try {
                 Statement stm = this.connection.createStatement();
-                String query = "SELECT * FROM character";
+                String query = "SELECT * FROM `character` WHERE character_type='" + type + "'";
                 ResultSet rs = stm.executeQuery(query);
                 while (rs.next()) {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    String image = rs.getString("image");
+                    String image = rs.getString("picture");
                     String extra = rs.getString("extra");
-                    int armorClass = rs.getInt("armorClass");
-                    String hitPoints = rs.getString("hitPoints");
+                    String armorClass = rs.getString("armor_class");
+                    String hitPoints = rs.getString("hit_points");
                     String strength = rs.getString("strength");
                     String dexterity = rs.getString("dexterity");
                     String constitution = rs.getString("constitution");
@@ -117,9 +117,9 @@ public class Database {
                     String wisdom = rs.getString("wisdom");
                     String charisma = rs.getString("charisma");
                     String speed = rs.getString("speed");
-                    int challenge = rs.getInt("challenge");
+                    String challenge = rs.getString("challange");
                     String sense = rs.getString("sense");
-                    String languages = rs.getString("languages");
+                    String languages = rs.getString("language");
                     String skills = rs.getString("skills");
                     if (type.equals("Monster")) {
                         characters.add(new Monster(id, name, description, image, extra, armorClass, hitPoints, strength, dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills));
@@ -135,9 +135,9 @@ public class Database {
 
 
     //TODO Create CreateCharacter method
-    public void createCharacter(String type, String name, String description, String image, String extra, int armorClass, String hitPoints,
+    public void createCharacter(String type, String name, String description, String image, String extra, String armorClass, String hitPoints,
                                 String strength, String dexterity, String constitution, String intelligence, String wisdom,
-                                String charisma, String speed, int challenge, String sense, String languages, String skills)
+                                String charisma, String speed, String challenge, String sense, String languages, String skills)
     {
         try {
             Statement stm = this.connection.createStatement();

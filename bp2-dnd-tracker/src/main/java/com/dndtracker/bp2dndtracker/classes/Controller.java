@@ -50,9 +50,9 @@ public class Controller {
 
 
     //TODO Create CreateCharacter method
-    public void createCharacter(String type, String name, String description, String image, String extra, int armorClass, String hitPoints,
+    public void createCharacter(String type, String name, String description, String image, String extra, String armorClass, String hitPoints,
                                 String strength, String dexterity, String constitution, String intelligence, String wisdom,
-                                String charisma, String speed, int challenge, String sense, String languages, String skills) {
+                                String charisma, String speed, String challenge, String sense, String languages, String skills) {
         db.createCharacter(type, name, description, image, extra, armorClass, hitPoints, strength, dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills);
     }
 

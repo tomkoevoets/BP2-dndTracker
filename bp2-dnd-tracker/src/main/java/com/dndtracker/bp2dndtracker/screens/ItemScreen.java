@@ -1,6 +1,7 @@
 package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
+import com.dndtracker.bp2dndtracker.classes.Controller;
 import com.dndtracker.bp2dndtracker.classes.Database;
 import com.dndtracker.bp2dndtracker.classes.Item;
 import com.dndtracker.bp2dndtracker.classes.Session;
@@ -31,6 +32,7 @@ public class ItemScreen {
     public ItemScreen() {
         // Create a new Database instance
         Database db = new Database();
+        Controller cl = new Controller();
 
         // Create a new HBox for the root
         HBox root = new HBox();
@@ -95,8 +97,8 @@ public class ItemScreen {
             mainStage.setScene(addScreen.getScene());
         });
 
-        // Retrieve sessions from the database and add them to sessionItemPane
-        for (Item item : db.getAllItems()) {/////
+        // Retrieve sessions from the database and add them to ItemPane
+        for (Item item : cl.getItems()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
                 ItemInfoScreen itemInfoScreen = new ItemInfoScreen();
             },item.getImage(), item.getName()).getNode());/////

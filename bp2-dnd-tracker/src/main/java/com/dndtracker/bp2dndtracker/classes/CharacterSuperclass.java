@@ -8,7 +8,7 @@ public class CharacterSuperclass {
     private String description;
     private String image;
     private String extra;
-    private int armorClass;
+    private String armorClass;
     private String hitPoints;
     private String strength;
     private String dexterity;
@@ -17,13 +17,13 @@ public class CharacterSuperclass {
     private String wisdom;
     private String charisma;
     private String speed;
-    private int challenge;
+    private String challenge;
     private String sense;
     private String languages;
     private String skills;
 
     //    create class constructor
-    public CharacterSuperclass(int id, String name, String description, String image, String extra, int armorClass, String hitPoints, String strength, String dexterity, String constitution, String intelligence, String wisdom, String charisma, String speed, int challenge, String sense, String languages, String skills) {
+    public CharacterSuperclass(int id, String name, String description, String image, String extra, String armorClass, String hitPoints, String strength, String dexterity, String constitution, String intelligence, String wisdom, String charisma, String speed, String challenge, String sense, String languages, String skills) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -85,11 +85,11 @@ public class CharacterSuperclass {
         this.extra = extra;
     }
 
-    public int getArmorClass() {
+    public String getArmorClass() {
         return armorClass;
     }
 
-    public void setArmorClass(int armorClass) {
+    public void setArmorClass(String armorClass) {
         this.armorClass = armorClass;
     }
 
@@ -157,11 +157,11 @@ public class CharacterSuperclass {
         this.speed = speed;
     }
 
-    public int getChallenge() {
+    public String getChallenge() {
         return challenge;
     }
 
-    public void setChallenge(int challenge) {
+    public void setChallenge(String challenge) {
         this.challenge = challenge;
     }
 

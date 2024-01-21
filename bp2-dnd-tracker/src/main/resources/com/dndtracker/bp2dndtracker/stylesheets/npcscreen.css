@@ -1,0 +1,66 @@
+/*full page styling*/
+* {
+    -fx-font-family:  'Josefin Slab', serif;
+}
+
+/*///////////////////////////////////////////////////item screen//////////////////////////////////////////////////////*/
+
+#scroll-pane{
+    -fx-background-color: transparent;
+}
+#scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/*Button*/
+#btn-add{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#btn-add:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+/*generate item*/
+
+#item-box:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(255, 228, 180, 0.43);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgba(255, 228, 180, 1);
+    -fx-border-width: 0.5;
+}
+
+#picture-image{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0.0, 0.0);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+#title{
+    -fx-background-color: rgba(0, 0, 0, 0.06);
+    -fx-background-radius: 3px;
+    -fx-text-fill: white;
+    -fx-font-family:  'Josefin Slab';
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+/*///////////////////////////////////////////////////////////InfoScreen///////////////////////////////////////////////*/
+
+
+
+/*///////////////////////////////////////////////////////////AddScreen////////////////////////////////////////////////*/
+
+
+
+/*///////////////////////////////////////////////////////////UpdateScreen/////////////////////////////////////////////*/
