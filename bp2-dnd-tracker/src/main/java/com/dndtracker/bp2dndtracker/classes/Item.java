@@ -17,13 +17,13 @@ public class Item {
     public Item(int id, String name, String description, String image, String type, String rarity, int cost, double weight, String extra) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.description = description;//textarea
         this.image = image;
         this.type = type;
         this.rarity = rarity;
-        this.cost = cost;
-        this.weight = weight;
-        this.extra = extra;
+        this.cost = cost;//spinner
+        this.weight = weight;// textfield
+        this.extra = extra;//area
     }
 
     //    create get and set methods for class variables

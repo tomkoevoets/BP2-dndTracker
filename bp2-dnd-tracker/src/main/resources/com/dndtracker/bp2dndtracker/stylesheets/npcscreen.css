@@ -60,7 +60,21 @@
 
 
 /*///////////////////////////////////////////////////////////AddScreen////////////////////////////////////////////////*/
+#add-scroll-pane >  {
+    -fx-background-color: transparent !important;
+}
 
+#add-scroll-pane > .viewport {
+    -fx-background-color: transparent !important;
+}
+
+#main-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
 
 
 /*///////////////////////////////////////////////////////////UpdateScreen/////////////////////////////////////////////*/

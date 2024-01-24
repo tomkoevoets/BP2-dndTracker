@@ -8,6 +8,7 @@ import com.dndtracker.bp2dndtracker.components.SidebarComponent;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -30,7 +31,7 @@ public class MonsterAddScreen {
 
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/monsterscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
@@ -61,10 +62,27 @@ public class MonsterAddScreen {
         mainPane.setMaxSize(800, 600);
         mainPane.setId("main-pane");
 
+        // create flowpane for the content within the scrollPane
+        FlowPane scrollContentPane = new FlowPane(Orientation.HORIZONTAL);
+        scrollContentPane.setPrefSize(mainPane.getPrefWidth(), mainPane.getPrefHeight());
+        scrollContentPane.setId("scroll-content-pane");
+        scrollContentPane.setStyle("-fx-background-color: transparent");
+
+        // Create for the abilaty to scroll
+        ScrollPane scrollPane = new ScrollPane();
+        // Set the FlowPane as the content of the ScrollPane
+        scrollPane.setContent(scrollContentPane);
+        // Hide the scrollbar
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setPrefSize(mainPane.getPrefWidth(), mainPane.getPrefHeight());
+        scrollPane.requestLayout();
+        scrollPane.setId("add-scroll-pane");
+
 // children-section
 
         // add children
-        mainPane.getChildren().addAll();
+        mainPane.getChildren().addAll(scrollPane);
         content.getChildren().add(contentOnStack);
         contentOnStack.getChildren().addAll(mainPane);
         root.getChildren().addAll(sidebar, content);

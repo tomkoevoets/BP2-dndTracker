@@ -36,4 +36,17 @@ public class Application extends javafx.application.Application {
 
 ///////////////////////todo list////////////////////
 
-// TODO add folder structure to images
+// 1. TODO add folder structure to images
+// 2. TODO finsish Info screens
+// 2. TODO finsish add screens
+// 3. TODO finish update screens
+// 4. TODO finish commenting all pages
+// 5. TODO start encounter tracker
+// 6. TODO finish encounter tracker
+// 7. TODO if i have time finish styling all screens, and add fun stuff
+// 8. TODO add testing jar file and execute tests
+// 9. TODO figure out online database
+// 10. TODO add readme file
+// 11. TODO execute physical tests
+// 12. TODO commit and push to masterbranch
+

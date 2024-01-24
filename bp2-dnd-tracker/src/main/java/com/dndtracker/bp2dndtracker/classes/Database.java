@@ -228,8 +228,10 @@ public class Database {
     public void createItem(String name, String description, String image, String type, String rarity, int cost, double weight, String extra){
         try {
             Statement stm = this.connection.createStatement();
-            stm.execute("INSERT INTO item (name, description, image, type, rarity, cost, weight, extra) " +
-                    "VALUES (" + name + "', '" + description + "', '" + image + "', '" + type + "', '" + rarity + "'" +
+            // Check if summary is null and handle accordingly
+            String pictureValue = (image == null) ? "NULL" : "'" + image + "'";
+            stm.execute("INSERT INTO item (name, description, picture, type, rarity, cost, weight, extra) " +
+                    "VALUES ('" + name + "', '" + description + "', '" + pictureValue + "', '" + type + "', '" + rarity + "'" +
                     ", " + cost + ", " + weight + ", '" + extra + "')");
         } catch (SQLException e) {
             throw new RuntimeException(e);

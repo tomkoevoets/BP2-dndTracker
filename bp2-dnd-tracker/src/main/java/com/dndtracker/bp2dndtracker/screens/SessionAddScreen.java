@@ -143,7 +143,7 @@ public class SessionAddScreen {
 
         submitPane.getChildren().add(submitBtn);
 
-        // Set an event handler for the submit button
+
         submitBtn.setOnAction(click -> {
             //TODO add submit to db function
             if (titleField.getText().isEmpty() || infoField.getText().isEmpty()) {
@@ -183,6 +183,7 @@ public class SessionAddScreen {
 
             // Call controller to create a new session in the database
             cl.createSession(titleSting, infoString, summaryString);
+
 
             // Switch back to SessionScreen
             SessionScreen sessionscreen = new SessionScreen();
