@@ -96,6 +96,8 @@ public class SessionInfoScreen {
         titlePane.setPadding(new Insets(10,0,0,0));
         titlePane.setAlignment(Pos.CENTER);
 
+    // delete section
+
         // pane for delete content
         FlowPane deletePane = new FlowPane();
         deletePane.setPrefSize(screenWidth, screenHeight - 575);
@@ -148,8 +150,8 @@ public class SessionInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-        //TODO make method instead of 2 seperate panes?
-// content info section
+    // content info section
+
         HBox bottomScreen = new HBox();
         bottomScreen.setPrefSize(screenWidth, screenHeight-100);
 
@@ -186,7 +188,8 @@ public class SessionInfoScreen {
         infoContentPane.getChildren().addAll(infoTitlePane, infoTXT);
         infoPane.getChildren().add(infoContentPane);
 
-// content summary section
+    // content summary section
+
         FlowPane summaryPane = new FlowPane();
         summaryPane.setPrefSize(screenWidth/2, screenHeight - 100);
         summaryPane.setAlignment(Pos.CENTER);
@@ -221,7 +224,7 @@ public class SessionInfoScreen {
         summaryPane.getChildren().add(summaryContentPane);
 
 
-// delete section
+    // update section
 
         HBox updateBox = new HBox();//////update?
         updateBox.setAlignment(Pos.CENTER);

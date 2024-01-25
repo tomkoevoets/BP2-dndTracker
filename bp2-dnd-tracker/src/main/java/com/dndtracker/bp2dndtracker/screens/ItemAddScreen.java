@@ -111,12 +111,12 @@ public class ItemAddScreen {
 
         // cmb for the type
         ComboBox<String> cmbType = new ComboBox<>(FXCollections.observableArrayList("Weapon", "Armor", "Potion", "Ring", "Scroll", "Wand", "Amulet", "Tool", "Instrument", "Miscellaneous"));
-        cmbType.setPromptText("type");
+        cmbType.setPromptText("Type");
         cmbType.setPrefSize(150, 40);
 
         // cmb for the rarity
         ComboBox<String> cmbRarity = new ComboBox<>(FXCollections.observableArrayList("Common", "Uncommon", "Rare", "Very rare", "Legendary"));
-        cmbRarity.setPromptText("rarity");
+        cmbRarity.setPromptText("Rarity");
         cmbRarity.setPrefSize(150, 40);
 
         trPane.getChildren().addAll(cmbType, cmbRarity);
