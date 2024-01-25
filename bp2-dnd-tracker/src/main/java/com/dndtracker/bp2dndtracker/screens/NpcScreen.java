@@ -100,7 +100,7 @@ public class NpcScreen {
         for (CharacterSuperclass npc : cl.getNpcs()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
                 NpcInfoScreen NpcInfoScreen = new NpcInfoScreen();
-            },npc.getImage(), npc.getName()).getNode());/////
+            },npc.getImage("Npc"), npc.getName()).getNode());/////
         }
 
         // Add components to the contentOnStack VBox

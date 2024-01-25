@@ -1,10 +1,6 @@
 package com.dndtracker.bp2dndtracker.classes;
 
-import java.sql.ResultSet;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
@@ -141,7 +137,7 @@ public class Database {
     {
         try {
             Statement stm = this.connection.createStatement();
-            stm.execute("INSERT INTO character (character_type, name, description, image, extra, armorClass, hitPoints, strength," +
+            stm.execute("INSERT INTO character (character_type, name, description, picture, extra, armorClass, hitPoints, strength," +
                     " dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills)" +
                     " VALUES (" + type + "', '" + name + "', '" + description + "', '" + image + "', '" + extra + "', " + armorClass + "" +
                     ", '" + hitPoints + "', '" + strength + "', '" + dexterity + "', '" + constitution + "'," +
@@ -177,7 +173,7 @@ public class Database {
             Statement stm = this.connection.createStatement();
             //  execute the sql statement
             stm.execute("UPDATE character SET character_type = '" + type + "', name = '" + character.getName() + "'" +
-                    ", description = '" + character.getDescription() + "', image = '" + character.getImage() + "'" +
+                    ", description = '" + character.getDescription() + "', image = '" + character.getImage(type) + "'" +
                     ", extra = '" + character.getExtra() + "', armorClass = " + character.getArmorClass() + "" +
                     ", hitPoints = '" + character.getHitPoints() + "', strength = '" + character.getStrength() + "', dex");
         } catch (SQLException e) {
@@ -225,13 +221,12 @@ public class Database {
 
 
 //TODO Create CreateItem method
-    public void createItem(String name, String description, String image, String type, String rarity, int cost, double weight, String extra){
+    public void createItem(String name, String description, String type, String rarity, int cost, double weight, String extra){
         try {
             Statement stm = this.connection.createStatement();
             // Check if summary is null and handle accordingly
-            String pictureValue = (image == null) ? "NULL" : "'" + image + "'";
-            stm.execute("INSERT INTO item (name, description, picture, type, rarity, cost, weight, extra) " +
-                    "VALUES ('" + name + "', '" + description + "', '" + pictureValue + "', '" + type + "', '" + rarity + "'" +
+            stm.execute("INSERT INTO item (name, description, type, rarity, cost, weight, extra) " +
+                    "VALUES ('" + name + "', '" + description + "', '" + type + "', '" + rarity + "'" +
                     ", " + cost + ", " + weight + ", '" + extra + "')");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -251,16 +246,43 @@ public class Database {
 
 //TODO Create UpdateItem method
 
-    public void updateItem(Item item){
+//    public void updateItem(Item item){
+//        try {
+//            Statement stm = this.connection.createStatement();
+//            String pictureValue = (item.getImage() == null) ? "NULL" : "'" + item.getImage() + "'";
+//            String sqlQuery = "UPDATE item SET name = '" + item.getName() + "', description = '" + item.getDescription() + "'" +
+//                    ", picture = '" + pictureValue + "', type = '" + item.getType() + "', rarity = '" + item.getRarity() + "'" +
+//                    ", cost = " + item.getCost() + ", weight = " + item.getWeight() + ", extra = '" + item.getExtra() + "' WHERE id = " + item.getId();
+//
+//            System.out.println("Executing SQL Query: " + sqlQuery);
+//
+//            stm.execute(sqlQuery);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+    public void updateItem(Item item) {
         try {
-            Statement stm = this.connection.createStatement();
-            stm.execute("UPDATE item SET name = '" + item.getName() + "', description = '" + item.getDescription() + "'" +
-                    ", image = '" + item.getImage() + "', type = '" + item.getType() + "', rarity = '" + item.getRarity() + "'" +
-                    ", cost = " + item.getCost() + ", weight = " + item.getWeight() + ", extra = '" + item.getExtra() + "' WHERE id = " + item.getId());
+            String sqlQuery = "UPDATE item SET name=?, description=?, type=?, rarity=?, cost=?, weight=?, extra=? WHERE id=?";
+            try (PreparedStatement pstmt = this.connection.prepareStatement(sqlQuery)) {
+                pstmt.setString(1, item.getName());
+                pstmt.setString(2, item.getDescription().replace("`", "'"));
+//                pstmt.setString(3, (item.getImage() == null) ? null : item.getImage());
+                pstmt.setString(3, item.getType());
+                pstmt.setString(4, item.getRarity());
+                pstmt.setInt(5, item.getCost());
+                pstmt.setDouble(6, item.getWeight());
+                pstmt.setString(7, item.getExtra().replace("`", "'"));
+                pstmt.setInt(8, item.getId());
+
+                pstmt.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
 
 

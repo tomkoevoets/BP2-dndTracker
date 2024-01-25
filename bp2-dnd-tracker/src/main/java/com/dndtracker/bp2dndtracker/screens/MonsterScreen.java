@@ -96,7 +96,7 @@ public class MonsterScreen {
         for (CharacterSuperclass monster : cl.getMonsters()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
                 MonsterInfoScreen monsterInfoScreen = new MonsterInfoScreen();
-            },monster.getImage(), monster.getName()).getNode());/////
+            },monster.getImage("Monster"), monster.getName()).getNode());/////
         }
 
         // Add components to the contentOnStack VBox

@@ -49,7 +49,7 @@ public class Item {
     }
 
     public String getImage() {
-        return image;
+        return "amulet.jpg";
     }
 
     public void setImage(String image) {

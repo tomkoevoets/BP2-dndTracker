@@ -91,6 +91,7 @@ public class ItemScreen {
         btnAdd.setTextAlignment(TextAlignment.CENTER);
         btnAdd.setId("btn-add");
 
+//        Item item = new Item();
         // Set an event handler for the add session button
         btnAdd.setOnAction(e -> {
             ItemAddScreen addScreen = new ItemAddScreen();
@@ -100,8 +101,8 @@ public class ItemScreen {
         // Retrieve sessions from the database and add them to ItemPane
         for (Item item : cl.getItems()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
-                ItemInfoScreen itemInfoScreen = new ItemInfoScreen();
-            },item.getImage(), item.getName()).getNode());/////
+                ItemInfoScreen itemInfoScreen = new ItemInfoScreen(item);
+            }, item.getImage(), item.getName()).getNode());
         }
 
         // Add components to the contentOnStack VBox

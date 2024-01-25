@@ -53,9 +53,9 @@ public class GenerateItemComponent  {
         sessionPictureImage.setSmooth(true);
         sessionPictureImage.setFitWidth(120);
         sessionPictureImage.setFitHeight(175);
-//        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/"+picture).toString()));
+        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/"+picture).toString()));
 //        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/"+ picture).toString()));//
-        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/monster.jpg").toString()));//
+//        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/monster.jpg").toString()));
         sessionPictureImage.setId("picture-image");
 
         // Create a Label for the session title

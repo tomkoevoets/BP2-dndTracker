@@ -69,8 +69,13 @@ public class CharacterSuperclass {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImage(String type) {
+        if(type.equals("Monster")){
+            return "monster.jpg";
+        } else if (type.equals("Npc")) {
+            return "npc.jpg";
+        }
+        return "";
     }
 
     public void setImage(String image) {

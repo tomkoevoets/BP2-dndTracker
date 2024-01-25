@@ -198,15 +198,15 @@ public class ItemAddScreen {
         buttonPane.getChildren().add(submitBtn);
 
         // Set an event handler for the submit button
-        submitBtn.setOnAction(click -> { //TODO fix comboboxes
-            if (titleField.getText().isEmpty() || cmbType.getValue().isEmpty() || cmbRarity.getValue().isEmpty() || weightField.getText().isEmpty()) {
-                // Alert when required fields are empty
+        submitBtn.setOnAction(click -> {
+            if (titleField.getText().isEmpty() || cmbType.getValue() == null || cmbRarity.getValue() == null || weightField.getText().isEmpty()) {
+                // Input validation: Check if required fields are empty
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
                 alert.setHeaderText("One or more required fields are empty");
                 alert.showAndWait();
 
-                // Change border colors when fields are empty
+                // Change border colors and set prompts for empty fields
                 if (titleField.getText().isEmpty()) {
                     titleField.setStyle("-fx-border-color: red");
                     titleField.promptTextProperty().setValue("Item title cannot be empty");
@@ -216,7 +216,7 @@ public class ItemAddScreen {
                     titleField.setStyle("-fx-border-color: black");
                 }
 
-                if (cmbType.getItems().isEmpty()) {
+                if (cmbType.getValue() == null) {
                     cmbType.setStyle("-fx-border-color: red");
                     cmbType.promptTextProperty().setValue("item type cannot be empty");
                     // set focus when empty
@@ -225,7 +225,7 @@ public class ItemAddScreen {
                     cmbType.setStyle("-fx-border-color: black");
                 }
 
-                if (cmbRarity.getItems().isEmpty()) {
+                if (cmbRarity.getValue() == null) {
                     cmbRarity.setStyle("-fx-border-color: red");
                     cmbRarity.promptTextProperty().setValue("item rarity cannot be empty");
                     // set focus when empty
@@ -242,13 +242,15 @@ public class ItemAddScreen {
                 } else {
                     weightField.setStyle("-fx-border-color: black");
                 }
+                // Exit the method if any required field is empty
                 return;
             }
 
+            // create variables for creating a new item
             String titleString = titleField.getText();
             String typeString = String.valueOf(cmbType.getValue());
             String rarityString = String.valueOf(cmbRarity.getValue());
-            String weightString = weightField.getText();
+            String weightString = weightField.getText().replace(",", ".");
             double weightDouble = Double.parseDouble(weightString);
             int costInt = numberBox.getValue();
 
@@ -256,19 +258,11 @@ public class ItemAddScreen {
             String eString = extraArea.getText().replace("'", "`");
 
             // Handle empty text areas field
-            String dVal = (dString.isEmpty()) ? "NULL" : "'" + dString + "'";
-            String eVal = (eString.isEmpty()) ? "NULL" : "'" + eString + "'";
+            String dVal = (dString.isEmpty()) ? "NULL" :  dString ;
+            String eVal = (eString.isEmpty()) ? "NULL" :  eString ;
 
             // Call controller to create a new session in the database
-            cl.createItem(titleString, dString, "", typeString, rarityString, costInt, weightDouble, eString);
-
-            System.out.println(titleString );
-            System.out.println( dString );
-            System.out.println( typeString);
-            System.out.println( rarityString);
-            System.out.println(costInt);
-            System.out.println( weightDouble );
-            System.out.println(eString);
+            cl.createItem(titleString, dVal, typeString, rarityString, costInt, weightDouble, eVal);
 
             // Switch back to SessionScreen
             ItemScreen itemscreen = new ItemScreen();

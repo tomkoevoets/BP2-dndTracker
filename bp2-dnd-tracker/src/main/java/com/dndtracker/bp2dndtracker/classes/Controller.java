@@ -91,8 +91,8 @@ public class Controller {
     }
 
     //TODO Create CreateItem method
-    public void createItem(String name, String description, String image, String type, String rarity, int cost, double weight, String extra) {
-        db.createItem(name, description, image, type, rarity, cost, weight, extra);
+    public void createItem(String name, String description, String type, String rarity, int cost, double weight, String extra) {
+        db.createItem(name, description, type, rarity, cost, weight, extra);
     }
 
 
