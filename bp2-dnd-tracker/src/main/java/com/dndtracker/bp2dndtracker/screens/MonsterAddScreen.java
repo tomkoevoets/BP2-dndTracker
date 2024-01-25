@@ -1,14 +1,17 @@
 package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
+import com.dndtracker.bp2dndtracker.classes.CharacterSuperclass;
 import com.dndtracker.bp2dndtracker.classes.Controller;
 import com.dndtracker.bp2dndtracker.classes.Database;
 import com.dndtracker.bp2dndtracker.components.BackgroundComponent;
 import com.dndtracker.bp2dndtracker.components.SidebarComponent;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -19,7 +22,7 @@ public class MonsterAddScreen {
     private final SidebarComponent sidebar;
     private final BackgroundComponent background;
 
-    // Constructor for MonsterAddScreen
+    // Constructor for ItemAddScreen
     public MonsterAddScreen() {
         // Create instances of Database and Controller
         Database db = new Database();
@@ -63,10 +66,10 @@ public class MonsterAddScreen {
         mainPane.setId("main-pane");
 
         // create flowpane for the content within the scrollPane
-        FlowPane scrollContentPane = new FlowPane(Orientation.HORIZONTAL);
-        scrollContentPane.setPrefSize(mainPane.getPrefWidth(), mainPane.getPrefHeight());
+        FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
+        scrollContentPane.setPrefSize(mainPane.getPrefWidth(), 600);
+        scrollContentPane.setAlignment(Pos.BOTTOM_CENTER);
         scrollContentPane.setId("scroll-content-pane");
-        scrollContentPane.setStyle("-fx-background-color: transparent");
 
         // Create for the abilaty to scroll
         ScrollPane scrollPane = new ScrollPane();
@@ -79,9 +82,147 @@ public class MonsterAddScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
+    // title section
+
+        // pane for the title section
+        FlowPane titlePane = new FlowPane();
+        titlePane.setPrefSize(mainPane.getPrefWidth(), 50);
+        titlePane.setAlignment(Pos.CENTER);
+
+        // Create a TextField for the monster title
+        TextField titleField = new TextField();
+        titleField.setPrefSize(150, 40);
+        titleField.setPromptText("Add item title");
+        titleField.alignmentProperty().setValue(Pos.CENTER);
+        titleField.setFocusTraversable(false);
+
+        titlePane.getChildren().add(titleField);
+
+        // type/rarity section
+
+
+
+        // cost/weight section
+
+
+
+    // info section
+
+        // pane for the info section
+        FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
+        infoPane.setPrefSize(mainPane.getPrefWidth(), 320);
+        infoPane.setAlignment(Pos.CENTER);
+        infoPane.setHgap(50);
+        infoPane.setPadding(new Insets(0, 0,0,0));
+
+        // textarea for description
+        TextArea descriptionArea = new TextArea();
+        descriptionArea.setPrefSize(300, 300);
+        descriptionArea.setPromptText("Add Item description");
+        descriptionArea.setFocusTraversable(false);
+        descriptionArea.setId("descripton-area");
+
+        // textarea for description
+        TextArea extraArea = new TextArea();
+        extraArea.setPrefSize(300, 300);
+        extraArea.setPromptText("Add extra information if necessary");
+        extraArea.setFocusTraversable(false);
+        extraArea.setId("extra-area");
+
+        infoPane.getChildren().addAll(descriptionArea, extraArea);
+
+    // button section
+
+        // button section pane
+        FlowPane buttonPane = new FlowPane(Orientation.HORIZONTAL);
+        buttonPane.setPrefSize(mainPane.getPrefWidth(), 100);
+        buttonPane.setAlignment(Pos.CENTER);
+        buttonPane.setHgap(50);
+
+        // Button for adding the item
+        Button submitBtn = new Button("submit");
+        submitBtn.setCursor(Cursor.HAND);
+        submitBtn.setId("submit-btn");
+
+        buttonPane.getChildren().add(submitBtn);
+
+// Set an event handler for the submit button
+//        // Set an event handler for the submit button
+//        submitBtn.setOnAction(click -> {
+//            if (titleField.getText().isEmpty() || cmbType.getValue() == null || cmbRarity.getValue() == null || weightField.getText().isEmpty()) {
+//                // Input validation: Check if required fields are empty
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setTitle("Warning");
+//                alert.setHeaderText("One or more required fields are empty");
+//                alert.showAndWait();
+//
+//                // Change border colors and set prompts for empty fields
+//                if (titleField.getText().isEmpty()) {
+//                    titleField.setStyle("-fx-border-color: red");
+//                    titleField.promptTextProperty().setValue("Item title cannot be empty");
+//                    // set focus when empty
+//                    titleField.requestFocus();
+//                } else {
+//                    titleField.setStyle("-fx-border-color: black");
+//                }
+//
+//                if (cmbType.getValue() == null) {
+//                    cmbType.setStyle("-fx-border-color: red");
+//                    cmbType.promptTextProperty().setValue("item type cannot be empty");
+//                    // set focus when empty
+//                    cmbType.requestFocus();
+//                } else {
+//                    cmbType.setStyle("-fx-border-color: black");
+//                }
+//
+//                if (cmbRarity.getValue() == null) {
+//                    cmbRarity.setStyle("-fx-border-color: red");
+//                    cmbRarity.promptTextProperty().setValue("item rarity cannot be empty");
+//                    // set focus when empty
+//                    cmbRarity.requestFocus();
+//                } else {
+//                    cmbRarity.setStyle("-fx-border-color: black");
+//                }
+//
+//                if (weightField.getText().isEmpty()) {
+//                    weightField.setStyle("-fx-border-color: red");
+//                    weightField.promptTextProperty().setValue("Item weight cannot be empty");
+//                    // set focus when empty
+//                    weightField.requestFocus();
+//                } else {
+//                    weightField.setStyle("-fx-border-color: black");
+//                }
+//                // Exit the method if any required field is empty
+//                return;
+//            }
+//
+//            // create variables for creating a new item
+//            String titleString = titleField.getText();
+//            String typeString = String.valueOf(cmbType.getValue());
+//            String rarityString = String.valueOf(cmbRarity.getValue());
+//            String weightString = weightField.getText().replace(",", ".");
+//            double weightDouble = Double.parseDouble(weightString);
+//            int costInt = numberBox.getValue();
+//
+//            String dString = descriptionArea.getText().replace("'", "`");
+//            String eString = extraArea.getText().replace("'", "`");
+//
+//            // Handle empty text areas field
+//            String dVal = (dString.isEmpty()) ? "NULL" :  dString ;
+//            String eVal = (eString.isEmpty()) ? "NULL" :  eString ;
+//
+//            // Call controller to create a new session in the database
+//            cl.createItem(titleString, dVal, typeString, rarityString, costInt, weightDouble, eVal);
+//
+//            // Switch back to SessionScreen
+//            ItemScreen itemscreen = new ItemScreen();
+//            mainStage.setScene(itemscreen.getScene());
+//        });
+
 // children-section
 
         // add children
+        scrollContentPane.getChildren().addAll(titlePane, infoPane, buttonPane);
         mainPane.getChildren().addAll(scrollPane);
         content.getChildren().add(contentOnStack);
         contentOnStack.getChildren().addAll(mainPane);

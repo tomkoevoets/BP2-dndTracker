@@ -81,22 +81,22 @@ public class MonsterScreen {
         btnPane.setMinSize(1260, 50);
 
         // Create a button to add session
-        Button btnAdd = new Button("add item");
+        Button btnAdd = new Button("add monster");
         btnAdd.setAlignment(Pos.CENTER);
         btnAdd.setTextAlignment(TextAlignment.CENTER);
         btnAdd.setId("btn-add");
 
         // Set an event handler for the add session button
         btnAdd.setOnAction(e -> {
-            ItemAddScreen addScreen = new ItemAddScreen();
+            MonsterAddScreen addScreen = new MonsterAddScreen();
             mainStage.setScene(addScreen.getScene());
         });
 
         // Retrieve sessions from the database and add them to ItemPane
-        for (CharacterSuperclass monster : cl.getMonsters()) {/////
+        for (CharacterSuperclass cs : cl.getMonsters()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
-                MonsterInfoScreen monsterInfoScreen = new MonsterInfoScreen();
-            },monster.getImage("Monster"), monster.getName()).getNode());/////
+                MonsterInfoScreen monsterInfoScreen = new MonsterInfoScreen(cs);
+            },cs.getImage("Monster"), cs.getName()).getNode());/////
         }
 
         // Add components to the contentOnStack VBox

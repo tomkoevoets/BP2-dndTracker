@@ -85,22 +85,22 @@ public class NpcScreen {
         btnPane.setMinSize(1260, 50);
 
         // Create a button to add session
-        Button btnAdd = new Button("add item");
+        Button btnAdd = new Button("add Npc");
         btnAdd.setAlignment(Pos.CENTER);
         btnAdd.setTextAlignment(TextAlignment.CENTER);
         btnAdd.setId("btn-add");
 
         // Set an event handler for the add session button
         btnAdd.setOnAction(e -> {
-            ItemAddScreen addScreen = new ItemAddScreen();
-            mainStage.setScene(addScreen.getScene());
+            NpcAddScreen npcaddscreen = new NpcAddScreen();
+            mainStage.setScene(npcaddscreen.getScene());
         });
 
         // Retrieve sessions from the database and add them to ItemPane
-        for (CharacterSuperclass npc : cl.getNpcs()) {/////
+        for (CharacterSuperclass cs : cl.getNpcs()) {/////
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
-                NpcInfoScreen NpcInfoScreen = new NpcInfoScreen();
-            },npc.getImage("Npc"), npc.getName()).getNode());/////
+                NpcInfoScreen NpcInfoScreen = new NpcInfoScreen(cs);
+            },cs.getImage("Npc"), cs.getName()).getNode());/////
         }
 
         // Add components to the contentOnStack VBox
