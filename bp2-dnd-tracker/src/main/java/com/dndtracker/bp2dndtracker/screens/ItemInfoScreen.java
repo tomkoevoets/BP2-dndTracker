@@ -337,7 +337,6 @@ public class ItemInfoScreen {
             // Navigate to updatescreen when the button is pressed
             ItemUpdateScreen itemscreen = new ItemUpdateScreen(item);
             mainStage.setScene(itemscreen.getScene());
-            System.out.println(titlePane.getHeight() + middleScreen.getHeight() + bottomScreen.getHeight());
             stage.close();
         });
         updateBtn.setId("update-btn");
