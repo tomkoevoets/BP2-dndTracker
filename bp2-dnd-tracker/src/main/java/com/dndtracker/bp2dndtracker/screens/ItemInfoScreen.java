@@ -166,7 +166,7 @@ public class ItemInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-    // type, rarity, cost, weight section
+// type, rarity, cost, weight section
 
         // type, rarity, cost, weight pane
         HBox middleScreen = new HBox();
@@ -178,7 +178,7 @@ public class ItemInfoScreen {
         middleContentPane.setPrefSize(screenWidth-100, screenHeight - 400);
         middleContentPane.setId("middle-content-pane");
 
-        // title section
+    // title section
 
         // middleContentPane title
         FlowPane middleContentTitlePane = new FlowPane();
@@ -190,7 +190,7 @@ public class ItemInfoScreen {
         middleContentTitle.setPadding(new Insets(0,0,10,0));
         middleContentTitle.setId("middle-content-title");
 
-        // type/rarity section
+    // type/rarity section
 
         // type/rarity pane
         FlowPane trPane = new FlowPane(Orientation.HORIZONTAL);

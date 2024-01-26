@@ -74,7 +74,7 @@ public class NpcInfoScreen {
 
         FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
         scrollContentPane.setAlignment(Pos.TOP_CENTER);
-        scrollContentPane.setPrefSize(root.getPrefWidth(), 600);
+        scrollContentPane.setPrefSize(root.getPrefWidth(), 700);
 
         // Create for the abilaty to scroll
         ScrollPane scrollPane = new ScrollPane();
@@ -100,7 +100,7 @@ public class NpcInfoScreen {
         titleIcon.setFitHeight(20);
         titleIcon.setPreserveRatio(true);
         titleIcon.setSmooth(true);
-        titleIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/icon/amulet-black.png"))));
+        titleIcon.setImage(new Image(String.valueOf(Application.class.getResource("images/icon/npc-black.png"))));
 
         // display the session title on screen
         Text title = new Text(cs.getName());
@@ -165,79 +165,78 @@ public class NpcInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-// type, rarity, cost, weight section
+// stat section
+
+// stat section///////////////////////////////////////////////////////////////////////
 
         // type, rarity, cost, weight pane
         HBox middleScreen = new HBox();
-        middleScreen.setAlignment(Pos.CENTER);
-        middleScreen.setPrefSize(screenWidth, screenHeight - 400);
+        middleScreen.setAlignment(Pos.TOP_CENTER);
+        middleScreen.setPrefSize(screenWidth, screenHeight - 300);
 
         FlowPane middleContentPane = new FlowPane(Orientation.VERTICAL);
-        middleContentPane.setAlignment(Pos.CENTER);
-        middleContentPane.setPrefSize(screenWidth-100, screenHeight - 400);
+        middleContentPane.setAlignment(Pos.TOP_CENTER);
+        middleContentPane.setPrefSize(screenWidth-100, screenHeight - 300);
         middleContentPane.setId("middle-content-pane");
 
-    // title section
+        // title section
 
         // middleContentPane title
         FlowPane middleContentTitlePane = new FlowPane();
         middleContentTitlePane.setAlignment(Pos.CENTER);
         middleContentTitlePane.setPrefSize(middleContentPane.getPrefWidth(), 50);
+        middleContentTitlePane.setMaxSize(middleContentPane.getPrefWidth(), 50);
+        middleContentTitlePane.setId("middle-content-title-pane");
 
         // title label
-        Label middleContentTitle = new Label("Npc Details");
-        middleContentTitle.setPadding(new Insets(0,0,10,0));
+        Label middleContentTitle = new Label("Monster Details");
         middleContentTitle.setId("middle-content-title");
 
-// type/rarity section
+        // ac/hp/speed section
 
-        // type/rarity pane
-        FlowPane trPane = new FlowPane(Orientation.HORIZONTAL);
-        trPane.setPrefSize(middleContentPane.getPrefWidth(), 70);
-        trPane.setHgap(200);
-        trPane.setAlignment(Pos.CENTER);
+        // ac/hp/speed pane
+        FlowPane ahsPane = new FlowPane(Orientation.VERTICAL);
+        ahsPane.setPrefSize(middleContentPane.getPrefWidth(), 70);
+        ahsPane.setHgap(200);
+        ahsPane.setAlignment(Pos.CENTER);
+        ahsPane.setId("ahs-pane");
 
-//        // textfield to display type
-//        TextField typeField = new TextField("Type:  " + cs.get);
-//        typeField.setEditable(false);
-//        typeField.setFocusTraversable(false);
-//        typeField.setAlignment(Pos.CENTER);
-//        typeField.setId("field");
-//
-//        // textfield to display rarity
-//        TextField rarityField = new TextField("Rarity:  " + item.getRarity());
-//        rarityField.setEditable(false);
-//        rarityField.setFocusTraversable(false);
-//        rarityField.setAlignment(Pos.CENTER);
-//        rarityField.setId("field");
-//
-//        // cost/weight section
-//        FlowPane cwPane = new FlowPane(Orientation.HORIZONTAL);
-//        cwPane.setPrefSize(middleContentPane.getPrefWidth(), 70);
-//        cwPane.setHgap(200);
-//        cwPane.setAlignment(Pos.CENTER);
-//
-//        // textfield to display cost
-//        TextField costField = new TextField(String.valueOf("Cost:  " + item.getCost()));
-//        costField.setEditable(false);
-//        costField.setFocusTraversable(false);
-//        costField.setAlignment(Pos.CENTER);
-//        costField.setId("field");
-//
-//        // textfield to display weight
-//        TextField weightField = new TextField(String.valueOf("Weight:  " + item.getWeight()));
-//        weightField.setEditable(false);
-//        weightField.setFocusTraversable(false);
-//        weightField.setAlignment(Pos.CENTER);
-//        weightField.setId("field");
-//
-//        // children section
-//
-//        cwPane.getChildren().addAll(costField, weightField);
-//        trPane.getChildren().addAll(typeField, rarityField);
-//        middleContentTitlePane.getChildren().add(middleContentTitle);
-//        middleContentPane.getChildren().addAll(middleContentTitlePane, trPane, cwPane);
-//        middleScreen.getChildren().add(middleContentPane);
+        // method section
+
+        ahsPane.getChildren().addAll(infoBlock("Armor Class ", cs.getArmorClass()),
+                infoBlock("Hit Points ", cs.getHitPoints()), infoBlock("Speed ", cs.getSpeed()));
+
+        // base stat section
+
+        FlowPane statPane = new FlowPane(Orientation.HORIZONTAL);
+        statPane.setPrefSize(middleContentPane.getPrefWidth(), 70);
+        statPane.setHgap(20);
+        statPane.setAlignment(Pos.CENTER);
+        statPane.setId("stat-pane");
+
+        // method section
+
+        statPane.getChildren().addAll(statBlock("STR", cs.getStrength()), statBlock("DEX", cs.getDexterity()), statBlock("CON", cs.getConstitution()),
+                statBlock("INT", cs.getIntelligence()), statBlock("WIS", cs.getWisdom()), statBlock("CHA", cs.getCharisma()));
+
+        // bottom stat section
+
+        FlowPane bottomStatPane = new FlowPane(Orientation.VERTICAL);
+        bottomStatPane.setPrefSize(middleContentPane.getPrefWidth(), 100);
+        bottomStatPane.setAlignment(Pos.CENTER);
+        bottomStatPane.setId("bottom-stat-pane");
+
+        // method section
+
+        bottomStatPane.getChildren().addAll(infoBlock("Senses ", cs.getSense()), infoBlock("Languages ", cs.getLanguages()),
+                infoBlock("Skills ", cs.getSkills()), infoBlock("Challange ", cs.getChallenge()));
+
+
+        // children section//////////////////////////////////////////////////////////////////////////////////
+
+        middleContentTitlePane.getChildren().add(middleContentTitle);
+        middleContentPane.getChildren().addAll(middleContentTitlePane, ahsPane, statPane, bottomStatPane);
+        middleScreen.getChildren().add(middleContentPane);
 
 // content info section
 
@@ -335,7 +334,7 @@ public class NpcInfoScreen {
         HBox updateBox = new HBox();
         updateBox.setAlignment(Pos.CENTER);
         updateBox.setPadding(new Insets(25, 0, 0, 0));
-        updateBox.setPrefSize(screenWidth, scrollContentPane.getPrefHeight() - 540);
+        updateBox.setPrefSize(screenWidth, scrollContentPane.getPrefHeight() - 740);
 
         Button updateBtn = new Button("Update");
         updateBtn.setOnAction(e -> {
@@ -354,6 +353,44 @@ public class NpcInfoScreen {
         bottomScreen.getChildren().addAll(infoPane, summaryPane);
         scrollContentPane.getChildren().addAll(titlePane, middleScreen, bottomScreen, updateBox);
         root.getChildren().addAll(scrollPane);
+    }
+
+    public VBox statBlock(String textLabel, String getStat){
+        // vbox for statblock
+        VBox statBox = new VBox();
+        statBox.setAlignment(Pos.CENTER);
+
+        // text label
+        Label strengthTxtLabel = new Label(textLabel);
+        strengthTxtLabel.setId("txt-stat-label");
+
+        // show strength label
+        Label strengthViewLabel = new Label(getStat);
+        strengthViewLabel.setId("view-stat-label");
+
+        statBox.getChildren().addAll(strengthTxtLabel, strengthViewLabel);
+
+        return statBox;
+    }
+
+    public HBox infoBlock(String textLabel, String getStat) {
+        // hbox for labels
+        HBox acBox = new HBox();
+        acBox.setAlignment(Pos.CENTER_LEFT);
+        acBox.setPrefWidth(400);
+        acBox.setMaxWidth(400);
+
+        // text label
+        Label acTxtLabel = new Label(textLabel);
+        acTxtLabel.setId("txt-label");
+
+        // show armor class label
+        Label acViewLabel = new Label(getStat);
+        acViewLabel.setId("view-label");
+
+        acBox.getChildren().addAll(acTxtLabel, acViewLabel);
+
+        return acBox;
     }
     public Scene getScene() {
         return scene;

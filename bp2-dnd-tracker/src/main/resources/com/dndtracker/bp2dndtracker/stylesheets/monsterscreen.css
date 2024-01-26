@@ -115,9 +115,54 @@
     -fx-border-width: 0.5;
 }
 
+#middle-content-title-pane{
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #A03232;
+}
+
+/*title*/
 #middle-content-title{
-    -fx-font-size: 16;
+    -fx-font-size: 18;
     -fx-font-weight: bold;
+    -fx-text-fill: #792626;
+}
+
+/*ahs-section*/
+#ahs-pane{
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #A03232;
+}
+
+#txt-label{
+    -fx-font-family: 'Josefin Slab';
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: #792626;
+}
+
+#view-label{
+    -fx-font-size: 14;
+    -fx-font-weight: normal;
+    -fx-text-fill: #792626;
+}
+
+/*statblock section*/
+#stat-pane{
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #A03232;
+}
+
+#txt-stat-label{
+    -fx-font-family: 'Josefin Slab';
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: #792626;
+}
+
+#view-stat-label{
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-text-fill: #792626;
 }
 
 #field{
@@ -157,7 +202,6 @@
     -fx-border-width: 1;
     -fx-cursor: hand;
 }
-
 
 /*///////////////////////////////////////////////////////////AddScreen////////////////////////////////////////////////*/
 #add-scroll-pane >  {
