@@ -168,19 +168,22 @@ public class NpcInfoScreen {
 
 // stat section
 
-// stat section///////////////////////////////////////////////////////////////////////
+        // pane for top styling
+        FlowPane topColorPane = new FlowPane();
+        topColorPane.setPrefSize(screenWidth-100, 4);
+        topColorPane.setStyle("-fx-background-color: #e69a28; -fx-border-width: 0.5; -fx-border-style: solid; -fx-border-color: black; -fx-border-radius: 2");
 
         // type, rarity, cost, weight pane
         HBox middleScreen = new HBox();
         middleScreen.setAlignment(Pos.TOP_CENTER);
-        middleScreen.setPrefSize(screenWidth, screenHeight - 300);
+        middleScreen.setPrefSize(screenWidth, screenHeight - 299);
 
         FlowPane middleContentPane = new FlowPane(Orientation.VERTICAL);
         middleContentPane.setAlignment(Pos.TOP_CENTER);
-        middleContentPane.setPrefSize(screenWidth-100, screenHeight - 300);
+        middleContentPane.setPrefSize(screenWidth-100, screenHeight - 299);
         middleContentPane.setId("middle-content-pane");
 
-        // title section
+    // title section
 
         // middleContentPane title
         FlowPane middleContentTitlePane = new FlowPane();
@@ -193,7 +196,7 @@ public class NpcInfoScreen {
         Label middleContentTitle = new Label("Monster Details");
         middleContentTitle.setId("middle-content-title");
 
-        // ac/hp/speed section
+    // ac/hp/speed section
 
         // ac/hp/speed pane
         FlowPane ahsPane = new FlowPane(Orientation.VERTICAL);
@@ -207,7 +210,7 @@ public class NpcInfoScreen {
         ahsPane.getChildren().addAll(infoBlock("Armor Class ", cs.getArmorClass()),
                 infoBlock("Hit Points ", cs.getHitPoints()), infoBlock("Speed ", cs.getSpeed()));
 
-        // base stat section
+    // base stat section
 
         FlowPane statPane = new FlowPane(Orientation.HORIZONTAL);
         statPane.setPrefSize(middleContentPane.getPrefWidth(), 70);
@@ -220,7 +223,7 @@ public class NpcInfoScreen {
         statPane.getChildren().addAll(statBlock("STR", cs.getStrength()), statBlock("DEX", cs.getDexterity()), statBlock("CON", cs.getConstitution()),
                 statBlock("INT", cs.getIntelligence()), statBlock("WIS", cs.getWisdom()), statBlock("CHA", cs.getCharisma()));
 
-        // bottom stat section
+    // bottom stat section
 
         FlowPane bottomStatPane = new FlowPane(Orientation.VERTICAL);
         bottomStatPane.setPrefSize(middleContentPane.getPrefWidth(), 100);
@@ -232,11 +235,15 @@ public class NpcInfoScreen {
         bottomStatPane.getChildren().addAll(infoBlock("Senses ", cs.getSense()), infoBlock("Languages ", cs.getLanguages()),
                 infoBlock("Skills ", cs.getSkills()), infoBlock("Challenge ", cs.getChallenge()));
 
+        // bottom style section
+        FlowPane bottomColorPane = new FlowPane();
+        bottomColorPane.setPrefSize(screenWidth-100, 4);
+        bottomColorPane.setStyle("-fx-background-color: #e69a28; -fx-border-width: 0.5; -fx-border-style: solid; -fx-border-color: black; -fx-border-radius: 2");
 
-        // children section//////////////////////////////////////////////////////////////////////////////////
+    // children section
 
         middleContentTitlePane.getChildren().add(middleContentTitle);
-        middleContentPane.getChildren().addAll(middleContentTitlePane, ahsPane, statPane, bottomStatPane);
+        middleContentPane.getChildren().addAll(topColorPane, middleContentTitlePane, ahsPane, statPane, bottomStatPane, bottomColorPane);
         middleScreen.getChildren().add(middleContentPane);
 
 // content info section
@@ -360,6 +367,7 @@ public class NpcInfoScreen {
         // vbox for statblock
         VBox statBox = new VBox();
         statBox.setAlignment(Pos.CENTER);
+        statBox.setPrefWidth(60);
 
         // text label
         Label strengthTxtLabel = new Label(textLabel);
@@ -378,8 +386,8 @@ public class NpcInfoScreen {
         // hbox for labels
         HBox acBox = new HBox();
         acBox.setAlignment(Pos.CENTER_LEFT);
-        acBox.setPrefWidth(400);
-        acBox.setMaxWidth(400);
+        acBox.setPrefWidth(450);
+        acBox.setMaxWidth(450);
 
         // text label
         Label acTxtLabel = new Label(textLabel);

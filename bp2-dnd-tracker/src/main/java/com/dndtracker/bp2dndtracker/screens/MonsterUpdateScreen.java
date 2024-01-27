@@ -64,12 +64,14 @@ public class MonsterUpdateScreen {
         mainPane.setPrefSize(800, 600);
         mainPane.setMinSize(800, 600);
         mainPane.setMaxSize(800, 600);
+        mainPane.setFocusTraversable(true);
         mainPane.setId("main-pane");
 
         // create flowpane for the content within the scrollPane
         FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
         scrollContentPane.setPrefSize(mainPane.getPrefWidth(), 600);
-        scrollContentPane.setAlignment(Pos.BOTTOM_CENTER);
+        scrollContentPane.setAlignment(Pos.TOP_CENTER);
+        scrollContentPane.setPadding(new Insets(30,0,0,0));
         scrollContentPane.setId("scroll-content-pane");
 
         // Create for the abilaty to scroll
@@ -83,7 +85,7 @@ public class MonsterUpdateScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
-    // title section
+        // title section
 
         // pane for the title section
         FlowPane titlePane = new FlowPane();
@@ -93,46 +95,69 @@ public class MonsterUpdateScreen {
         // Create a TextField for the monster title
         TextField titleField = new TextField(cs.getName());
         titleField.setPrefSize(150, 40);
-        titleField.setPromptText("Add item title");
+        titleField.setPromptText("Add name...");
         titleField.alignmentProperty().setValue(Pos.CENTER);
         titleField.setFocusTraversable(false);
 
         titlePane.getChildren().add(titleField);
 
-    // type/rarity section
+        // ac/hp/speed section
+
+        // pane for the ac/hp/speed  section
+        FlowPane ahsPane = new FlowPane(Orientation.HORIZONTAL);
+        ahsPane.setPrefSize(mainPane.getPrefWidth(), 50);
+        ahsPane.setAlignment(Pos.CENTER);
+        ahsPane.setHgap(50);
+        ahsPane.setVgap(10);
 
 
+        // add textfields threw getTextfield method
+        TextField acField = getTextField("Add Armor Class...", cs.getArmorClass());
+        TextField hpField = getTextField("Add Hit Points...", cs.getHitPoints());
+        TextField speedField = getTextField("Add Speed...", cs.getSpeed());
+        TextField strField = getTextField("Add Strength...", cs.getStrength());
+        TextField dexField = getTextField("Add Dexterity...", cs.getDexterity());
+        TextField conField = getTextField("Add Constitution...", cs.getConstitution());
+        TextField intField = getTextField("Add Intelligence...", cs.getIntelligence());
+        TextField wisField = getTextField("Add Wisdom...", cs.getWisdom());
+        TextField chaField = getTextField("Add Charisma...", cs.getCharisma());
+        TextField senseField = getTextField("Add Sense...", cs.getSense());
+        TextField languageField = getTextField("Add Language...", cs.getLanguages());
+        TextField skillField = getTextField("Add Skill...", cs.getSkills());
+        TextField challangeField = getTextField("Add Challenge...", cs.getChallenge());
 
-    // cost/weight section
+        // children section
 
+        ahsPane.getChildren().addAll(acField, hpField, speedField, strField, dexField, conField, intField, wisField,
+                chaField, senseField, languageField, skillField, challangeField);
 
-
-    // info section
+        // info section
 
         // pane for the info section
         FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
-        infoPane.setPrefSize(mainPane.getPrefWidth(), 320);
+        infoPane.setPrefSize(mainPane.getPrefWidth(), 220);
         infoPane.setAlignment(Pos.CENTER);
         infoPane.setHgap(50);
-        infoPane.setPadding(new Insets(0, 0,0,0));
 
         // textarea for description
-        TextArea descriptionArea = new TextArea(cs.getDescription());
-        descriptionArea.setPrefSize(300, 300);
-        descriptionArea.setPromptText("Add Item description");
+        TextArea descriptionArea = new TextArea(cs.getExtra());
+        descriptionArea.setPrefSize(300, 200);
+        descriptionArea.setPromptText("Add Monster description");
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 
+        // extra section
+
         // textarea for description
         TextArea extraArea = new TextArea(cs.getExtra());
-        extraArea.setPrefSize(300, 300);
+        extraArea.setPrefSize(300, 200);
         extraArea.setPromptText("Add extra information if necessary");
         extraArea.setFocusTraversable(false);
         extraArea.setId("extra-area");
 
         infoPane.getChildren().addAll(descriptionArea, extraArea);
 
-    // button section
+        // button section
 
         // button section pane
         FlowPane buttonPane = new FlowPane(Orientation.HORIZONTAL);
@@ -147,96 +172,109 @@ public class MonsterUpdateScreen {
 
         buttonPane.getChildren().add(submitBtn);
 
-//        // Set an event handler for the submit button
-//        submitBtn.setOnAction(click -> {
-//            if (titleField.getText().isEmpty() || cmbType.getValue() == null || cmbRarity.getValue() == null || weightField.getText().isEmpty()) {
-//                // Input validation: Check if required fields are empty
-//                Alert alert = new Alert(Alert.AlertType.WARNING);
-//                alert.setTitle("Warning");
-//                alert.setHeaderText("One or more required fields are empty");
-//                alert.showAndWait();
-//
-//                // Change border colors and set prompts for empty fields
-//                if (titleField.getText().isEmpty()) {
-//                    titleField.setStyle("-fx-border-color: red");
-//                    titleField.promptTextProperty().setValue("Item title cannot be empty");
-//                    // set focus when empty
-//                    titleField.requestFocus();
-//                } else {
-//                    titleField.setStyle("-fx-border-color: black");
-//                }
-//
-//                if (cmbType.getValue() == null) {
-//                    cmbType.setStyle("-fx-border-color: red");
-//                    cmbType.promptTextProperty().setValue("item type cannot be empty");
-//                    // set focus when empty
-//                    cmbType.requestFocus();
-//                } else {
-//                    cmbType.setStyle("-fx-border-color: black");
-//                }
-//
-//                if (cmbRarity.getValue() == null) {
-//                    cmbRarity.setStyle("-fx-border-color: red");
-//                    cmbRarity.promptTextProperty().setValue("item rarity cannot be empty");
-//                    // set focus when empty
-//                    cmbRarity.requestFocus();
-//                } else {
-//                    cmbRarity.setStyle("-fx-border-color: black");
-//                }
-//
-//                if (weightField.getText().isEmpty()) {
-//                    weightField.setStyle("-fx-border-color: red");
-//                    weightField.promptTextProperty().setValue("Item weight cannot be empty");
-//                    // set focus when empty
-//                    weightField.requestFocus();
-//                } else {
-//                    weightField.setStyle("-fx-border-color: black");
-//                }
-//                // Exit the method if any required field is empty
-//                return;
-//            }
-//
-//            // Extract values from input fields
-//            String titleString = titleField.getText();
-//            String typeString = String.valueOf(cmbType.getValue());
-//            String rarityString = String.valueOf(cmbRarity.getValue());
-//            String weightString = weightField.getText().replace(",", ".");
-//            double weightDouble = Double.parseDouble(weightString);
-//            int costInt = numberBox.getValue();
-//
-//            // Process and sanitize text areas
-//            String dString = descriptionArea.getText().replace("'", "`");
-//            String eString = extraArea.getText().replace("'", "`");
-//
-//            // Handle empty text areas field
-//            String dVal = (dString.isEmpty()) ? "NULL" :   dString;
-//            String eVal = (eString.isEmpty()) ? "NULL" :   eString;
-//
-//            // Update item object with new values
-//            item.setName(titleString);
-//            item.setDescription(dVal);
-//            item.setExtra(eVal);
-//            item.setType(typeString);
-//            item.setRarity(rarityString);
-//            item.setCost(costInt);
-//            item.setWeight(weightDouble);
-//
-//            // Call controller to create a new item in the database
-//            cl.updateItem(item);
-//
-//            // Switch back to ItemScreen
-//            ItemScreen itemscreen = new ItemScreen();
-//            mainStage.setScene(itemscreen.getScene()); // Navigate to the new screen
-//        });
+        // event section
+
+        // event for adding a new character
+        submitBtn.setOnAction(click -> {
+            // check if fields are empty
+            if(acField.getText().isEmpty() || hpField.getText().isEmpty() || speedField.getText().isEmpty() || extraArea.getText().isEmpty()
+                    || descriptionArea.getText().isEmpty() || titleField.getText().isEmpty() || strField.getText().isEmpty() || dexField.getText().isEmpty()
+                    || conField.getText().isEmpty() || intField.getText().isEmpty() || wisField.getText().isEmpty() ||
+                    chaField.getText().isEmpty() || senseField.getText().isEmpty() || languageField.getText().isEmpty() ||
+                    skillField.getText().isEmpty() || challangeField.getText().isEmpty()){
+                // Input validation: Check if required fields are empty
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText("One or more required fields are empty");
+                alert.showAndWait();
+
+                // Change border colors and set prompts for empty fields
+                emptyCheck(titleField, "Title");
+                emptyCheck(acField, "Armor Class");
+                emptyCheck(hpField, "Hit Points");
+                emptyCheck(speedField, "Speed");
+                emptyCheck(strField, "Strength");
+                emptyCheck(dexField, "Dexterity");
+                emptyCheck(conField, "Constitution");
+                emptyCheck(intField, "Intelligence");
+                emptyCheck(wisField, "Wisdom");
+                emptyCheck(chaField, "Charisma");
+                emptyCheck(senseField, "sense");
+                emptyCheck(languageField, "Language");
+                emptyCheck(skillField, "Skill");
+                emptyCheck(challangeField, "Challenge");
+                if (descriptionArea.getText().isEmpty()) {
+                    descriptionArea.setStyle("-fx-border-color: red");
+                    descriptionArea.promptTextProperty().setValue("Description cannot be empty");
+                    // set focus when empty
+                    descriptionArea.requestFocus();
+                } else {
+                    descriptionArea.setStyle("-fx-border-color: black");
+                }
+                // Exit the method if any required field is empty
+                return;
+            }
+
+            // create variables with the textfield text to add to the database
+            cs.setName(titleField.getText().replace("'", "`"));
+            cs.setDescription(descriptionArea.getText().replace("'", "`"));
+            cs.setExtra(extraArea.getText().replace("'", "`"));
+            cs.setArmorClass(acField.getText().replace("'", "`"));
+            cs.setHitPoints(hpField.getText().replace("'", "`"));
+            cs.setSpeed(speedField.getText().replace("'", "`"));
+            cs.setStrength(strField.getText().replace("'", "`"));
+            cs.setDexterity(dexField.getText().replace("'", "`"));
+            cs.setConstitution(conField.getText().replace("'", "`"));
+            cs.setIntelligence(intField.getText().replace("'", "`"));
+            cs.setWisdom(wisField.getText().replace("'", "`"));
+            cs.setCharisma(chaField.getText().replace("'", "`"));
+            cs.setSense(senseField.getText().replace("'", "`"));
+            cs.setLanguages(languageField.getText().replace("'", "`"));
+            cs.setSkills(skillField.getText().replace("'", "`"));
+            cs.setChallenge(challangeField.getText().replace("'", "`"));
+
+            // Exit the method if any required field is empty
+            cl.updateCharacter(cs);
+
+            // Switch back to MonsterScreen
+            MonsterScreen monsterscreen = new MonsterScreen();
+            mainStage.setScene(monsterscreen.getScene());
+        });
 
 // children-section
 
         // add children
-        scrollContentPane.getChildren().addAll(titlePane, infoPane, buttonPane);
+        scrollContentPane.getChildren().addAll(titlePane, ahsPane, infoPane, buttonPane);
         mainPane.getChildren().addAll(scrollPane);
         content.getChildren().add(contentOnStack);
         contentOnStack.getChildren().addAll(mainPane);
         root.getChildren().addAll(sidebar, content);
+    }
+
+    // method section
+
+    // textfield method
+    public TextField getTextField(String prompt, String getter) {
+        TextField txtField = new TextField(getter);
+        txtField.setPrefSize(150, 40);
+        txtField.setPromptText(prompt);
+        txtField.alignmentProperty().setValue(Pos.CENTER);
+        txtField.setFocusTraversable(false);
+        txtField.setId("txt-field");
+
+        return txtField;
+    }
+
+    // emptycheck method
+    public void emptyCheck(TextField txtField, String name) {
+        if (txtField.getText().isEmpty()) {
+            txtField.setStyle("-fx-border-color: red");
+            txtField.promptTextProperty().setValue(name + " cannot be empty");
+            // set focus when empty
+            txtField.requestFocus();
+        } else {
+            txtField.setStyle("-fx-border-color: black");
+        }
     }
     public Scene getScene() {
         return scene;

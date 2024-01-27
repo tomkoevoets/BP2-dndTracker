@@ -94,7 +94,7 @@ public class ItemAddScreen {
         // Create a TextField for the session title
         TextField titleField = new TextField();
         titleField.setPrefSize(150, 40);
-        titleField.setPromptText("Add item title");
+        titleField.setPromptText("Add item title...");
         titleField.alignmentProperty().setValue(Pos.CENTER);
         titleField.setFocusTraversable(false);
 
@@ -150,7 +150,7 @@ public class ItemAddScreen {
         // textfield for the item weight
         TextField weightField = new TextField();
         weightField.setPrefSize(150, 40);
-        weightField.setPromptText("Add item weight");
+        weightField.setPromptText("Add Item weight...");
         weightField.alignmentProperty().setValue(Pos.CENTER);
         weightField.setFocusTraversable(false);
 
@@ -168,7 +168,7 @@ public class ItemAddScreen {
         // textarea for description
         TextArea descriptionArea = new TextArea();
         descriptionArea.setPrefSize(300, 300);
-        descriptionArea.setPromptText("Add Item description");
+        descriptionArea.setPromptText("Add Item description...");
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 

@@ -154,7 +154,7 @@ public class ItemUpdateScreen {
         // textfield for the item weight
         TextField weightField = new TextField(Double.toString(item.getWeight()));
         weightField.setPrefSize(150, 40);
-        weightField.setPromptText("Add item weight");
+        weightField.setPromptText("Add Item weight...");
         weightField.alignmentProperty().setValue(Pos.CENTER);
         weightField.setFocusTraversable(false);
 
@@ -172,7 +172,7 @@ public class ItemUpdateScreen {
         // textarea for description
         TextArea descriptionArea = new TextArea(item.getDescription());
         descriptionArea.setPrefSize(300, 300);
-        descriptionArea.setPromptText("Add Item description");
+        descriptionArea.setPromptText("Add Item description...");
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 

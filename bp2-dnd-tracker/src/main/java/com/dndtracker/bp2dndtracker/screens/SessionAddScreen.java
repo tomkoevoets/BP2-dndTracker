@@ -84,7 +84,7 @@ public class SessionAddScreen {
         // Create a TextField for the session title
         TextField titleField = new TextField();
         titleField.setPrefSize(150, 40);
-        titleField.setPromptText("Add Session title");
+        titleField.setPromptText("Add Session title...");
         titleField.alignmentProperty().setValue(Pos.CENTER);
         titleField.setFocusTraversable(false);
         titleField.setId("session-title-field");
