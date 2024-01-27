@@ -139,7 +139,7 @@ public class Database {
                     String wisdom = rs.getString("wisdom");
                     String charisma = rs.getString("charisma");
                     String speed = rs.getString("speed");
-                    String challenge = rs.getString("challange");
+                    String challenge = rs.getString("challenge");
                     String sense = rs.getString("sense");
                     String languages = rs.getString("language");
                     String skills = rs.getString("skills");
@@ -165,8 +165,8 @@ public class Database {
             Statement stm = this.connection.createStatement();
 
             // SQL query to insert a new character into the 'character' table
-            stm.execute("INSERT INTO character (character_type, name, description, picture, extra, armorClass, hitPoints, strength," +
-                    " dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills)" +
+            stm.execute("INSERT INTO `character` (character_type, name, description, picture, extra, armor_class, hit_points, strength," +
+                    " dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, language, skills)" +
                     " VALUES ('" + type + "', '" + name + "', '" + description + "', '" + image + "', '" + extra + "', '" + armorClass + "'," +
                     " '" + hitPoints + "', '" + strength + "', '" + dexterity + "', '" + constitution + "'," +
                     " '" + intelligence + "', '" + wisdom + "', '" + charisma + "', '" + speed + "', '" + challenge + "'," +
@@ -205,7 +205,7 @@ public class Database {
             //  make sql statement object threw the database connection
             Statement stm = this.connection.createStatement();
             //  execute the sql statement
-            stm.execute("UPDATE character SET character_type = '" + type + "', name = '" + character.getName() + "'" +
+            stm.execute("UPDATE `character` SET character_type = '" + type + "', name = '" + character.getName() + "'" +
                     ", description = '" + character.getDescription() + "', image = '" + character.getImage(type) + "'" +
                     ", extra = '" + character.getExtra() + "', armorClass = " + character.getArmorClass() + "" +
                     ", hitPoints = '" + character.getHitPoints() + "', strength = '" + character.getStrength() + "', dex");

@@ -171,7 +171,7 @@ public class MonsterInfoScreen {
 
 // stat section
 
-        // type, rarity, cost, weight pane
+        // stat pane
         HBox middleScreen = new HBox();
         middleScreen.setAlignment(Pos.TOP_CENTER);
         middleScreen.setPrefSize(screenWidth, screenHeight - 300);
@@ -231,7 +231,7 @@ public class MonsterInfoScreen {
         // method section
 
         bottomStatPane.getChildren().addAll(infoBlock("Senses ", cs.getSense()), infoBlock("Languages ", cs.getLanguages()),
-                infoBlock("Skills ", cs.getSkills()), infoBlock("Challange ", cs.getChallenge()));
+                infoBlock("Skills ", cs.getSkills()), infoBlock("Challenge ", cs.getChallenge()));
 
 
     // children section
@@ -356,6 +356,8 @@ public class MonsterInfoScreen {
         scrollContentPane.getChildren().addAll(titlePane, middleScreen, bottomScreen, updateBox);
         root.getChildren().addAll(scrollPane);
     }
+
+// method section
 
     // method for statblock
     public VBox statBlock(String textLabel, String getStat){

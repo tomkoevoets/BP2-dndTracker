@@ -50,9 +50,16 @@ public class Controller {
 
 
     //TODO Create CreateCharacter method
-    public void createCharacter(String type, String name, String description, String image, String extra, String armorClass, String hitPoints,
+    public void createCharacter(String type, String name, String description, String extra, String armorClass, String hitPoints,
                                 String strength, String dexterity, String constitution, String intelligence, String wisdom,
                                 String charisma, String speed, String challenge, String sense, String languages, String skills) {
+        // assign image based on type
+        String image = "";
+        if(type.equals("Monster")){
+             image ="monster.jpg";
+        } else if (type.equals("Npc")) {
+             image =  "Npc.jpg";
+        }
         db.createCharacter(type, name, description, image, extra, armorClass, hitPoints, strength, dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills);
     }
 

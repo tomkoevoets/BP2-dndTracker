@@ -108,7 +108,6 @@ public class ItemAddScreen {
         trPane.setAlignment(Pos.CENTER);
         trPane.setHgap(50);
 
-
         // cmb for the type
         ComboBox<String> cmbType = new ComboBox<>(FXCollections.observableArrayList("Weapon", "Armor", "Potion", "Ring", "Scroll", "Wand", "Amulet", "Tool", "Instrument", "Miscellaneous"));
         cmbType.setPromptText("Type");
@@ -278,6 +277,7 @@ public class ItemAddScreen {
         contentOnStack.getChildren().addAll(mainPane);
         root.getChildren().addAll(sidebar, content);
     }
+
     public Scene getScene() {
         return scene;
     }

@@ -230,7 +230,7 @@ public class NpcInfoScreen {
         // method section
 
         bottomStatPane.getChildren().addAll(infoBlock("Senses ", cs.getSense()), infoBlock("Languages ", cs.getLanguages()),
-                infoBlock("Skills ", cs.getSkills()), infoBlock("Challange ", cs.getChallenge()));
+                infoBlock("Skills ", cs.getSkills()), infoBlock("Challenge ", cs.getChallenge()));
 
 
         // children section//////////////////////////////////////////////////////////////////////////////////
