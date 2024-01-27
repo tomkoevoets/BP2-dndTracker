@@ -94,6 +94,7 @@ public class NpcInfoScreen {
         titleBox.setAlignment(Pos.CENTER);
         titleBox.setHgap(10);
         titleBox.setPadding(new Insets(0,0,20,0));
+        titleBox.setFocusTraversable(true);
 
         // import icon for title
         ImageView titleIcon = new ImageView();

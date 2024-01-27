@@ -11,9 +11,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -167,7 +169,7 @@ public class MonsterInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-// stat section///////////////////////////////////////////////////////////////////////
+// stat section
 
         // type, rarity, cost, weight pane
         HBox middleScreen = new HBox();
@@ -232,7 +234,7 @@ public class MonsterInfoScreen {
                 infoBlock("Skills ", cs.getSkills()), infoBlock("Challange ", cs.getChallenge()));
 
 
-    // children section//////////////////////////////////////////////////////////////////////////////////
+    // children section
 
         middleContentTitlePane.getChildren().add(middleContentTitle);
         middleContentPane.getChildren().addAll(middleContentTitlePane, ahsPane, statPane, bottomStatPane);

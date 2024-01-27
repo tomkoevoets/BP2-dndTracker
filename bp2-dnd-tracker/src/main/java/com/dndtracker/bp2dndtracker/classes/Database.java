@@ -92,6 +92,7 @@ public class Database {
         }
     }
 
+
     // Method to update a session in the 'session' table in the database
     public void updateSession(Session session){
         try {
@@ -183,7 +184,7 @@ public class Database {
             Statement stm = this.connection.createStatement();
 
             // SQL query to delete a character from the 'character' table by its ID
-            stm.execute("DELETE FROM character WHERE id = " + id);
+            stm.execute("DELETE FROM `character` WHERE id = " + id);
         } catch (SQLException e) {
             // Handle any SQL exceptions by throwing a runtime exception
             throw new RuntimeException(e);
