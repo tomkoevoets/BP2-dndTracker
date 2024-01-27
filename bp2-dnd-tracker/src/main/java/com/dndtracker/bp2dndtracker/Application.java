@@ -21,7 +21,6 @@ public class Application extends javafx.application.Application {
         scenes.put("home",new HomeScreen().getScene());
 
         mainStage = new Stage();
-//        mainStage = new Stage(StageStyle.UNDECORATED);///////////////////////////////////////////////
 
         mainStage.setTitle("D&D Tracker");
         mainStage.setScene(scenes.get("home"));
@@ -37,8 +36,6 @@ public class Application extends javafx.application.Application {
 ///////////////////////todo list////////////////////
 
 // 1. TODO add folder structure to images
-// 2. TODO finsish Info screens
-// 2. TODO finsish add screens
 // 3. TODO finish update screens
 // 4. TODO finish commenting all pages
 // 5. TODO start encounter tracker

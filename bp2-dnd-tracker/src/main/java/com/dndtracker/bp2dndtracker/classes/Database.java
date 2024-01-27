@@ -202,18 +202,40 @@ public class Database {
             type = "Npc";
         }
         try {
-            //  make sql statement object threw the database connection
-            Statement stm = this.connection.createStatement();
-            //  execute the sql statement
-            stm.execute("UPDATE `character` SET character_type = '" + type + "', name = '" + character.getName() + "'" +
-                    ", description = '" + character.getDescription() + "', image = '" + character.getImage(type) + "'" +
-                    ", extra = '" + character.getExtra() + "', armorClass = " + character.getArmorClass() + "" +
-                    ", hitPoints = '" + character.getHitPoints() + "', strength = '" + character.getStrength() + "', dex");
+            // SQL query to update item information in the database
+            String sqlQuery = "UPDATE `character` SET character_type=?, name=?, description=?, extra=?, armor_class=?, hit_points=?, speed=?," +
+                    " strength=?, dexterity=?, constitution=?, intelligence=?, wisdom=?, charisma=?, sense=?, language=?, " +
+                    "challenge=?, skills=? WHERE id=?";
+
+            try (PreparedStatement pstmt = this.connection.prepareStatement(sqlQuery)) {
+                // Set values for the prepared statement based on the provided item object
+                pstmt.setString(1, type); // update type
+                pstmt.setString(2, character.getName()); // Update name
+                pstmt.setString(3, character.getDescription()); // Update description
+                pstmt.setString(4, character.getExtra()); // Update extra
+                pstmt.setString(5, character.getArmorClass()); // Update armor class
+                pstmt.setString(6, character.getHitPoints()); // Update hit points
+                pstmt.setString(7, character.getSpeed()); // Update speed
+                pstmt.setString(8, character.getStrength()); // Update strength
+                pstmt.setString(9, character.getDexterity()); // Update dexterity
+                pstmt.setString(10, character.getConstitution()); // Update constitution
+                pstmt.setString(11, character.getIntelligence()); // Update intelligence
+                pstmt.setString(12, character.getWisdom()); // Update wisdom
+                pstmt.setString(13, character.getCharisma()); // Update charisma
+                pstmt.setString(14, character.getSense()); // Update sense
+                pstmt.setString(15, character.getLanguages()); // Update languages
+                pstmt.setString(16, character.getChallenge()); // Update challenge
+                pstmt.setString(17, character.getSkills()); // Update skills
+                pstmt.setInt(18, character.getId()); // Identify the character by its unique ID
+
+                // Execute the update query
+                pstmt.executeUpdate();
+            }
+
         } catch (SQLException e) {
             // handle exception
             throw new RuntimeException(e);
         }
-
     }
 
 

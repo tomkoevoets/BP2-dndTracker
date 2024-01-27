@@ -59,7 +59,7 @@ public class MonsterAddScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section////////////////////////////////////////////////////////////////////
+// Content section
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -103,7 +103,7 @@ public class MonsterAddScreen {
 
         titlePane.getChildren().add(titleField);
 
-    // ac/hp/speed section//////////////////////////////////////////////////////////////////
+    // ac/hp/speed section
 
         // pane for the ac/hp/speed  section
         FlowPane ahsPane = new FlowPane(Orientation.HORIZONTAL);
@@ -144,7 +144,7 @@ public class MonsterAddScreen {
         // textarea for description
         TextArea descriptionArea = new TextArea();
         descriptionArea.setPrefSize(300, 200);
-        descriptionArea.setPromptText("Add Monster description");/////////////////////////////////////////
+        descriptionArea.setPromptText("Add Monster description");
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 
@@ -282,5 +282,5 @@ public class MonsterAddScreen {
     }
     public Scene getScene() {
         return scene;
-    }///////////////////////////////////////////////////////////////////////////////////
+    }
 }

@@ -144,7 +144,7 @@ public class NpcAddScreen {
         // textarea for description
         TextArea descriptionArea = new TextArea();
         descriptionArea.setPrefSize(300, 200);
-        descriptionArea.setPromptText("Add Npc description");/////////////////////////////////////////
+        descriptionArea.setPromptText("Add Npc description");
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 
