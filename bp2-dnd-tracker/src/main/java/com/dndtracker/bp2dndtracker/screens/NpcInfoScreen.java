@@ -144,6 +144,7 @@ public class NpcInfoScreen {
                 if (result.get() == ButtonType.OK) {
                     // add to session
                     cl.linkCharacterToSession(session.getId(), cs.getId());
+                    addBtn.setText(session.getName());
                 }
                 // check if the result is CANCEL
                 else if (result.get() == ButtonType.CANCEL) {
@@ -157,7 +158,7 @@ public class NpcInfoScreen {
 
         // delete section
 
-        // button background to make bressing the delete icon easy
+        // button background to make pressing the delete icon easy
         FlowPane deleteBtn = new FlowPane();
         deleteBtn.setPrefSize(30, 30);
         deleteBtn.setCursor(Cursor.HAND);

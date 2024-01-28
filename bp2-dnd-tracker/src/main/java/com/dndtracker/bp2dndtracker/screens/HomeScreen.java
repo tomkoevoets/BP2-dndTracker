@@ -2,20 +2,16 @@ package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
 import com.dndtracker.bp2dndtracker.components.SidebarComponent;
-import com.dndtracker.bp2dndtracker.components.TitleBar;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.OverrunStyle;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import com.dndtracker.bp2dndtracker.components.BackgroundComponent;
 import javafx.scene.layout.StackPane;
-
-import static com.dndtracker.bp2dndtracker.Application.mainStage;
 
 
 public class HomeScreen {
@@ -61,11 +57,12 @@ public class HomeScreen {
                 "\nWelcome to a realm of boundless adventure and limitless possibilities!");
         welcomeTxt.setWrapText(true);
         welcomeTxt.setTextOverrun(OverrunStyle.WORD_ELLIPSIS);
-        welcomeTxt.setMaxWidth(280);
+        welcomeTxt.setMaxWidth(270);
+//        welcomeTxt.setPadding(new Insets(0,10,0,0));
         welcomeTxt.setId("welcome-text1");
 
         // set a margin of 10 pixels for the left, top,
-        FlowPane.setMargin(welcomeTxt, new Insets(10, 0, 0, 20));
+        FlowPane.setMargin(welcomeTxt, new Insets(10, 0, 0, 10));
 
         // children
         welcomeWord.getChildren().addAll(welcome, welcomeTxt);

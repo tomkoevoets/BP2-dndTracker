@@ -73,6 +73,11 @@ public class Controller {
         db.linkCharacterToSession(sessionId, characterId);
     }
 
+    // GetCharacterBySessionId method
+    public ArrayList<CharacterSuperclass> getCharacterBySessionId(int sessionId) {
+        return db.getCharacterBySessionId(sessionId);
+    }
+
 
 ///////////////////////////////////////////////Monster-specific/////////////////////////////////////////////////////////
     //TODO Create GetAllMonsters method

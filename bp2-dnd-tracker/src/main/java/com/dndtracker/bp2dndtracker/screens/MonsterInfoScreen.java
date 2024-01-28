@@ -143,6 +143,7 @@ public class MonsterInfoScreen {
                 if (result.get() == ButtonType.OK) {
                     // add to session
                     cl.linkCharacterToSession(session.getId(), cs.getId());
+                    addBtn.setText(session.getName());
                 }
                 // check if the result is CANCEL
                 else if (result.get() == ButtonType.CANCEL) {
@@ -153,11 +154,6 @@ public class MonsterInfoScreen {
             // add sessions to the button
             addBtn.getItems().addAll(sessionItem);
         }
-
-        // button event
-//        addBtn.setOnMouseClicked(e -> {
-//
-//        });
 
         // delete section
 

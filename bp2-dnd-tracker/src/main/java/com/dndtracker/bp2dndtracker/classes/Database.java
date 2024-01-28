@@ -254,6 +254,56 @@ public class Database {
         }
     }
 
+    public ArrayList<CharacterSuperclass> getCharacterBySessionId(int sessionId) {
+        // Create an ArrayList to store the retrieved characters
+        ArrayList<CharacterSuperclass> characters = new ArrayList<>();
+
+        // SQL query to retrieve characters linked to a specific session
+        String sqlQuery = "SELECT c.* FROM `character` c " +
+                "JOIN session_character sc ON c.id = sc.character_id " +
+                "WHERE sc.session_id = ?";
+        try (PreparedStatement ptsmt = this.connection.prepareStatement(sqlQuery)) {
+            // Set the session_id parameter in the query
+            ptsmt.setInt(1, sessionId);
+
+            // Execute the query and get the result set
+            try (ResultSet rs = ptsmt.executeQuery()) {
+                // Iterate through the result set and populate the characters ArrayList
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    String description = rs.getString("description");
+                    String image = rs.getString("picture");
+                    String extra = rs.getString("extra");
+                    String armorClass = rs.getString("armor_class");
+                    String hitPoints = rs.getString("hit_points");
+                    String strength = rs.getString("strength");
+                    String dexterity = rs.getString("dexterity");
+                    String constitution = rs.getString("constitution");
+                    String intelligence = rs.getString("intelligence");
+                    String wisdom = rs.getString("wisdom");
+                    String charisma = rs.getString("charisma");
+                    String speed = rs.getString("speed");
+                    String challenge = rs.getString("challenge");
+                    String sense = rs.getString("sense");
+                    String languages = rs.getString("language");
+                    String skills = rs.getString("skills");
+                    String type = rs.getString("character_type");
+                    // Adjust the constructor based on the actual attributes in Monster and Npc classes
+                    if (type.equals("Monster")) {
+                        characters.add(new Monster(id, name, description, image, extra, armorClass, hitPoints, strength, dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills));
+                    } else if (type.equals("Npc")) {
+                        characters.add(new Npc(id, name, description, image, extra, armorClass, hitPoints, strength, dexterity, constitution, intelligence, wisdom, charisma, speed, challenge, sense, languages, skills));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            // Handle exception
+            throw new RuntimeException(e);
+        }
+        return characters;
+    }
+
 
 ///////////////////////////////////////////////Monster-specific/////////////////////////////////////////////////////////
 
