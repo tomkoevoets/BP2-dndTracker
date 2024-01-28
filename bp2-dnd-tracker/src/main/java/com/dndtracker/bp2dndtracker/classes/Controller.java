@@ -57,15 +57,20 @@ public class Controller {
 
 
 
-    //TODO Create DeleteCharacter method
+    // DeleteCharacter method
     public void deleteCharacter(int id) {
         db.deleteCharacter(id);
     }
 
 
-    //TODO Create UpdateCharacter method
+    // UpdateCharacter method
     public void updateCharacter(CharacterSuperclass character) {
         db.updateCharacter(character);
+    }
+
+    // LinkCharacterToSession method
+    public void linkCharacterToSession(int sessionId, int characterId) {
+        db.linkCharacterToSession(sessionId, characterId);
     }
 
 

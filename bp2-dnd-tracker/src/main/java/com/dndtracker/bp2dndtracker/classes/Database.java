@@ -8,7 +8,6 @@ public class Database {
     //    instegating class variables
     private Connection connection;
 
-
     // Create a constructor for the Database class
     public Database() {
         try {
@@ -21,7 +20,6 @@ public class Database {
     }
 
 ///////////////////////////////////////////////Campaign/////////////////////////////////////////////////////////////////
-
 
 ///////////////////////////////////////////////Session//////////////////////////////////////////////////////////////////
 
@@ -60,7 +58,6 @@ public class Database {
         return sessions;
     }
 
-
     // Method to create a new session in the 'session' table of the database
     public void createSession(String name, String info, String summary) {
         try {
@@ -92,7 +89,6 @@ public class Database {
         }
     }
 
-
     // Method to update a session in the 'session' table in the database
     public void updateSession(Session session){
         try {
@@ -106,7 +102,6 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-
 
 ///////////////////////////////////////////////Character////////////////////////////////////////////////////////////////
 
@@ -191,7 +186,7 @@ public class Database {
         }
     }
 
-    //TODO Create UpdateCharacter method
+    // UpdateCharacter method
     public void updateCharacter(CharacterSuperclass character){
         // create type variable
         String type = "";
@@ -238,14 +233,31 @@ public class Database {
         }
     }
 
+    // add character to session method
+    public void linkCharacterToSession(int sessionId, int characterId) {
+        try {
+            // SQL query to add a new association between character and session
+            String sqlQuery = "INSERT INTO session_character (session_id, character_id) VALUES (?, ?)";
+
+            try (PreparedStatement pstmt = this.connection.prepareStatement(sqlQuery)) {
+                // Set the values for the prepared statement on the basis of the given id's
+                pstmt.setInt(1, sessionId);
+                pstmt.setInt(2, characterId);
+
+                // Execute the query
+                pstmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            // Handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
 
 ///////////////////////////////////////////////Monster-specific/////////////////////////////////////////////////////////
 
-
-
 ///////////////////////////////////////////////Npc-specific/////////////////////////////////////////////////////////////
-
-
 
 ///////////////////////////////////////////////Item/////////////////////////////////////////////////////////////////////
 

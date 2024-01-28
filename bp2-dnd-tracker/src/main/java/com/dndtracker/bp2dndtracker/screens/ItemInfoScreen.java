@@ -162,7 +162,7 @@ public class ItemInfoScreen {
         });
 
         // add delete icon to delete button
-        deletePane.getChildren().add(deleteBtn);
+        deletePane.getChildren().addAll(deleteBtn);
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 

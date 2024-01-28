@@ -1,10 +1,7 @@
 package com.dndtracker.bp2dndtracker.screens;
 
 import com.dndtracker.bp2dndtracker.Application;
-import com.dndtracker.bp2dndtracker.classes.CharacterSuperclass;
-import com.dndtracker.bp2dndtracker.classes.Controller;
-import com.dndtracker.bp2dndtracker.classes.Database;
-import com.dndtracker.bp2dndtracker.classes.Item;
+import com.dndtracker.bp2dndtracker.classes.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -115,13 +112,54 @@ public class MonsterInfoScreen {
         titlePane.setPadding(new Insets(10,0,0,0));
         titlePane.setAlignment(Pos.CENTER);
 
-    // delete section
+    // delete/add to session section
 
         // pane for delete content
         FlowPane deletePane = new FlowPane();
         deletePane.setPrefSize(screenWidth, screenHeight - 625);
         deletePane.setAlignment(Pos.CENTER_RIGHT);
+        deletePane.setHgap(10);
         deletePane.setPadding(new Insets(0,10,0,0));
+
+        // add to session section
+
+        // split button for the ability to add a monster to a specific session
+        SplitMenuButton addBtn = new SplitMenuButton();
+        addBtn.setText("Add to Session");
+        addBtn.setCursor(Cursor.HAND);
+        addBtn.setId("add-btn");
+        // adding to session functionality using a for loop to loop threw the existing sessions.
+        for (Session session :cl.getSessions()) {
+            MenuItem sessionItem = new MenuItem(session.getName());
+            sessionItem.setOnAction(e -> {
+                // create alert when clicked
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Add Monster to Session");
+                alert.setHeaderText("Are you sure you want to add this monster to "+ session.getName() +"?");
+                alert.setContentText("This action cannot be undone!");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                // check if the result is OK
+                if (result.get() == ButtonType.OK) {
+                    // add to session
+                    cl.linkCharacterToSession(session.getId(), cs.getId());
+                }
+                // check if the result is CANCEL
+                else if (result.get() == ButtonType.CANCEL) {
+                    // do nothing
+                    return;
+                }
+            });
+            // add sessions to the button
+            addBtn.getItems().addAll(sessionItem);
+        }
+
+        // button event
+//        addBtn.setOnMouseClicked(e -> {
+//
+//        });
+
+        // delete section
 
         // button background to make bressing the delete icon easy
         FlowPane deleteBtn = new FlowPane();
@@ -165,7 +203,7 @@ public class MonsterInfoScreen {
         });
 
         // add delete icon to delete button
-        deletePane.getChildren().add(deleteBtn);
+        deletePane.getChildren().addAll(addBtn, deleteBtn);
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
