@@ -2,7 +2,6 @@ package com.dndtracker.bp2dndtracker.components;
 
 import com.dndtracker.bp2dndtracker.Application;
 import com.dndtracker.bp2dndtracker.screens.*;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

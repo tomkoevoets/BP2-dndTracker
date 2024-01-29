@@ -99,15 +99,27 @@
     -fx-background-size: cover;
 }
 
-#add-pane:hover {
-    -fx-background-color: rgb(255, 234, 208);
+/*method styling*/
+#character-pane-method{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-background-size: cover;
+}
+
+#character-pane-method:hover{
     -fx-cursor: hand;
-    -fx-background-color: rgb(255, 228, 180);
+}
+
+#player-field{
+    -fx-border-width: 0.8;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
 }
 
 /*delete button*/
 #delete-btn{
-    -fx-background-color: rgb(231, 207, 165);
+    -fx-background-color: rgb(255, 228, 180);
     -fx-border-width: 1;
     -fx-border-color: rgba(0, 0, 0, 0.8);
     -fx-border-radius: 50;
@@ -116,7 +128,7 @@
 }
 
 #delete-btn:hover{
-    -fx-background-color: rgb(231, 207, 165);
+    -fx-background-color: rgb(255, 228, 180);
     -fx-border-width: 1;
     -fx-border-color: rgba(255, 0, 0, 0.8);
     -fx-border-radius: 50;
@@ -158,6 +170,14 @@
 
 #add-item-pane:hover{
     -fx-background-color: rgb(255, 228, 180);
+}
+
+#hp-spinner{
+    -fx-body-color: black;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-progress-color: black;
+    -fx-border-width: 0.8;
 }
 
 
