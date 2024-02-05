@@ -39,6 +39,8 @@ public class SessionScreen  {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
+// pre-content area
+
         // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
@@ -51,6 +53,8 @@ public class SessionScreen  {
         background = new BackgroundComponent();
 
         content.getChildren().add(background);
+
+// content area
 
         // Create a VBox for stacking content on top of the StackPane
         VBox contentOnStack = new VBox();
@@ -76,6 +80,8 @@ public class SessionScreen  {
         scrollPane.requestLayout();
         scrollPane.setId("session-scroll-pane");
 
+    // button section
+
         // Create a FlowPane for buttons
         FlowPane btnPane = new FlowPane(Orientation.HORIZONTAL);
         btnPane.setAlignment(Pos.CENTER);
@@ -94,10 +100,14 @@ public class SessionScreen  {
             mainStage.setScene(sessionAddScreen.getScene());
         });
 
+    // method calling section
+
         // Retrieve sessions from the database and add them to sessionItemPane
         for (Session session : db.getAllSessions()) {
             sessionItemPane.getChildren().add(generateSessionItem(session));
         }
+
+    // children section
 
         // Add components to the contentOnStack VBox
         content.getChildren().addAll(contentOnStack);
@@ -106,6 +116,8 @@ public class SessionScreen  {
         // Add components to the root HBox
         root.getChildren().addAll(sidebar, content);
     }
+
+// method area
 
     //  create method to generate the sessionItem onscreen with an image and the session name
     public VBox generateSessionItem(Session session) {//
@@ -150,7 +162,7 @@ public class SessionScreen  {
         sessionTitle.setMaxHeight(50);
         sessionTitle.setMinHeight(50);
         sessionTitle.setContentDisplay(ContentDisplay.CENTER);
-        sessionTitle.setTextAlignment(TextAlignment.CENTER);//TODO centre the titles
+        sessionTitle.setTextAlignment(TextAlignment.CENTER);
         sessionTitle.setId("session-title");
 
         // Add components to sessionItem

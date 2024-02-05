@@ -29,6 +29,8 @@ public class HomeScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/homescreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
+// pre-content area
+
         // add the sidebar from components
         sidebar = new SidebarComponent();
 
@@ -39,16 +41,22 @@ public class HomeScreen {
         // add the background from components
         background = new BackgroundComponent();
 
-        // txt area
+// content area
+
+    // txt section
+
+        // text pane
         FlowPane welcomeWord = new FlowPane(Orientation.VERTICAL);
         welcomeWord.setPrefSize(300, 400);
         welcomeWord.setMaxSize(300, 400);
         welcomeWord.setId("welcome-pane");
         welcomeWord.setAlignment(Pos.TOP_CENTER);
 
+        // title
         Label welcome = new Label("Hail, O Esteemed Dungeon Master!");
         welcome.setId("welcome-label");
 
+        // text using \n for breaks
         Label welcomeTxt = new Label("Within these digital halls, embark upon a journey to wield unparalleled control over your sagas. \n" +
                 "\nBehold the D&D Tracker app, wherein thou shalt seamlessly weave the tapestry of thy sessions.\n" +
                 "Populate thy realms with fearsome monsters, intriguing NPCs, and a trove of mystical items.\n" +
@@ -58,11 +66,12 @@ public class HomeScreen {
         welcomeTxt.setWrapText(true);
         welcomeTxt.setTextOverrun(OverrunStyle.WORD_ELLIPSIS);
         welcomeTxt.setMaxWidth(270);
-//        welcomeTxt.setPadding(new Insets(0,10,0,0));
         welcomeTxt.setId("welcome-text1");
 
         // set a margin of 10 pixels for the left, top,
         FlowPane.setMargin(welcomeTxt, new Insets(10, 0, 0, 10));
+
+    // children section
 
         // children
         welcomeWord.getChildren().addAll(welcome, welcomeTxt);

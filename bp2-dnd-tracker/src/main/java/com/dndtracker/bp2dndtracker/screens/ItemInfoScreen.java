@@ -51,7 +51,7 @@ public class ItemInfoScreen {
         stage.setTitle(item.getName());
         stage.show();
 
-// background section
+// pre-content area
 
         // Load the image
         Image backgroundImage = new Image(Application.class.getResource("images/session-info-background.jpg").toString());
@@ -71,8 +71,11 @@ public class ItemInfoScreen {
         // Set the background to the root Pane
         root.setBackground(background);
 
-// content section
+// content area
 
+    // info section
+
+        // scrollpane for item info
         FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
         scrollContentPane.setAlignment(Pos.TOP_CENTER);
         scrollContentPane.setPrefSize(root.getPrefWidth(), 600);
@@ -166,7 +169,7 @@ public class ItemInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-// type, rarity, cost, weight section
+    // type, rarity, cost, weight section
 
         // type, rarity, cost, weight pane
         HBox middleScreen = new HBox();
@@ -178,7 +181,7 @@ public class ItemInfoScreen {
         middleContentPane.setPrefSize(screenWidth-100, screenHeight - 400);
         middleContentPane.setId("middle-content-pane");
 
-    // title section
+        // title section
 
         // middleContentPane title
         FlowPane middleContentTitlePane = new FlowPane();
@@ -190,7 +193,7 @@ public class ItemInfoScreen {
         middleContentTitle.setPadding(new Insets(0,0,10,0));
         middleContentTitle.setId("middle-content-title");
 
-    // type/rarity section
+        // type/rarity section
 
         // type/rarity pane
         FlowPane trPane = new FlowPane(Orientation.HORIZONTAL);
@@ -232,7 +235,7 @@ public class ItemInfoScreen {
         weightField.setAlignment(Pos.CENTER);
         weightField.setId("field");
 
-        // children section
+    // children section
 
         cwPane.getChildren().addAll(costField, weightField);
         trPane.getChildren().addAll(typeField, rarityField);
@@ -344,6 +347,8 @@ public class ItemInfoScreen {
         // Add children to update section
         deleteBtn.getChildren().add(deleteIcon);
         updateBox.getChildren().addAll(updateBtn);
+
+    // children section
 
         // Add children to bottomScreen and scrollContentPane
         bottomScreen.getChildren().addAll(infoPane, summaryPane);

@@ -40,7 +40,7 @@ public class ItemAddScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -58,7 +58,7 @@ public class ItemAddScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -84,7 +84,7 @@ public class ItemAddScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
-        // title section
+    // title section
 
         // pane for the title section
         FlowPane titlePane = new FlowPane();
@@ -100,7 +100,7 @@ public class ItemAddScreen {
 
         titlePane.getChildren().add(titleField);
 
-        // type/rarity section
+    // type/rarity section
 
         // pane for the type/rarity section
         FlowPane trPane = new FlowPane(Orientation.HORIZONTAL);
@@ -120,7 +120,7 @@ public class ItemAddScreen {
 
         trPane.getChildren().addAll(cmbType, cmbRarity);
 
-        // cost/weight section
+    // cost/weight section
 
         // pane for the cost/weight section
         FlowPane cwPane = new FlowPane(Orientation.HORIZONTAL);
@@ -156,7 +156,7 @@ public class ItemAddScreen {
 
         cwPane.getChildren().addAll(costBox, weightField);
 
-        // info section
+    // info section
 
         // pane for the info section
         FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
@@ -181,7 +181,7 @@ public class ItemAddScreen {
 
         infoPane.getChildren().addAll(descriptionArea, extraArea);
 
-        // button section
+    // button section
 
         // button section pane
         FlowPane buttonPane = new FlowPane(Orientation.HORIZONTAL);
@@ -268,7 +268,7 @@ public class ItemAddScreen {
             mainStage.setScene(itemscreen.getScene());
         });
 
-// children-section
+    // children section
 
         // add children
         scrollContentPane.getChildren().addAll(titlePane, trPane, cwPane, infoPane, buttonPane);

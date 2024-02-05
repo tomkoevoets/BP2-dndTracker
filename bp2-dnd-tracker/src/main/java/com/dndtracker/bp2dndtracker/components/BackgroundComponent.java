@@ -20,6 +20,7 @@ public class BackgroundComponent extends Pane {
                 false // Not cover
         );
 
+        // Creating a BackgroundImage using the provided 'image' with specified properties
         BackgroundImage backgroundImage = new BackgroundImage(
                 image,
                 BackgroundRepeat.NO_REPEAT,
@@ -27,7 +28,9 @@ public class BackgroundComponent extends Pane {
                 BackgroundPosition.DEFAULT,
                 backgroundSize
         );
+        // Creating a Background using the previously defined BackgroundImage
         Background background = new Background(backgroundImage);
+        // Setting the background of the current object
         this.setBackground(background);
         this.setPrefSize(1260, 750);
         this.setMinSize(1260, 750);

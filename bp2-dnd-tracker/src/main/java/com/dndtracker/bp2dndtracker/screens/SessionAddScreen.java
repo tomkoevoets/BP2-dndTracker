@@ -47,7 +47,7 @@ public class SessionAddScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -65,7 +65,7 @@ public class SessionAddScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -74,7 +74,7 @@ public class SessionAddScreen {
         mainPane.setMaxSize(800, 600);
         mainPane.setId("main-pane");
 
-// Title section
+    // Title section
 
         // Create a FlowPane for the title
         FlowPane titlePane = new FlowPane();
@@ -91,12 +91,11 @@ public class SessionAddScreen {
 
         titlePane.getChildren().add(titleField);
 
-// Info section
+    // Info section
 
         // Create a FlowPane for information summary
         FlowPane infSumPane = new FlowPane(Orientation.HORIZONTAL);
         infSumPane.setPrefSize(800, 400);
-//        infSumPane.setAlignment(Pos.CENTER);
 
         FlowPane infoContentPane = new FlowPane();
         infoContentPane.setPrefSize(infSumPane.getPrefWidth()/2, infSumPane.getPrefHeight());
@@ -112,7 +111,7 @@ public class SessionAddScreen {
         infoContentPane.getChildren().add(infoField);
         infSumPane.getChildren().add(infoContentPane);
 
-// Summary section
+    // Summary section
 
         // Create a FlowPane for summary content
         FlowPane summaryContentPane = new FlowPane();
@@ -129,7 +128,7 @@ public class SessionAddScreen {
         summaryContentPane.getChildren().add(summaryField);
         infSumPane.getChildren().add(summaryContentPane);
 
-// Submit button section
+    // Submit button section
 
         // Create a FlowPane for the submit button
         FlowPane submitPane = new FlowPane();
@@ -143,21 +142,23 @@ public class SessionAddScreen {
 
         submitPane.getChildren().add(submitBtn);
 
-
+        // Set the action for the 'submitBtn' button
         submitBtn.setOnAction(click -> {
-            //TODO add submit to db function
+
+            // Check if the required fields ('titleField' and 'infoField') are empty
             if (titleField.getText().isEmpty() || infoField.getText().isEmpty()) {
-                // Alert when required fields are empty
+
+                // Display a warning alert when required fields are empty
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
                 alert.setHeaderText("One or more required fields are empty");
                 alert.showAndWait();
 
-                // Change border colors when fields are empty
+                // Change border colors and prompts when fields are empty
                 if (titleField.getText().isEmpty()) {
                     titleField.setStyle("-fx-border-color: red");
                     titleField.promptTextProperty().setValue("Session title cannot be empty");
-                    // set focus when empty
+                    // Set focus to 'titleField' when it's empty
                     titleField.requestFocus();
                 } else {
                     titleField.setStyle("-fx-border-color: black");
@@ -166,14 +167,17 @@ public class SessionAddScreen {
                 if (infoField.getText().isEmpty()) {
                     infoField.setStyle("-fx-border-color: red");
                     infoField.promptTextProperty().setValue("Session info cannot be empty");
-                    // set focus when empty
+                    // Set focus to 'infoField' when it's empty
                     infoField.requestFocus();
                 } else {
                     infoField.setStyle("-fx-border-color: black");
                 }
+
+                // Stop execution if required fields are empty
                 return;
             }
 
+            // Retrieve values from text fields
             String titleSting = titleField.getText();
             String infoString = infoField.getText().replace("'", "`");
             String summaryString = summaryField.getText().replace("'", "`");
@@ -181,16 +185,16 @@ public class SessionAddScreen {
             // Handle empty summary field
             String summaryValue = (summaryString.isEmpty()) ? "NULL" : "'" + summaryString + "'";
 
-            // Call controller to create a new session in the database
+            // Call controller ('cl') to create a new session in the database
             cl.createSession(titleSting, infoString, summaryString);
 
-
-            // Switch back to SessionScreen
+            // Switch back to the 'SessionScreen' after submitting the form
             SessionScreen sessionscreen = new SessionScreen();
             mainStage.setScene(sessionscreen.getScene());
         });
 
-// children-section
+    // children-section
+
         // add children
         mainPane.getChildren().addAll(titlePane, infSumPane, submitPane);
         content.getChildren().add(contentOnStack);

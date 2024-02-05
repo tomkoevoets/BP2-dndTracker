@@ -41,7 +41,7 @@ public class MonsterAddScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -59,7 +59,7 @@ public class MonsterAddScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -112,7 +112,6 @@ public class MonsterAddScreen {
         ahsPane.setHgap(50);
         ahsPane.setVgap(10);
 
-
         // add textfields threw getTextfield method
         TextField acField = getTextField("Add Armor Class...");
         TextField hpField = getTextField("Add Hit Points...");
@@ -128,7 +127,7 @@ public class MonsterAddScreen {
         TextField skillField = getTextField("Add Skill...");
         TextField challangeField = getTextField("Add Challenge...");
 
-        // children section
+    // children section
 
         ahsPane.getChildren().addAll(acField, hpField, speedField, strField, dexField, conField, intField, wisField,
                 chaField, senseField, languageField, skillField, challangeField);
@@ -174,7 +173,7 @@ public class MonsterAddScreen {
 
         buttonPane.getChildren().add(submitBtn);
 
-    // event section
+        // event section
 
         // event for adding a new character
         submitBtn.setOnAction(click -> {
@@ -245,7 +244,7 @@ public class MonsterAddScreen {
             mainStage.setScene(monsterscreen.getScene());
         });
 
-// children-section
+    // children section
 
         // add children
         scrollContentPane.getChildren().addAll(titlePane, ahsPane, infoPane, buttonPane);
@@ -255,7 +254,7 @@ public class MonsterAddScreen {
         root.getChildren().addAll(sidebar, content);
     }
 
-    // method section
+// method area
 
     // textfield method
     public TextField getTextField(String prompt) {

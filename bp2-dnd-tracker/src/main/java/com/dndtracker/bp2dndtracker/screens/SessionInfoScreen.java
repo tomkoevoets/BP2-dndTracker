@@ -53,7 +53,7 @@ public class SessionInfoScreen {
         stage.setTitle(session.getName());
         stage.show();
 
-// background section
+// pre-content area
 
         // Load the image
         Image backgroundImage = new Image(Application.class.getResource("images/session-info-background.jpg").toString());
@@ -73,7 +73,9 @@ public class SessionInfoScreen {
         // Set the background to the root Pane
         root.setBackground(background);
 
-// content section
+// content area
+
+    // title section
 
         // content title
         FlowPane titleBox = new FlowPane();
@@ -222,7 +224,6 @@ public class SessionInfoScreen {
         summaryTXT.setContent(summary);
         summaryContentPane.getChildren().addAll(summaryTitlePane, summaryTXT);
         summaryPane.getChildren().add(summaryContentPane);
-
 
     // update section
 

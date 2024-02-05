@@ -40,7 +40,7 @@ public class NpcUpdateScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -58,8 +58,7 @@ public class NpcUpdateScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
-
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -87,7 +86,7 @@ public class NpcUpdateScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
-        // title section
+    // title section
 
         // pane for the title section
         FlowPane titlePane = new FlowPane();
@@ -103,7 +102,7 @@ public class NpcUpdateScreen {
 
         titlePane.getChildren().add(titleField);
 
-        // ac/hp/speed section
+    // ac/hp/speed section
 
         // pane for the ac/hp/speed  section
         FlowPane ahsPane = new FlowPane(Orientation.HORIZONTAL);
@@ -111,7 +110,6 @@ public class NpcUpdateScreen {
         ahsPane.setAlignment(Pos.CENTER);
         ahsPane.setHgap(50);
         ahsPane.setVgap(10);
-
 
         // add textfields threw getTextfield method
         TextField acField = getTextField("Add Armor Class...", cs.getArmorClass());
@@ -133,7 +131,7 @@ public class NpcUpdateScreen {
         ahsPane.getChildren().addAll(acField, hpField, speedField, strField, dexField, conField, intField, wisField,
                 chaField, senseField, languageField, skillField, challangeField);
 
-        // info section
+    // info section
 
         // pane for the info section
         FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
@@ -148,7 +146,7 @@ public class NpcUpdateScreen {
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 
-        // extra section
+    // extra section
 
         // textarea for description
         TextArea extraArea = new TextArea(cs.getExtra());
@@ -159,7 +157,7 @@ public class NpcUpdateScreen {
 
         infoPane.getChildren().addAll(descriptionArea, extraArea);
 
-        // button section
+    // button section
 
         // button section pane
         FlowPane buttonPane = new FlowPane(Orientation.HORIZONTAL);
@@ -174,7 +172,7 @@ public class NpcUpdateScreen {
 
         buttonPane.getChildren().add(submitBtn);
 
-        // event section
+        // button event section
 
         // event for adding a new character
         submitBtn.setOnAction(click -> {
@@ -218,6 +216,7 @@ public class NpcUpdateScreen {
             }
 
             // create variables with the textfield text to add to the database
+            // replace ' to avoid sql syntax errors
             cs.setName(titleField.getText().replace("'", "`"));
             cs.setDescription(descriptionArea.getText().replace("'", "`"));
             cs.setExtra(extraArea.getText().replace("'", "`"));
@@ -243,7 +242,7 @@ public class NpcUpdateScreen {
             mainStage.setScene(npcscreen.getScene());
         });
 
-// children-section
+    // children-section
 
         // add children
         scrollContentPane.getChildren().addAll(titlePane, ahsPane, infoPane, buttonPane);
@@ -253,7 +252,7 @@ public class NpcUpdateScreen {
         root.getChildren().addAll(sidebar, content);
     }
 
-// method section
+// method area
 
     // textfield method
     public TextField getTextField(String prompt, String getter) {

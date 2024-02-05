@@ -21,8 +21,6 @@ public class GenerateItemComponent  {
 
     public GenerateItemComponent(EventHandler<Event> event, String picture, String title) {//
 
-        //TODO add stockphoto option
-
         // Create a VBox for sessionItem content
         VBox sessionItem = new VBox();
         sessionItem.setAlignment(Pos.CENTER);
@@ -54,18 +52,16 @@ public class GenerateItemComponent  {
         sessionPictureImage.setFitWidth(120);
         sessionPictureImage.setFitHeight(175);
         sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/"+picture).toString()));
-//        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/"+ picture).toString()));//
-//        sessionPictureImage.setImage(new Image(Application.class.getResource("images/userUploads/monster.jpg").toString()));
         sessionPictureImage.setId("picture-image");
 
         // Create a Label for the session title
-        Label sessionTitle = new Label(title);//
+        Label sessionTitle = new Label(title);
         sessionTitle.setWrapText(true);
         sessionTitle.setMaxWidth(sessionPictureImage.getFitWidth());
         sessionTitle.setMaxHeight(50);
         sessionTitle.setMinHeight(50);
         sessionTitle.setContentDisplay(ContentDisplay.CENTER);
-        sessionTitle.setTextAlignment(TextAlignment.CENTER);//TODO centre the titles
+        sessionTitle.setTextAlignment(TextAlignment.CENTER);
         sessionTitle.setId("title");
 
         // Add components to sessionItem

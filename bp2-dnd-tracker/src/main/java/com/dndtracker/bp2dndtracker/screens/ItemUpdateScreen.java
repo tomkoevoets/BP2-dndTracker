@@ -85,7 +85,7 @@ public class ItemUpdateScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
-        // title section
+    // title section
 
         // pane for the title section
         FlowPane titlePane = new FlowPane();
@@ -101,7 +101,7 @@ public class ItemUpdateScreen {
 
         titlePane.getChildren().add(titleField);
 
-        // type/rarity section
+    // type/rarity section
 
         // pane for the type/rarity section
         FlowPane trPane = new FlowPane(Orientation.HORIZONTAL);
@@ -109,14 +109,13 @@ public class ItemUpdateScreen {
         trPane.setAlignment(Pos.CENTER);
         trPane.setHgap(50);
 
-
-        // cmb for the type
+        // cmb for the type using an observableArrayList
         ComboBox<String> cmbType = new ComboBox<>(FXCollections.observableArrayList("Weapon", "Armor", "Potion", "Ring", "Scroll", "Wand", "Amulet", "Tool", "Instrument", "Miscellaneous"));
         cmbType.setPromptText("type");
         cmbType.setValue(item.getType());
         cmbType.setPrefSize(150, 40);
 
-        // cmb for the rarity
+        // cmb for the rarity using an observableArrayList
         ComboBox<String> cmbRarity = new ComboBox<>(FXCollections.observableArrayList("Common", "Uncommon", "Rare", "Very rare", "Legendary"));
         cmbRarity.setPromptText("rarity");
         cmbRarity.setValue(item.getRarity());
@@ -124,7 +123,7 @@ public class ItemUpdateScreen {
 
         trPane.getChildren().addAll(cmbType, cmbRarity);
 
-        // cost/weight section
+    // cost/weight section
 
         // pane for the cost/weight section
         FlowPane cwPane = new FlowPane(Orientation.HORIZONTAL);
@@ -160,7 +159,7 @@ public class ItemUpdateScreen {
 
         cwPane.getChildren().addAll(costBox, weightField);
 
-        // info section
+    // info section
 
         // pane for the info section
         FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
@@ -185,7 +184,7 @@ public class ItemUpdateScreen {
 
         infoPane.getChildren().addAll(descriptionArea, extraArea);
 
-        // button section
+    // button section
 
         // button section pane
         FlowPane buttonPane = new FlowPane(Orientation.HORIZONTAL);

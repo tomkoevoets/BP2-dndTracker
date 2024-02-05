@@ -41,6 +41,8 @@ public class NpcScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/npcscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
+// pre-content area
+
         // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
@@ -53,6 +55,8 @@ public class NpcScreen {
         background = new BackgroundComponent();
         // add it to the content StackPane
         content.getChildren().addAll(background);
+
+// content area
 
         // Create a VBox for stacking content on top of the StackPane
         VBox contentOnStack = new VBox();
@@ -97,10 +101,10 @@ public class NpcScreen {
         });
 
         // Retrieve sessions from the database and add them to ItemPane
-        for (CharacterSuperclass cs : cl.getNpcs()) {/////
+        for (CharacterSuperclass cs : cl.getNpcs()) {
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
                 NpcInfoScreen NpcInfoScreen = new NpcInfoScreen(cs);
-            },cs.getImage("Npc"), cs.getName()).getNode());/////
+            },cs.getImage("Npc"), cs.getName()).getNode());
         }
 
         // Add components to the contentOnStack VBox

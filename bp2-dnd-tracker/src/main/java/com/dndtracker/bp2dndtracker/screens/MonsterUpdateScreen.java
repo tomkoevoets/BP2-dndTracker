@@ -85,7 +85,7 @@ public class MonsterUpdateScreen {
         scrollPane.requestLayout();
         scrollPane.setId("add-scroll-pane");
 
-        // title section
+    // title section
 
         // pane for the title section
         FlowPane titlePane = new FlowPane();
@@ -101,7 +101,7 @@ public class MonsterUpdateScreen {
 
         titlePane.getChildren().add(titleField);
 
-        // ac/hp/speed section
+    // ac/hp/speed section
 
         // pane for the ac/hp/speed  section
         FlowPane ahsPane = new FlowPane(Orientation.HORIZONTAL);
@@ -109,7 +109,6 @@ public class MonsterUpdateScreen {
         ahsPane.setAlignment(Pos.CENTER);
         ahsPane.setHgap(50);
         ahsPane.setVgap(10);
-
 
         // add textfields threw getTextfield method
         TextField acField = getTextField("Add Armor Class...", cs.getArmorClass());
@@ -126,12 +125,12 @@ public class MonsterUpdateScreen {
         TextField skillField = getTextField("Add Skill...", cs.getSkills());
         TextField challangeField = getTextField("Add Challenge...", cs.getChallenge());
 
-        // children section
+    // children section
 
         ahsPane.getChildren().addAll(acField, hpField, speedField, strField, dexField, conField, intField, wisField,
                 chaField, senseField, languageField, skillField, challangeField);
 
-        // info section
+    // info section
 
         // pane for the info section
         FlowPane infoPane = new FlowPane(Orientation.HORIZONTAL);
@@ -146,7 +145,7 @@ public class MonsterUpdateScreen {
         descriptionArea.setFocusTraversable(false);
         descriptionArea.setId("descripton-area");
 
-        // extra section
+    // extra section
 
         // textarea for description
         TextArea extraArea = new TextArea(cs.getExtra());
@@ -241,7 +240,7 @@ public class MonsterUpdateScreen {
             mainStage.setScene(monsterscreen.getScene());
         });
 
-// children-section
+    // children-section
 
         // add children
         scrollContentPane.getChildren().addAll(titlePane, ahsPane, infoPane, buttonPane);
@@ -251,7 +250,7 @@ public class MonsterUpdateScreen {
         root.getChildren().addAll(sidebar, content);
     }
 
-    // method section
+// method area
 
     // textfield method
     public TextField getTextField(String prompt, String getter) {

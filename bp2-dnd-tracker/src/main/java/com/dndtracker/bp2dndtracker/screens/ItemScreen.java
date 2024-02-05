@@ -42,6 +42,8 @@ public class ItemScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/itemscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
+// pre-content area
+
         // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
@@ -55,10 +57,14 @@ public class ItemScreen {
         // add it to the content StackPane
         content.getChildren().addAll(background);
 
+// content area
+
         // Create a VBox for stacking content on top of the StackPane
         VBox contentOnStack = new VBox();
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
+
+    // session item section
 
         // Create a FlowPane for generating sessionItem
         FlowPane ItemPane = new FlowPane(Orientation.HORIZONTAL);
@@ -91,7 +97,6 @@ public class ItemScreen {
         btnAdd.setTextAlignment(TextAlignment.CENTER);
         btnAdd.setId("btn-add");
 
-//        Item item = new Item();
         // Set an event handler for the add session button
         btnAdd.setOnAction(e -> {
             ItemAddScreen addScreen = new ItemAddScreen();
@@ -99,11 +104,16 @@ public class ItemScreen {
         });
 
         // Retrieve sessions from the database and add them to ItemPane
-        for (Item item : cl.getItems()) {/////
+        // Iterating through the list of 'Item' objects obtained from 'cl.getItems()'
+        for (Item item : cl.getItems()) {
+            // Creating a new 'GenerateItemComponent' and adding it to the 'ItemPane' for each 'Item'
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
+                // Creating an 'ItemInfoScreen' with the current 'Item' when the component is clicked
                 ItemInfoScreen itemInfoScreen = new ItemInfoScreen(item);
             }, item.getImage(), item.getName()).getNode());
         }
+
+    // children section
 
         // Add components to the contentOnStack VBox
         content.getChildren().addAll(contentOnStack);

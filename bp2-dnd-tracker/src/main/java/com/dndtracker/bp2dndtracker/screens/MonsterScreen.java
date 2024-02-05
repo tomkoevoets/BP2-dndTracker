@@ -37,6 +37,8 @@ public class MonsterScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/monsterscreen.css").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
+// pre-content area
+
         // Create SidebarComponent and add it to the root HBox
         sidebar = new SidebarComponent();
 
@@ -49,6 +51,8 @@ public class MonsterScreen {
         background = new BackgroundComponent();
         // add it to the content StackPane
         content.getChildren().addAll(background);
+
+// content area
 
         // Create a VBox for stacking content on top of the StackPane
         VBox contentOnStack = new VBox();
@@ -93,10 +97,10 @@ public class MonsterScreen {
         });
 
         // Retrieve sessions from the database and add them to ItemPane
-        for (CharacterSuperclass cs : cl.getMonsters()) {/////
+        for (CharacterSuperclass cs : cl.getMonsters()) {
             ItemPane.getChildren().add(new GenerateItemComponent(e -> {
                 MonsterInfoScreen monsterInfoScreen = new MonsterInfoScreen(cs);
-            },cs.getImage("Monster"), cs.getName()).getNode());/////
+            },cs.getImage("Monster"), cs.getName()).getNode());
         }
 
         // Add components to the contentOnStack VBox

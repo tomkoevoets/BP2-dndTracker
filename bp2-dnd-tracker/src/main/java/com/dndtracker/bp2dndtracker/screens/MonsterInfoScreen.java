@@ -50,7 +50,7 @@ public class MonsterInfoScreen {
         stage.setTitle(cs.getName());
         stage.show();
 
-// background section
+// pre-content area
 
         // Load the image
         Image backgroundImage = new Image(Application.class.getResource("images/session-info-background.jpg").toString());
@@ -70,7 +70,7 @@ public class MonsterInfoScreen {
         // Set the background to the root Pane
         root.setBackground(background);
 
-// content section
+// content area
 
         FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
         scrollContentPane.setAlignment(Pos.TOP_CENTER);
@@ -203,7 +203,7 @@ public class MonsterInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-// stat section
+    // stat section
 
         // pane for top styling
         FlowPane topColorPane = new FlowPane();
@@ -220,7 +220,7 @@ public class MonsterInfoScreen {
         middleContentPane.setPrefSize(screenWidth-100, screenHeight - 299);
         middleContentPane.setId("middle-content-pane");
 
-    // title section
+        // title section
 
         // middleContentPane title
         FlowPane middleContentTitlePane = new FlowPane();
@@ -267,24 +267,26 @@ public class MonsterInfoScreen {
         bottomStatPane.setAlignment(Pos.CENTER);
         bottomStatPane.setId("bottom-stat-pane");
 
-        // method section
+        // children section
 
+        // use infoblock method
         bottomStatPane.getChildren().addAll(infoBlock("Senses ", cs.getSense()), infoBlock("Languages ", cs.getLanguages()),
                 infoBlock("Skills ", cs.getSkills()), infoBlock("Challenge ", cs.getChallenge()));
 
         // bottom style section
+
         FlowPane bottomColorPane = new FlowPane();
         bottomColorPane.setPrefSize(screenWidth-100, 4);
         bottomColorPane.setStyle("-fx-background-color: #e69a28; -fx-border-width: 0.5; -fx-border-style: solid; -fx-border-color: black; -fx-border-radius: 2");
 
 
-    // children section
+        // children section
 
         middleContentTitlePane.getChildren().add(middleContentTitle);
         middleContentPane.getChildren().addAll(topColorPane,middleContentTitlePane, ahsPane, statPane, bottomStatPane, bottomColorPane);
         middleScreen.getChildren().add(middleContentPane);
 
-// content info section
+    // content info section
 
         // Content info hbox
         HBox bottomScreen = new HBox();
@@ -306,7 +308,7 @@ public class MonsterInfoScreen {
         info.setWrappingWidth(infoContentPane.getPrefWidth() - 50);
         info.setId("item-info");
 
-    // info title section
+        // info title section
 
         // Info Title
         Label infoTitle = new Label("Monster Description");
@@ -331,7 +333,7 @@ public class MonsterInfoScreen {
         infoContentPane.getChildren().addAll(infoTitlePane, infoTXT);
         infoPane.getChildren().add(infoContentPane);
 
-// Content extra section
+    // Content extra section
 
         // content extra pane
         FlowPane summaryPane = new FlowPane();
@@ -349,7 +351,7 @@ public class MonsterInfoScreen {
         summary.setWrappingWidth(infoContentPane.getPrefWidth() - 50);
         summary.setId("info-extra");
 
-    // extra title section
+        // extra title section
 
         // Summary Title
         Label summaryTitle = new Label("Monster Extra");
@@ -374,7 +376,7 @@ public class MonsterInfoScreen {
         summaryContentPane.getChildren().addAll(summaryTitlePane, summaryTXT);
         summaryPane.getChildren().add(summaryContentPane);
 
-// Update section
+    // Update section
 
         // update hbox
         HBox updateBox = new HBox();
@@ -401,7 +403,7 @@ public class MonsterInfoScreen {
         root.getChildren().addAll(scrollPane);
     }
 
-// method section
+// method area
 
     // method for statblock
     public VBox statBlock(String textLabel, String getStat){

@@ -40,7 +40,7 @@ public class NpcAddScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -58,8 +58,7 @@ public class NpcAddScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
-
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -174,7 +173,7 @@ public class NpcAddScreen {
 
         buttonPane.getChildren().add(submitBtn);
 
-    // event section
+        // button event section
 
         // event for adding a new character
         submitBtn.setOnAction(click -> {
@@ -245,7 +244,7 @@ public class NpcAddScreen {
             mainStage.setScene(npcscreen.getScene());
         });
 
-// children-section
+    // children-section
 
         // add children
         scrollContentPane.getChildren().addAll(titlePane, ahsPane, infoPane, buttonPane);
@@ -255,7 +254,7 @@ public class NpcAddScreen {
         root.getChildren().addAll(sidebar, content);
     }
 
-// method section
+// method area
 
     // textfield method
     public TextField getTextField(String prompt) {

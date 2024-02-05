@@ -51,7 +51,7 @@ public class NpcInfoScreen {
         stage.setTitle(cs.getName());
         stage.show();
 
-// background section
+// pre-content area
 
         // Load the image
         Image backgroundImage = new Image(Application.class.getResource("images/session-info-background.jpg").toString());
@@ -71,7 +71,7 @@ public class NpcInfoScreen {
         // Set the background to the root Pane
         root.setBackground(background);
 
-// content section
+// content area
 
         FlowPane scrollContentPane = new FlowPane(Orientation.VERTICAL);
         scrollContentPane.setAlignment(Pos.TOP_CENTER);
@@ -204,7 +204,7 @@ public class NpcInfoScreen {
         titleBox.getChildren().addAll(title, titleIcon);
         titlePane.getChildren().addAll(deletePane, titleBox);
 
-// stat section
+// stat area
 
         // pane for top styling
         FlowPane topColorPane = new FlowPane();
@@ -374,7 +374,7 @@ public class NpcInfoScreen {
         summaryContentPane.getChildren().addAll(summaryTitlePane, summaryTXT);
         summaryPane.getChildren().add(summaryContentPane);
 
-// Update section
+// Update area
 
         // update hbox
         HBox updateBox = new HBox();
@@ -400,6 +400,8 @@ public class NpcInfoScreen {
         scrollContentPane.getChildren().addAll(titlePane, middleScreen, bottomScreen, updateBox);
         root.getChildren().addAll(scrollPane);
     }
+
+// method area
 
     public VBox statBlock(String textLabel, String getStat){
         // vbox for statblock

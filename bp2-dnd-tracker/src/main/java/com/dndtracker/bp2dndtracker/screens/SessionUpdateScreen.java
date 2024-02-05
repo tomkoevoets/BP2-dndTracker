@@ -44,7 +44,7 @@ public class SessionUpdateScreen {
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
         scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
-// Pre-content section
+// Pre-content area
 
         // Add the sidebar from components
         sidebar = new SidebarComponent();
@@ -62,7 +62,7 @@ public class SessionUpdateScreen {
         contentOnStack.setPrefSize(1260, 750);
         contentOnStack.setAlignment(Pos.CENTER);
 
-// Content section
+// Content area
 
         // Create a FlowPane for the main content
         FlowPane mainPane = new FlowPane(Orientation.VERTICAL);
@@ -71,7 +71,7 @@ public class SessionUpdateScreen {
         mainPane.setMaxSize(800, 600);
         mainPane.setId("main-pane");
 
-// Title section
+    // Title section
 
         // Create a FlowPane for the title
         FlowPane titlePane = new FlowPane();
@@ -88,7 +88,7 @@ public class SessionUpdateScreen {
 
         titlePane.getChildren().add(titleField);
 
-// Info section
+    // Info section
 
         // Create a FlowPane for information summary
         FlowPane infSumPane = new FlowPane(Orientation.HORIZONTAL);
@@ -109,7 +109,7 @@ public class SessionUpdateScreen {
         infoContentPane.getChildren().add(infoField);
         infSumPane.getChildren().add(infoContentPane);
 
-// Summary section
+    // Summary section
 
         // Create a FlowPane for summary content
         FlowPane summaryContentPane = new FlowPane();
@@ -126,7 +126,7 @@ public class SessionUpdateScreen {
         summaryContentPane.getChildren().add(summaryField);
         infSumPane.getChildren().add(summaryContentPane);
 
-// Submit button section
+    // Submit button section
 
         // Create a FlowPane for the submit button
         FlowPane submitPane = new FlowPane();
@@ -142,7 +142,6 @@ public class SessionUpdateScreen {
 
         // Set an event handler for the submit button
         submitBtn.setOnAction(click -> {
-            //TODO add submit to db function
             if (titleField.getText().isEmpty() || infoField.getText().isEmpty()) {
                 // Alert when required fields are empty
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -192,7 +191,7 @@ public class SessionUpdateScreen {
             mainStage.setScene(sessionscreen.getScene());
         });
 
-// Children section
+    // Children section
 
         // Add children to the mainPane
         mainPane.getChildren().addAll(titlePane, infSumPane, submitPane);
