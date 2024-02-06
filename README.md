@@ -22,8 +22,8 @@ Follow the following steps, and you'll be ready to enhance your Dungeon Masterin
 ### Prerequisites
 Make sure you have the following installed:
 
-- [Your Operating System]
-- [Any specific dependencies]
+-  any working operating would suffice
+- [Any specific dependencies] 
 
 ### Installation Steps
 1. Clone the Repository
@@ -31,7 +31,7 @@ Make sure you have the following installed:
 3. Run the Application
 
 ### Requirements
-- [Specify any additional requirements, such as programming language version, etc.]
+- Java Development Kit (JDK) installed, version X.X or higher. You can download it from Oracle's website.
 <br/>
 ## Configuration
 

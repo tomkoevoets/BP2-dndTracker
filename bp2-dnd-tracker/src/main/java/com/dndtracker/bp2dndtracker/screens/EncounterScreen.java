@@ -42,8 +42,6 @@ public class EncounterScreen {
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/encounterscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
 // Pre-content section
 

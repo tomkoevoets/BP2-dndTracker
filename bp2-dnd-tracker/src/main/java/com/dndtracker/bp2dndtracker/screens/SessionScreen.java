@@ -8,6 +8,7 @@ import com.dndtracker.bp2dndtracker.components.SidebarComponent;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -36,8 +37,6 @@ public class SessionScreen  {
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
 // pre-content area
 

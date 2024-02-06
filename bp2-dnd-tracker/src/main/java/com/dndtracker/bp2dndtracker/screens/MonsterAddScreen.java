@@ -38,8 +38,6 @@ public class MonsterAddScreen {
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/monsterscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
 // Pre-content area
 

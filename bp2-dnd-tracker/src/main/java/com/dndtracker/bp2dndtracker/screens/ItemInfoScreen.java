@@ -39,8 +39,6 @@ public class ItemInfoScreen {
         scene = new Scene(root, 800, 600);
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/itemscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
         // instegate the width and height of the root as a variable
         screenWidth = root.getWidth();

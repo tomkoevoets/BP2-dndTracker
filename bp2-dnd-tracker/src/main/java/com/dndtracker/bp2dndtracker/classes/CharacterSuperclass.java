@@ -73,7 +73,7 @@ public class CharacterSuperclass {
         if(type.equals("Monster")){
             return "monster.jpg";
         } else if (type.equals("Npc")) {
-            return "npc.jpg";
+            return "Npc.jpg";//////////////////////////////////
         }
         return "";
     }

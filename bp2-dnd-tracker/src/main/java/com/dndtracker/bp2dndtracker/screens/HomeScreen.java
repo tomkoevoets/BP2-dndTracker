@@ -27,7 +27,6 @@ public class HomeScreen {
         scene = new Scene(root, 1400, 750);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/homescreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
 // pre-content area
 

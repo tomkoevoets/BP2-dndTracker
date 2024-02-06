@@ -41,8 +41,6 @@ public class SessionInfoScreen {
         scene = new Scene(root, 800, 600);
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sessionscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-bold.ttf").toString());
 
         // instegate the width and height of the root as a variable
         screenWidth = root.getWidth();
@@ -227,7 +225,7 @@ public class SessionInfoScreen {
 
     // update section
 
-        HBox updateBox = new HBox();//////update?
+        HBox updateBox = new HBox();
         updateBox.setAlignment(Pos.CENTER);
         updateBox.setPadding(new Insets(0,0,0,0));
 

@@ -40,7 +40,6 @@ public class ItemScreen {
         // Add stylesheets to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/sidebar.css").toString());
         scene.getStylesheets().add(Application.class.getResource("stylesheets/itemscreen.css").toString());
-        scene.getStylesheets().add(Application.class.getResource("fonts/JosefinSlab-regular.ttf").toString());
 
 // pre-content area
 
