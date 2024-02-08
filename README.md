@@ -1,4 +1,5 @@
 # BP2-dndTracker
+<hr>
 this D&amp;D tracker is a project made for school and all the Dungeon Masters out there.
 <br/> 
 the main function is to keep track of sessions, items, characters and encounters for a dungeon master. 
@@ -16,30 +17,42 @@ Traditionally, DMs rely on D&D books or personal notes, but given the vast amoun
 The D&D Tracker addresses this issue head-on. It allows DMs to store all relevant information within the tracker, ensuring quick access to all the details they need.
 <br/>
 ## Installation Instructions
+<hr>
 
 Follow the following steps, and you'll be ready to enhance your Dungeon Mastering experience with the D&D Tracker in no time!
 <br/>
 ### Prerequisites
 Make sure you have the following installed:
 
--  any working operating would suffice 
+-  any working operating would suffice
+-  an integrated development environment like Intellij
+-  xampp
 
 ### Installation Steps
 
 repository: https://github.com/tomkoevoets/BP2-dndTracker
-1. Clone the Repository
-2. Install Dependencies
-3. Run the Application
+1. Download the repository as a zip file
+2. Extract the content of the zipfile
+3. Open the project in your IDE (intellij)
+4. Open xampp and click start at Apache and MySql
+5. Click on the 'admin' button
+6. Import the database file to the localhost phpMyAdmin
+7. Run the application in intellij or open the [bp2-dnd-tracker.jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar%2Fbp2-dnd-tracker.jar)
+8. The runable jar file can be found in [bp2-dnd-tracker](bp2-dnd-tracker) - [out](bp2-dnd-tracker%2Fout) - [artifacts](bp2-dnd-tracker%2Fout%2Fartifacts) - [bp2_dnd_tracker_jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar) - [bp2-dnd-tracker.jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar%2Fbp2-dnd-tracker.jar)
+9. This jar file can be put on your desktop for quick acces to the application without having to run it threw an IDE
 
 ### Requirements
-- Java Development Kit (JDK) installed, version X.X or higher. You can download it from Oracle's website.
+- Java Development Kit (JDK) installed, version 21.0.1 or higher. You can download it from Oracle's website.
 <br/>
 ## Configuration
+<hr>
  - there are no specific configurable options.
-
 <br/>
-## Usage Guide
+ - at least java 8
 
+
+## Usage Guide
+<hr>
 Once the tracker is started follow these steps to maximize your experience with the D&D Tracker:
 
 ### 1. Homescreen
@@ -111,7 +124,7 @@ The encounter screen comes into play when the players get into an encounter and 
 - To see the item information you can click on the item section after adding one
 
 ## Roadmap
-
+<hr>
 Just like in the world of D&D the possebilities are endless to what can be added to this application to make it even better.
 
 The future addations that i would like to see:
