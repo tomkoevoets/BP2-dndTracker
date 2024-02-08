@@ -1,0 +1,179 @@
+/*full page styling*/
+* {
+    -fx-font-family:  'Josefin Slab', serif;
+}
+
+/*//////////////////////////////////////////////////session screen///////////////////////////////////////////////////*/
+#session-scroll-pane{
+    -fx-background-color: transparent;
+}
+#session-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/*Button*/
+#btn-add-session{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#btn-add-session:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+/*generate item*/
+
+#session-item:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(255, 228, 180, 0.43);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgba(255, 228, 180, 1);
+    -fx-border-width: 0.5;
+}
+
+#session-picture-image{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0.0, 0.0);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+#session-title{
+    -fx-background-color: rgba(0, 0, 0, 0.06);
+    -fx-background-radius: 3px;
+    -fx-text-fill: white;
+    -fx-font-family:  'Josefin Slab';
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+/*///////////////////////////////////////////////////////////sessionInfoScreen////////////////////////////////////////*/
+/*title section*/
+#sessionScreen-title{
+    -fx-font-family:  'Josefin Slab';
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+}
+
+#delete-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
+#delete-btn:hover{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(255, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
+/*info section*/
+#session-info-content-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+#session-info-title{
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+#scrollPane{
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+/*summary section*/
+#session-summary-content-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+#session-summary-title{
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+/*update section*/
+#update-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#update-btn:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+/*///////////////////////////////////////////////////////////sessionAddScreen/////////////////////////////////////////*/
+
+/*content section*/
+#main-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+/*title section*/
+#session-title-field{
+    -fx-font-size: 14;
+    -fx-background-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*info section*/
+#session-info-field{
+    -fx-font-size: 14;
+    -fx-border-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*summary section*/
+#session-summary-field{
+    -fx-font-size: 14;
+    -fx-border-radius: 3px;
+    -fx-font-family:  'Josefin Slab';
+}
+
+/*submit button*/
+#submit-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#submit-btn:hover{
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}

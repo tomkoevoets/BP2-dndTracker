@@ -1,0 +1,199 @@
+/*full page styling*/
+* {
+    -fx-font-family:  'Josefin Slab', serif;
+}
+
+#main-pane {
+    -fx-background-color: rgba(255, 228, 180, 0.56);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: rgb(201, 170, 125);
+    -fx-border-width: 0.5;
+}
+
+/*//////////////////////////////////////////////////////top section////////////////////////////////////////////////////*/
+
+/*add button section*/
+#add-btn {
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 14;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: black;
+}
+
+#add-btn:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+#add-btn .label {
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+#add-btn .arrow-button {
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+#add-btn .menu-item {
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-text-fill: #000000;
+    -fx-cursor: hand;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+#add-btn .context-menu{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-text-fill: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+}
+
+/*//////////////////////////////////////////////////middle section/////////////////////////////////////////////////*/
+
+/*left middle section*/
+
+#nav-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+    -fx-background-size: cover;
+}
+
+#nav-btn:hover {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1.1;
+    -fx-cursor: hand;
+    -fx-background-color: rgb(255, 228, 180);
+}
+
+/*scroll pane styling*/
+#scroll-pane {
+    -fx-background-color: transparent;
+}
+#scroll-pane >.viewport {
+    -fx-background-color: transparent;
+}
+
+#add-pane {
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-background-size: cover;
+}
+
+/*method styling*/
+#character-pane-method{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-background-size: cover;
+}
+
+#character-pane-method:hover{
+    -fx-cursor: hand;
+}
+
+#player-field{
+    -fx-border-width: 0.8;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+}
+
+/*delete button*/
+#delete-btn{
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-background-size: cover;
+}
+
+#delete-btn:hover{
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-border-color: rgba(255, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+}
+
+#item-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.7);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-size: cover;
+}
+
+#scroll-pane{
+    -fx-background-color: rgba(255, 228, 180, 0.7);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-size: cover;
+}
+
+
+/*right middle section*/
+#item-label{
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+#add-item-pane{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+#add-item-pane:hover{
+    -fx-background-color: rgb(255, 228, 180);
+}
+
+#hp-spinner{
+    -fx-body-color: black;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-progress-color: black;
+    -fx-border-width: 0.8;
+}
+
+
+/*///////////////////////////////////////////////////bottom section/////////////////////////////////////////////////*/
+#reset-btn{
+    -fx-background-color: rgb(231, 207, 165);
+    -fx-font-size: 16;
+    -fx-border-width: 0.8;
+    -fx-border-color: rgba(0, 0, 0, 0.8);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-text-fill: black;
+}
+
+#reset-btn:hover {
+    -fx-background-color: rgb(255, 228, 180);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}

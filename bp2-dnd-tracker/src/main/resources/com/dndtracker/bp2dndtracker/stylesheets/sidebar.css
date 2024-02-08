@@ -1,0 +1,88 @@
+/*full page styling*/
+* {
+    -fx-font-family:  'Josefin Slab', serif;
+}
+
+/*sidebar styling*/
+#sidebar-component {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 1 1 0;
+}
+
+#logo {
+    -fx-border-color: Black;
+    -fx-border-width: 0 0 0 0;
+}
+
+/*menu item styling*/
+#menu-item-home {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 0 0;
+}
+
+#menu-item-home:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-session {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 0 0;
+}
+
+#menu-item-session:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-monster {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 0 0;
+}
+
+#menu-item-monster:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-npc {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 0 0;
+}
+
+#menu-item-npc:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-item {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 0 0;
+}
+
+#menu-item-item:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-encounter {
+    -fx-background-color: #3d3c5c;
+    -fx-border-color: Black;
+    -fx-border-width: 1 0 1 0;
+}
+
+#menu-item-encounter:hover {
+    -fx-background-color: #4a496e;
+    -fx-cursor: hand;
+}
+
+#menu-item-label {
+    -fx-text-fill: white;
+    -fx-font-family:  'Josefin Slab';
+}
