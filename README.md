@@ -22,10 +22,11 @@ Follow the following steps, and you'll be ready to enhance your Dungeon Masterin
 ### Prerequisites
 Make sure you have the following installed:
 
--  any working operating would suffice
-- [Any specific dependencies] 
+-  any working operating would suffice 
 
 ### Installation Steps
+
+repository: https://github.com/tomkoevoets/BP2-dndTracker
 1. Clone the Repository
 2. Install Dependencies
 3. Run the Application
@@ -34,12 +35,10 @@ Make sure you have the following installed:
 - Java Development Kit (JDK) installed, version X.X or higher. You can download it from Oracle's website.
 <br/>
 ## Configuration
+ - there are no specific configurable options.
 
-?
 <br/>
 ## Usage Guide
-
-?
 
 Once the tracker is started follow these steps to maximize your experience with the D&D Tracker:
 
