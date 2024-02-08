@@ -3,9 +3,9 @@
 this D&amp;D tracker is a project made for school and all the Dungeon Masters out there.
 <br/> 
 the main function is to keep track of sessions, items, characters and encounters for a dungeon master. 
-<br/>
-## Project Overview
 
+## Project Overview
+<hr>
 Welcome to the D&D Tracker, your indispensable companion for Dungeon Masters. This application ensures a smooth D&D gaming experience by allowing DMs to effortlessly manage sessions. Record session details and summaries, add monsters, NPCs, and items for quick reference. The Encounter Tracker simplifies on-the-fly management during encounters, displaying turn order and tracking statuses. Elevate your storytelling with this comprehensive tool, enhancing the immersive experience of Dungeons & Dragons for both the Dungeon Master and the players.
 <br/>
 <br/>
