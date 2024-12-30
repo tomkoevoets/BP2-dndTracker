@@ -1,134 +1,141 @@
-# BP2-dndTracker
-<hr>
-this D&amp;D tracker is a project made for school and all the Dungeon Masters out there.
-<br/> 
-the main function is to keep track of sessions, items, characters and encounters for a dungeon master. 
+<div align="center">
 
-## Project Overview
-<hr>
-Welcome to the D&D Tracker, your indispensable companion for Dungeon Masters. This application ensures a smooth D&D gaming experience by allowing DMs to effortlessly manage sessions. Record session details and summaries, add monsters, NPCs, and items for quick reference. The Encounter Tracker simplifies on-the-fly management during encounters, displaying turn order and tracking statuses. Elevate your storytelling with this comprehensive tool, enhancing the immersive experience of Dungeons & Dragons for both the Dungeon Master and the players.
-<br/>
-<br/>
-For Dungeon Masters (DMs), having immediate access to crucial information is vital. During a D&D game, DMs are continuously engaged in looking up information, which can lead to a slower pace that detracts from the fun of the game for both players and the DM. 
-<br/>
-Traditionally, DMs rely on D&D books or personal notes, but given the vast amount of data needed for a D&D campaign, having quick access is important.
-<br/>
-<br/>
-The D&D Tracker addresses this issue head-on. It allows DMs to store all relevant information within the tracker, ensuring quick access to all the details they need.
-<br/>
-## Installation Instructions
+  <img src="https://github.com/user-attachments/assets/fa24bc96-f92a-4875-a4de-960e98b32197" alt="BP2 logo" width="200"/>
+
+  <h1>D&D Tracker</h1>
+
+  <p>Welcome to the noble repository of mine D&D tracker, ye seeker of adventure!</p>
+  
+  <!-- Badges -->
+  <p align="center">
+    <img src="https://img.shields.io/badge/Creator-Tom%20Koevoets-pink" alt="Creator">
+    <img src="https://img.shields.io/badge/Java-FX-green" alt="JavaFX">
+    <img src="https://img.shields.io/badge/Java-11-blue" alt="Java">
+    <img src="https://img.shields.io/badge/Maven-3.6.3-C71A36" alt="Maven">
+  </p>
+  
+  <h4>
+    <a href="https://github.com/tomkoevoets">My GitHub</a>
+  </h4>
+</div>
+
 <hr>
 
-Follow the following steps, and you'll be ready to enhance your Dungeon Mastering experience with the D&D Tracker in no time!
-<br/>
+## :star2: About the Project
+
+Hark! The D&D Tracker be thy indispensable squire, aiding Dungeon Masters in their noble endeavors. This application doth bring order to the chaos of Dungeons & Dragons, allowing DMs to swiftly record session details, call forth monsters, NPCs, and items, all at a moment's notice. The Encounter Tracker dost ease the burden of managing battles, displaying turn order and tracking the status of thine champions. 
+
+For Dungeon Masters, swift access to vital knowledge is crucial. In times of adventure, DMs are ever engaged in seeking information, which may slow the flow of the game. Thus, this humble tool provideth a means to store all relevant matters in one place, so that thou mayst attend to the game with utmost efficiency.
+
+> The D&D Tracker lets you store and manage all campaign data, ensuring you can access critical details with ease during your sessions.
+
+---
+
+## :toolbox: Installation Instructions
+
+Follow these steps to get your **D&D Tracker** up and running:
+
 ### Prerequisites
+
 Make sure you have the following installed:
 
--  any working operating would suffice
--  an integrated development environment like Intellij
--  xampp
+- Any working operating system
+- Integrated Development Environment (IDE) such as **IntelliJ IDEA**
+- **XAMPP** for database management
 
 ### Installation Steps
 
-repository: https://github.com/tomkoevoets/BP2-dndTracker
-1. Download the repository as a zip file
-2. Extract the content of the zipfile
-3. Open the project in your IDE (intellij)
-4. Open xampp and click start at Apache and MySql
-5. Click on the 'admin' button
-6. Import the database file to the localhost phpMyAdmin
-7. Run the application in intellij or open the [bp2-dnd-tracker.jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar%2Fbp2-dnd-tracker.jar)
-8. The runable jar file can be found in [bp2-dnd-tracker](bp2-dnd-tracker) - [out](bp2-dnd-tracker%2Fout) - [artifacts](bp2-dnd-tracker%2Fout%2Fartifacts) - [bp2_dnd_tracker_jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar) - [bp2-dnd-tracker.jar](bp2-dnd-tracker%2Fout%2Fartifacts%2Fbp2_dnd_tracker_jar%2Fbp2-dnd-tracker.jar)
-9. This jar file can be put on your desktop for quick acces to the application without having to run it threw an IDE
+1. Download the repository: [D&D Tracker GitHub Repository](https://github.com/tomkoevoets/BP2-dndTracker)
+2. Extract the contents of the ZIP file.
+3. Open the project in your IDE (IntelliJ).
+4. Start **XAMPP**, and ensure both **Apache** and **MySQL** are running.
+5. Click on the **'admin'** button to access **phpMyAdmin**.
+6. Import the database file into the **localhost phpMyAdmin**.
+7. Run the application via IntelliJ, or use the standalone [D&D Tracker JAR](bp2-dnd-tracker/out/artifacts/bp2_dnd_tracker_jar/bp2-dnd-tracker.jar).
+8. Optionally, place the JAR file on your desktop for quick access.
 
 ### Requirements
-- Java Development Kit (JDK) installed, version 21.0.1 or higher. You can download it from Oracle's website.
-<br/>
-## Configuration
-<hr>
- - there are no specific configurable options.
-<br/>
- - at least java 8
 
+- **Java Development Kit (JDK)** version 21.0.1 or higher. Download it from [Oracle's website](https://www.oracle.com/java/technologies/javase-jdk21-downloads.html).
 
-## Usage Guide
-<hr>
-Once the tracker is started follow these steps to maximize your experience with the D&D Tracker:
+---
+
+## :wrench: Configuration
+
+- No specific configurable options are required for setup.
+- Java version **8 or higher** is required.
+
+---
+
+## :books: Usage Guide
+
+Once the tracker is up and running, follow these steps to maximize your experience:
 
 ### 1. Homescreen
-read the welcome text on the homescreen to start your experience.
+
+- Read the welcome text to start your journey with the D&D Tracker.
 
 ### 2. Sessions
 
-The session screen displays all saved sessions. 
-
-- To navigate to the session screen you can click on 'Sessions' on the navbar on the left side of the screen
-- To view a session you can click on the session of choice and it will navigate to a screen which displays the session title, information and summary.
-- On this screen there is a bin icon which will delete the session from the application and there is an update button which will navigate to the update screen of the currently chosen session.
-- To delete the session you click on the bin icon and you will automatically be navigated to the session screen after. The session is deleted from the tracker
-- To update the session after pressing the update button you simply make the desired changes and submit the updated session. You will automatically be navigated to the session screen after.
-- to add a new session you can go to the bottom of the session screen where there is a button which says 'add session'. That button navigates you to the screen to add a new session. In this screen you fill in the required information and submit and the new session will show up on the session screen. 
+- The session screen displays all saved sessions. To manage sessions:
+  - Click on **Sessions** in the navbar.
+  - Click on a session to view details, and choose **Delete** or **Update** as needed.
+  - To add a new session, click the **'Add Session'** button.
 
 ### 3. Monsters
 
-The monster screen displays all saved monsters. Monsters have to be linked to a session to use in the encounter tracker.
+- The monster screen displays all saved monsters linked to your sessions. To manage monsters:
+  - Click on **Monsters** in the navbar.
+  - View, delete, link, or update monsters from the respective screens.
+  - To link a monster to a session, use the menu button to select a session.
+  - To add a new monster, click **'Add Monster'** at the bottom of the screen.
 
-- To navigate to the monster screen you can click on 'Monsters' on the navbar on the left side of the screen
-- To view a monster you can click on the monster of choice and it will navigate to a screen which displays the monster stats and information.
-- On this screen there is a bin icon which will delete the monster from the application, there is a button to link a monster to a session and there is an update button which will navigate to the update screen of the currently chosen monster.
-- To link a monster to a session you click the menu button and choose a session to link it to. You can link one monster to multiple sessions.
-- To delete the monster you click on the bin icon and you will automatically be navigated to the monster screen after. The monster is deleted from the tracker.
-- To update the monster after pressing the update button you simply make the desired changes and submit the updated monster. You will automatically be navigated to the monster screen after.
-- to add a new monster you can go to the bottom of the monster screen where there is a button which says 'add monster'. That button navigates you to the screen to add a new monster. In this screen you fill in the required information and submit and the new monster will show up on the npc screen.
+### 4. NPCs
 
-### 4. Npc's
-
-The npc screen displays all saved npc's. Npc's have to be linked to a session to use in the encounter tracker.
-
-- To navigate to the npc screen you can click on 'Npc's' on the navbar on the left side of the screen
-- To view a npc you can click on the npc of choice and it will navigate to a screen which displays the npc stats and information.
-- On this screen there is a bin icon which will delete the npc from the application, there is a button to link a npc to a session and there is an update button which will navigate to the update screen of the currently chosen npc.
-- To link a npc to a session you click the menu button and choose a session to link it to. You can link one npc to multiple sessions.
-- To delete the npc you click on the bin icon and you will automatically be navigated to the npc screen after. The npc is deleted from the tracker.
-- To update the npc after pressing the update button you simply make the desired changes and submit the updated npc. You will automatically be navigated to the npc screen after.
-- to add a new npc you can go to the bottom of the npc screen where there is a button which says 'add npc'. That button navigates you to the screen to add a new npc. In this screen you fill in the required information and submit and the new monster will show up on the npc screen.
+- Similar to monsters, NPCs can be linked to sessions and managed as follows:
+  - Click on **NPCs** in the navbar.
+  - View, delete, link, or update NPCs from their respective screens.
+  - Add NPCs using the **'Add NPC'** button.
 
 ### 5. Items
 
-The item screen displays all saved items. 
+- The item screen allows you to manage all saved items. You can:
+  - Click on **Items** in the navbar.
+  - View, delete, or update items as necessary.
+  - Add new items by clicking **'Add Item'**.
 
-- To navigate to the item screen you can click on 'Items' on the navbar on the left side of the screen
-- To view a item you can click on the item of choice and it will navigate to a screen which displays the item information.
-- On this screen there is a bin icon which will delete the item from the application and there is an update button which will navigate to the update screen of the currently chosen item.
-- To delete the item you click on the bin icon and you will automatically be navigated to the item screen after. The item is deleted from the tracker
-- To update the item after pressing the update button you simply make the desired changes and submit the updated item. You will automatically be navigated to the item screen after.
-- to add a new item you can go to the bottom of the item screen where there is a button which says 'add item'. That button navigates you to the screen to add a new item. In this screen you fill in the required information and submit and the newitem will show up on the item screen.
+### 6. Encounter Tracker
 
-### 6. Encounter
+- The encounter screen is vital for tracking combat during sessions. It provides:
+  - Turn order and HP tracking for monsters, NPCs, and players.
+  - Add characters and players to the initiative list, adjusting HP as needed.
+  - Add items for quick access during encounters.
 
-The encounter screen comes into play when the players get into an encounter and have to fight. The fighting in D&D is turn based. On this screen the DM can keep track of who is in the fight, what the fighting order, how much hp the players or characters have left and items can be added for quick acces.
+---
 
-- To navigate to the encounter screen you can click on 'Encounter' on the navbar on the left side of the screen
-- to start you can choose a session using the menu button at the top of the screen. You can only choose characters in the tracker that are linked to the session you choose.
-<br/>
-<br/>
-- In the initiative section you can add a character (monster or npc) by clicking on the 'add character' button. A new character section will pop up and you can add a character by clicking the menu button and choose a character that is linked to the previously choosen session.
-- You can change the hp of the character using the HP bar. The HP bar will turn red when the character reaches 0HP.
-- To see the character stats you can click on the character section after adding one.
-- The character can be removed from the initiative section by clicking on the delete icon.
-- You can also add a player. The player section works the same as the character section with the difference being that you add the player name to the text area.
-- Once you have a couple character and players in the initiative section you can use the up/down buttons on the left to highlight and loop threw the sections so that you can always see whose turn it is within the fight.
-<br/>
-<br/>
-- In the item section you can add an item using the menu button. this item does not have to be linked to a session.
-- To see the item information you can click on the item section after adding one
+## :compass: Roadmap
 
-## Roadmap
-<hr>
-Just like in the world of D&D the possebilities are endless to what can be added to this application to make it even better.
+The future possibilities for expanding the D&D Tracker are endless:
 
-The future addations that i would like to see:
+- [ ] Add Campaigns as an entity
+- [ ] Allow monsters, NPCs, and items to have associated images
+- [ ] Add cool widgets for map and picture generation
+- [ ] Add a tutorial on how to use the applictation
 
-- Adding campaign as an entity. 
-- Adding the possibility to give monsters, npc's and items a picture of choice.
-- Adding cool widgets for map generating and picture generation.
+---
+
+## 📝 Code Standards
+
+For best practices, follow the [Code Standards](https://github.com/) for this project.
+
+---
+
+## 💬 Contact
+
+- **Tom Koevoets** - [LinkedIn](https://www.linkedin.com/in/tom-koevoets-7373b6294/) - t.koevoets1@ad-academie.nl
+---
+
+## :gem: Acknowledgements
+
+Thanks to everyone who contributed to this project and to the D&D community for their continuous support and inspiration!
+
