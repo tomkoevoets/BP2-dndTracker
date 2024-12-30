@@ -41,9 +41,16 @@ Make sure you have the following installed:
 
 - Any working operating system
 - Integrated Development Environment (IDE) such as **IntelliJ IDEA**
-- **XAMPP** for database management
+- **XAMPP** for database management (Only if you want to develop locally using your own database)
 
-### Installation Steps
+### Installation Steps (for running the desktop app)
+
+1. Download the repository: [D&D Tracker GitHub Repository](https://github.com/tomkoevoets/BP2-dndTracker)
+2. Extract the contents of the ZIP file.
+3. Run the application via the JAR file which is located in the following files: bp2-dnd-tracker > out > artifacts > bp2_dnd_tracker_jar > **bp2-dnd-tracker**.
+4. Optionally, place the JAR file on your desktop for quick access.
+
+### Installation Steps (for local database running)
 
 1. Download the repository: [D&D Tracker GitHub Repository](https://github.com/tomkoevoets/BP2-dndTracker)
 2. Extract the contents of the ZIP file.
