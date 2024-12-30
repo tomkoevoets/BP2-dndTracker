@@ -11,13 +11,17 @@ public class Database {
     // Create a constructor for the Database class
     public Database() {
         try {
-            // Establish a connection to the MySQL database with the provided URL, username, and password
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost/dnd_tracker_bp2", "root", "");
+            // Update the URL, username, and password with the provided details
+            this.connection = DriverManager.getConnection(
+                    "jdbc:mysql://adainforma.tk:3306/bp2_dndtracker",
+                    "dndtracker",
+                    "4m76w7i#B"
+            );
         } catch (SQLException e) {
-            // If an SQL exception occurs, a RuntimeException is generated
             throw new RuntimeException(e);
         }
     }
+
 
 ///////////////////////////////////////////////Campaign/////////////////////////////////////////////////////////////////
 
